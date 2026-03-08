@@ -1,7 +1,8 @@
 # learninglovinglivingquran.github.io
 
 # App
-[LQ App](./app/README.md)
+Start here: [LQ App](./app/README.md)
+
 The app is meant to slightly guide the natural interaction with the Quran.
 Currently, a reader of the Quran has basically three options when they're starting to the read the Quran.
 - They can start at the beginning, and start reading from the beginning of the book order of the Quran
@@ -48,3 +49,9 @@ Along with a section of reading in the block, there were be accompanying questio
 
 ### 5. Repeat daily
 To achieve the goal of living with the Quran, this process should be repeated on at least a daily basis to create a consistent connection with the Quran, which should hopefully result in manifestation of the Quran in the reader's life.
+
+# Supporting Tasks
+To facilitate learning of the Quran, there are a few supporting tasks that can be completed in parallel with learning the Quran. These include:
+- start a consistent, repeated recitation of the quran
+- learn the arabic of the quran
+- memorize the ayaat
