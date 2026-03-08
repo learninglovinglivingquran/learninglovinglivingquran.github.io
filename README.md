@@ -1,15 +1,15 @@
 # learninglovinglivingquran.github.io
 
 # App
+[LQ App](./app/README.md)
 The app is meant to slightly guide the natural interaction with the Quran.
-The LQ app works in stages:
-
-### 1. Select the Quran Paths and Order
-Currently, a reader of the Quran has basically three options when they're starting to the read the Quran. 
+Currently, a reader of the Quran has basically three options when they're starting to the read the Quran.
 - They can start at the beginning, and start reading from the beginning of the book order of the Quran
 - They can select a random surah, and start reading from that surah
 - They can go to a random page and ayah of the Quran, and start from there
-With the LQ app, we will try to enhance the options above by offering readers additional paths, which will consist of ayaat grouped together for specific topics.
+
+### 1. Select the Quran Paths and Order
+With the LQ app, we will try to enhance the normal options by offering readers additional paths, which will consist of ayaat grouped together for specific topics.
 With each path, the reader can also select if they would like to learn the ayaat in the default book order, ayaat for the topic from a specific surah, or learn the related ayaat in a random order.
 
 **Possible Paths**
