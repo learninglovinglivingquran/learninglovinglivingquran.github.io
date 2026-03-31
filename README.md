@@ -1,5 +1,14 @@
 # learninglovinglivingquran.github.io
 
+# Resources
+
+## Arabic
+
+### Basic nahw
+- [Nahw - Ism](./nahw_ism.html)
+- [Nahw - Fi'l](./nahw_fil.html)
+- [Nahw - Miscellaneous](./nahw_misc.html)
+
 # App
 Start here: [LQ App](./app/README.md)
 

@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bayyinah Dream — Arabic of the Quran · Chapters 6–8</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#1A2744;--navy2:#22304A;
+      --gold:#C9933B;--gold2:#E8AD55;
+      --cream:#F5F0E8;--lgray:#E8E4DC;
+      --teal:#1D7A8C;--teal2:#258EA3;
+      --white:#fff;--dgray:#2D2D2D;--mgray:#5A5A6A;
+      --green:#2E7D52;--purple:#6B3FA0;--red:#B94040;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dgray);min-height:100vh}
+    .arabic{font-family:'Noto Naskh Arabic',serif;direction:rtl}
+    .serif{font-family:'Cormorant Garamond',serif}
+
+    #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal));z-index:1000;transition:width .2s ease}
+
+    nav{position:fixed;top:0;left:0;right:0;background:rgba(26,39,68,.97);backdrop-filter:blur(12px);z-index:100;border-bottom:1px solid rgba(201,147,59,.25)}
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:58px}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.04em}
+    .nav-logo span{color:var(--white)}
+    .nav-chapters{display:flex;gap:.15rem;align-items:center;overflow-x:auto;max-width:80%}
+    .nav-btn{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.72rem;color:rgba(255,255,255,.5);padding:.3rem .6rem;border-radius:4px;transition:all .2s;white-space:nowrap}
+    .nav-btn:hover{color:var(--gold);background:rgba(201,147,59,.1)}
+    .nav-btn.active{color:var(--gold);background:rgba(201,147,59,.18)}
+    .nav-counter{font-size:.7rem;color:rgba(255,255,255,.3);border-left:1px solid rgba(255,255,255,.1);padding-left:.9rem;margin-left:.4rem;white-space:nowrap}
+
+    .slides-wrapper{padding-top:58px}
+    .slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:5rem 2rem 4rem;position:relative;overflow:hidden}
+    .slide-inner{max-width:1000px;margin:0 auto;width:100%;position:relative;z-index:2}
+    .slide-dark{background:var(--navy);color:var(--white)}
+    .slide-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(29,122,140,.18) 0%,transparent 60%),radial-gradient(ellipse at 10% 80%,rgba(201,147,59,.1) 0%,transparent 50%);pointer-events:none}
+    .slide-light{background:var(--cream);color:var(--dgray)}
+    .slide-light::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 90% 10%,rgba(29,122,140,.07) 0%,transparent 55%);pointer-events:none}
+
+    .gold-bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--teal),var(--gold))}
+    .section-tag{display:inline-block;background:var(--gold);color:var(--navy);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .85rem;border-radius:4px;margin-bottom:1.2rem}
+    .section-tag-teal{background:var(--teal);color:#fff}
+    .section-tag-green{background:var(--green);color:#fff}
+    .section-tag-red{background:var(--red);color:#fff}
+    .section-tag-purple{background:var(--purple);color:#fff}
+
+    .slide-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:1.8rem}
+    .slide-dark .slide-title{color:var(--white)}
+    .slide-light .slide-title{color:var(--navy)}
+
+    .hero-bismillah{font-family:'Noto Naskh Arabic',serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--gold);text-align:center;margin-bottom:1.5rem;direction:rtl;animation:fadeUp .8s ease both}
+    .hero-eyebrow{text-align:center;letter-spacing:.2em;font-size:.8rem;font-weight:600;color:var(--teal);text-transform:uppercase;margin-bottom:.75rem;animation:fadeUp .8s .1s ease both}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,8vw,5.5rem);font-weight:700;line-height:1.05;color:var(--white);text-align:center;margin-bottom:1rem;animation:fadeUp .8s .2s ease both}
+    .hero-sub{text-align:center;color:rgba(255,255,255,.6);font-size:1.05rem;margin-bottom:.5rem;animation:fadeUp .8s .3s ease both}
+    .hero-divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.5rem auto;animation:fadeUp .8s .4s ease both}
+    .hero-tagline{text-align:center;color:var(--gold);font-style:italic;font-size:.9rem;animation:fadeUp .8s .5s ease both}
+    .hero-credit{text-align:center;color:rgba(255,255,255,.3);font-size:.8rem;margin-top:2.5rem;animation:fadeUp .8s .6s ease both}
+
+    .agenda-card{display:flex;align-items:center;gap:1.2rem;background:var(--white);border:1px solid var(--lgray);border-radius:10px;padding:1rem 1.4rem;margin-bottom:.9rem;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:transform .2s,box-shadow .2s}
+    .agenda-card:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(0,0,0,.09)}
+    .agenda-num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.88rem;color:var(--white);flex-shrink:0}
+    .agenda-card-label{font-weight:600;font-size:.85rem;margin-bottom:.15rem}
+    .agenda-card-desc{font-size:.88rem;color:var(--mgray)}
+
+    .data-table{width:100%;border-collapse:collapse;margin-top:.5rem}
+    .data-table th{background:var(--navy);color:var(--white);font-size:.77rem;font-weight:600;letter-spacing:.04em;padding:.6rem .9rem;text-align:left}
+    .data-table td{padding:.55rem .9rem;font-size:.88rem;border-bottom:1px solid var(--lgray)}
+    .data-table tr:nth-child(even) td{background:rgba(232,228,220,.4)}
+    .data-table tr:last-child td{border-bottom:none}
+    .td-arabic{font-family:'Noto Naskh Arabic',serif;font-size:1.1rem;font-weight:600;color:var(--gold);text-align:center}
+    .dark-table{width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden}
+    .dark-table th{background:var(--gold);color:var(--navy);font-size:.77rem;font-weight:700;letter-spacing:.05em;padding:.65rem 1rem;text-align:left}
+    .dark-table td{padding:.65rem 1rem;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,.06);color:var(--white)}
+    .dark-table tr:nth-child(even) td{background:rgba(255,255,255,.04)}
+    .dark-table tr:last-child td{border-bottom:none}
+    .dark-table .td-arabic{color:var(--gold2)}
+
+    .highlight-dark{background:var(--navy);color:var(--white);border-radius:8px;padding:1rem 1.3rem;font-size:.95rem;font-weight:600;margin-bottom:1.3rem}
+    .highlight-gold{background:var(--gold);color:var(--navy);border-radius:8px;padding:1rem 1.3rem;font-size:.95rem;font-weight:600;margin-bottom:1.3rem}
+    .highlight-teal{background:var(--teal);color:var(--white);border-radius:8px;padding:1rem 1.3rem;font-size:.95rem;font-weight:600;margin-bottom:1.3rem}
+    .note-box{background:var(--lgray);border-radius:8px;padding:.9rem 1.2rem;font-size:.87rem;color:var(--navy);margin-top:1.2rem}
+    .note-box strong{color:var(--gold)}
+
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    @media(max-width:680px){.two-col{grid-template-columns:1fr}}
+    .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    @media(max-width:700px){.three-col{grid-template-columns:1fr}}
+    .col-card{background:var(--white);border:1px solid var(--lgray);border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+    .col-card-header{padding:.85rem 1.2rem;color:var(--white);font-weight:700;font-size:.82rem;letter-spacing:.04em}
+    .col-card-body{padding:1rem 1.2rem}
+
+    .step-item{display:flex;gap:1rem;align-items:flex-start;padding:.8rem 1.1rem;background:var(--white);border:1px solid var(--lgray);border-radius:8px;margin-bottom:.7rem;font-size:.9rem;color:var(--dgray)}
+    .step-num{background:var(--teal);color:var(--white);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0}
+
+    .ex-box{background:var(--white);border:1px solid var(--lgray);border-radius:10px;padding:1rem 1.3rem;margin-bottom:.8rem}
+    .ex-ar{font-family:'Noto Naskh Arabic',serif;font-size:1.4rem;font-weight:700;color:var(--navy);direction:rtl;margin-bottom:.4rem}
+    .ex-en{font-size:.9rem;color:var(--mgray);font-style:italic}
+    .ex-note{font-size:.8rem;color:var(--teal);margin-top:.3rem;font-weight:600}
+
+    .cat-item{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid var(--lgray);border-radius:8px;padding:.85rem 1.1rem;margin-bottom:.6rem}
+    .cat-num{background:var(--gold);color:var(--navy);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:1px}
+    .cat-title{font-weight:700;font-size:.87rem;color:var(--navy);margin-bottom:.2rem}
+    .cat-desc{font-size:.85rem;color:var(--mgray);line-height:1.5}
+    .cat-examples{font-size:.8rem;color:var(--teal);margin-top:.25rem;font-family:'Noto Naskh Arabic',serif;direction:rtl}
+
+    .recap-row{display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,.07);border:1px solid rgba(201,147,59,.25);border-radius:8px;padding:.95rem 1.2rem;margin-bottom:.8rem}
+    .recap-row-label{font-size:.74rem;font-weight:700;color:var(--gold);white-space:nowrap;padding-top:.1rem;min-width:120px}
+    .recap-row-text{font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.55}
+
+    .divider-slide{text-align:center}
+    .divider-ch{font-size:.78rem;font-weight:700;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem}
+    .divider-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,4.5rem);font-weight:700;color:var(--white);margin-bottom:.4rem}
+    .divider-subtitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,3vw,1.9rem);color:rgba(255,255,255,.55);margin-bottom:1.5rem}
+    .divider-hr{width:80px;height:1.5px;background:var(--gold);margin:0 auto 1.2rem}
+    .divider-sub{font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic;margin-bottom:2rem}
+
+    .harf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:1rem 0}
+    @media(max-width:500px){.harf-grid{grid-template-columns:repeat(2,1fr)}}
+    .harf-chip{background:var(--white);border:1px solid var(--gold);border-radius:8px;padding:.55rem .7rem;text-align:center}
+    .harf-ar{font-family:'Noto Naskh Arabic',serif;font-size:1.1rem;font-weight:700;color:var(--gold);direction:rtl}
+    .harf-en{font-size:.72rem;color:var(--mgray);margin-top:.1rem}
+
+    /* VERB CHART TABLE */
+    .verb-chart{width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;font-size:.82rem}
+    .verb-chart th{background:var(--gold);color:var(--navy);padding:.55rem .7rem;text-align:center;font-weight:700;font-size:.75rem}
+    .verb-chart td{padding:.5rem .7rem;border-bottom:1px solid rgba(255,255,255,.08);text-align:center;color:var(--white)}
+    .verb-chart tr:nth-child(even) td{background:rgba(255,255,255,.04)}
+    .verb-chart tr:last-child td{border-bottom:none}
+    .vc-ar{font-family:'Noto Naskh Arabic',serif;font-size:1.1rem;font-weight:700;color:var(--gold2)}
+    .vc-en{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:.15rem}
+    .vc-label{font-size:.75rem;color:rgba(255,255,255,.45);text-align:left}
+
+    /* PROCESS STEPS */
+    .process-steps{display:flex;flex-direction:column;gap:.6rem}
+    .process-step{display:flex;gap:1rem;align-items:flex-start;padding:.85rem 1.1rem;background:rgba(255,255,255,.06);border:1px solid rgba(201,147,59,.25);border-radius:8px}
+    .process-step-num{background:var(--gold);color:var(--navy);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+    .process-step-content{font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.55}
+
+    /* COMPARISON TABLE */
+    .compare-table{width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden}
+    .compare-table th{padding:.65rem 1rem;font-size:.8rem;font-weight:700;text-align:left}
+    .compare-table td{padding:.6rem 1rem;font-size:.85rem;border-bottom:1px solid var(--lgray)}
+    .compare-table tr:last-child td{border-bottom:none}
+
+    /* PILL TAGS */
+    .pill{display:inline-block;font-size:.7rem;font-weight:700;padding:.2rem .6rem;border-radius:4px;margin:.15rem}
+    .pill-gold{background:var(--gold);color:var(--navy)}
+    .pill-teal{background:var(--teal);color:#fff}
+    .pill-navy{background:var(--navy);color:#fff}
+    .pill-green{background:var(--green);color:#fff}
+    .pill-red{background:var(--red);color:#fff}
+
+    /* MAFOOL CARDS */
+    .mafool-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:620px){.mafool-grid{grid-template-columns:1fr}}
+    .mafool-card{border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+    .mafool-card-top{height:5px}
+    .mafool-card-body{background:var(--white);padding:1rem 1.1rem;border:1px solid var(--lgray);border-top:none}
+    .mafool-card-title{font-family:'Noto Naskh Arabic',serif;font-size:1rem;font-weight:700;color:var(--navy);direction:rtl;margin-bottom:.2rem}
+    .mafool-card-q{font-size:.78rem;font-weight:600;color:var(--teal);margin-bottom:.4rem}
+    .mafool-card-desc{font-size:.83rem;color:var(--mgray);line-height:1.5;margin-bottom:.4rem}
+    .mafool-card-ex{font-family:'Noto Naskh Arabic',serif;font-size:.95rem;color:var(--gold);direction:rtl}
+    .mafool-card-ex-en{font-size:.78rem;color:var(--mgray);font-style:italic}
+
+    /* LIGHT/LIGHTEST BUILD */
+    .build-flow{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.06);border:1px solid rgba(201,147,59,.25);border-radius:8px;padding:.9rem 1.1rem;margin-bottom:.7rem}
+    .build-step{text-align:center;flex:1;min-width:90px}
+    .build-step-ar{font-family:'Noto Naskh Arabic',serif;font-size:1.2rem;font-weight:700;color:var(--gold);direction:rtl}
+    .build-step-label{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:.15rem}
+    .build-arrow{color:rgba(201,147,59,.5);font-size:1.2rem}
+
+    /* SENT STRUCTURE */
+    .sent-structure{background:var(--navy);border-radius:10px;padding:1.2rem;display:flex;gap:.8rem;align-items:stretch;flex-wrap:wrap}
+    .sent-part{flex:1;min-width:140px;background:rgba(255,255,255,.07);border:1px solid rgba(201,147,59,.3);border-radius:8px;padding:.9rem 1rem;text-align:center}
+    .sent-part-label{font-size:.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .sent-part-ar{font-family:'Noto Naskh Arabic',serif;font-size:1.1rem;color:var(--white);direction:rtl}
+    .sent-part-en{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:.2rem}
+
+    footer{background:var(--navy);color:rgba(255,255,255,.35);text-align:center;padding:1.8rem;font-size:.78rem;border-top:1px solid rgba(201,147,59,.2)}
+    footer a{color:var(--gold);text-decoration:none}
+    .scroll-top{position:fixed;bottom:1.5rem;right:1.5rem;width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--navy);border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:opacity .3s,transform .2s;z-index:99}
+    .scroll-top:hover{transform:translateY(-2px)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:768px){.nav-chapters{display:none}.slide{padding:4.5rem 1.2rem 3rem}}
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const NAV = [
+  { label:"Intro",           id:"s-intro" },
+  { label:"Ch 6",            id:"s-ch6" },
+  { label:"الفعل Types",     id:"s-ftype" },
+  { label:"الماضي Chart",    id:"s-madhi" },
+  { label:"الفاعل",          id:"s-faiil" },
+  { label:"المفعول",         id:"s-mafool" },
+  { label:"مفعول به",        id:"s-mf1" },
+  { label:"مفعول فيه",       id:"s-mf2" },
+  { label:"مفعول له",        id:"s-mf3" },
+  { label:"مفعول مطلق",     id:"s-mf4" },
+  { label:"الحال",           id:"s-mf5" },
+  { label:"Abnormal/Complex", id:"s-jabnorm" },
+  { label:"Q. Words",        id:"s-qwords" },
+  { label:"Ch 7",            id:"s-ch7" },
+  { label:"المضارع Chart",   id:"s-mudar" },
+  { label:"Light Form",      id:"s-light" },
+  { label:"Lightest Form",   id:"s-lightest" },
+  { label:"Commanding",      id:"s-amr" },
+  { label:"Forbidding",      id:"s-nahi" },
+  { label:"نون التوكيد",     id:"s-noon" },
+  { label:"اسم vs فعل",     id:"s-isvf" },
+  { label:"Ch 8",            id:"s-ch8" },
+  { label:"Passive Intro",   id:"s-pass" },
+  { label:"ماضي Passive",   id:"s-passm" },
+  { label:"مضارع Passive",  id:"s-passp" },
+  { label:"نائب الفاعل",    id:"s-naib" },
+  { label:"Rhetorical",      id:"s-rhet" },
+  { label:"Transitivity",    id:"s-trans" },
+  { label:"Final Recap",     id:"s-final" },
+];
+
+function useScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const fn = () => {
+      const el = document.documentElement;
+      const s = el.scrollTop || document.body.scrollTop;
+      const t = el.scrollHeight - el.clientHeight;
+      setP(t > 0 ? (s/t)*100 : 0);
+    };
+    window.addEventListener("scroll", fn, { passive:true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+  return p;
+}
+
+function useActiveSection(ids) {
+  const [active, setActive] = useState(ids[0]);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => { if(e.isIntersecting) setActive(e.target.id); }),
+      { threshold:.35 }
+    );
+    ids.forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, [ids]);
+  return active;
+}
+
+function useFadeIn() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("visible"); }),
+      { threshold:.12 }
+    );
+    document.querySelectorAll(".fade-in").forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+}
+
+function useShowTop() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const fn = () => setShow(window.scrollY > 400);
+    window.addEventListener("scroll", fn, { passive:true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+  return show;
+}
+
+const SectionTag = ({ children, color }) => (
+  <span className={`section-tag${color ? " section-tag-"+color : ""}`}>{children}</span>
+);
+const SlideTitle = ({ children }) => <h2 className="slide-title">{children}</h2>;
+
+function Slide({ id, dark, children }) {
+  return (
+    <section className={dark ? "slide slide-dark" : "slide slide-light"} id={id}>
+      {!dark && <div className="gold-bar" />}
+      <div className="slide-inner">{children}</div>
+    </section>
+  );
+}
+
+/* ── PAST TENSE CHART DATA ── */
+const MADHI_CHART = [
+  ["هو",  "نَصَرَ",    "He helped",          "3rd m.sg"],
+  ["هم",  "نَصَرُوا",  "They helped",        "3rd m.pl"],
+  ["هما", "نَصَرَا",   "Both (m) helped",    "3rd m.du"],
+  ["هي",  "نَصَرَتْ",  "She helped",         "3rd f.sg"],
+  ["هن",  "نَصَرْنَ",  "They (f) helped",    "3rd f.pl"],
+  ["هما", "نَصَرَتَا", "Both (f) helped",    "3rd f.du"],
+  ["أنت", "نَصَرْتَ",  "You (m) helped",     "2nd m.sg"],
+  ["أنتم","نَصَرْتُمْ","All of you helped",  "2nd m.pl"],
+  ["أنتما","نَصَرْتُمَا","You two helped",   "2nd du"],
+  ["أنتِ","نَصَرْتِ",  "You (f) helped",     "2nd f.sg"],
+  ["أنتن","نَصَرْتُنَّ","All of you helped", "2nd f.pl"],
+  ["أنا", "نَصَرْتُ",  "I helped",           "1st sg"],
+  ["نحن", "نَصَرْنَا", "We helped",          "1st pl"],
+];
+
+/* ── MUDAR CHART DATA ── */
+const MUDAR_CHART = [
+  ["هو",  "يَنْصُرُ",    "He helps"],
+  ["هم",  "يَنْصُرُونَ", "They help"],
+  ["هما", "يَنْصُرَانِ", "Both (m) help"],
+  ["هي",  "تَنْصُرُ",    "She helps"],
+  ["هن",  "يَنْصُرْنَ",  "They (f) help"],
+  ["هما", "تَنْصُرَانِ", "Both (f) help"],
+  ["أنت", "تَنْصُرُ",    "You (m) help"],
+  ["أنتم","تَنْصُرُونَ", "All of you help"],
+  ["أنتما","تَنْصُرَانِ","You two help"],
+  ["أنتِ","تَنْصُرِينَ", "You (f) help"],
+  ["أنتن","تَنْصُرْنَ",  "All of you (f) help"],
+  ["أنا", "أَنْصُرُ",    "I help"],
+  ["نحن", "نَنْصُرُ",    "We help"],
+];
+
+function App() {
+  const ids = NAV.map(n => n.id);
+  const progress  = useScrollProgress();
+  const active    = useActiveSection(ids);
+  const showTop   = useShowTop();
+  useFadeIn();
+
+  return (
+    <>
+      <div id="progress-bar" style={{ width:`${progress}%` }} />
+      <nav>
+        <div className="nav-inner">
+          <a className="nav-logo" href="#">Bayyinah <span>Dream</span></a>
+          <div className="nav-chapters">
+            {NAV.map(n => (
+              <button key={n.id} className={`nav-btn${active===n.id?" active":""}`}
+                onClick={() => document.getElementById(n.id)?.scrollIntoView({ behavior:"smooth" })}>
+                {n.label}
+              </button>
+            ))}
+          </div>
+          <div className="nav-counter">{NAV.findIndex(n=>n.id===active)+1} / {NAV.length}</div>
+        </div>
+      </nav>
+
+      <div className="slides-wrapper">
+
+        {/* HERO */}
+        <Slide id="s-intro" dark>
+          <div className="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <div className="hero-eyebrow">Bayyinah Dream · Nahw · Section 1</div>
+          <h1 className="hero-title">الفِعْل<br/>The Verb</h1>
+          <p className="hero-sub">Chapters 6 · 7 · 8</p>
+          <div className="hero-divider" />
+          <p className="hero-tagline">Past · Present · Passive — الماضي · المضارع · المجهول</p>
+          <div className="hero-credit">Based on the Dream Textbook · Sumaya Al-Saadoon</div>
+        </Slide>
+
+        {/* AGENDA */}
+        <Slide id="s-agenda">
+          <div className="fade-in"><SectionTag>Overview</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Three Chapters on الفعل</SlideTitle></div>
+          {[
+            { num:6, color:"var(--gold)",   label:"Chapter 6 — الفعل الماضي",            desc:"Past tense verb · الفاعل · six types of المفعول · question words" },
+            { num:7, color:"var(--teal)",   label:"Chapter 7 — الفعل المضارع",           desc:"Present/future · light · lightest · فعل الأمر · فعل النهي · نون التوكيد" },
+            { num:8, color:"var(--purple)", label:"Chapter 8 — الفعل المبني للمجهول",    desc:"Passive verb · نائب الفاعل · rhetorical benefits · transitivity" },
+          ].map(a => (
+            <div key={a.num} className="agenda-card fade-in">
+              <div className="agenda-num" style={{ background:a.color }}>{a.num}</div>
+              <div>
+                <div className="agenda-card-label">{a.label}</div>
+                <div className="agenda-card-desc">{a.desc}</div>
+              </div>
+            </div>
+          ))}
+          <div className="note-box fade-in">
+            <strong>Building on Ch 1–5:</strong> We already know the 3 word types, all 4 properties of اسم, the 5 fragments, and الجملة الاسمية. Now we turn to الفعل in depth.
+          </div>
+        </Slide>
+
+        {/* ══════════════════ CHAPTER 6 ══════════════════ */}
+        <Slide id="s-ch6" dark>
+          <div className="divider-slide fade-in">
+            <div className="divider-ch">Chapter 6</div>
+            <div className="divider-title" style={{ direction:"rtl" }}>الفِعْلُ الْمَاضِي</div>
+            <div className="divider-subtitle">The Past-Tense Verb</div>
+            <div className="divider-hr" />
+            <p className="divider-sub">Every فعل contains a pronoun inside it — making it a complete sentence on its own</p>
+          </div>
+        </Slide>
+
+        {/* 6.1 THREE TYPES */}
+        <Slide id="s-ftype">
+          <div className="fade-in"><SectionTag>6.1 — Introduction</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Three Types of فعل &amp; الجملة الفعلية</SlideTitle></div>
+          <div className="highlight-dark fade-in">
+            Every <strong style={{ color:"var(--gold)" }}>فعل</strong> contains a pronoun inside it (the doer). Together, the action + doer = a complete <strong style={{ color:"var(--gold2)" }}>جملة فعلية</strong>.
+          </div>
+          <div className="three-col fade-in" style={{ marginBottom:"1.5rem" }}>
+            {[
+              { ar:"الفعل الماضي",  en:"Past Tense",          color:"var(--gold)",   note:"Check the ENDINGS to find the pronoun" },
+              { ar:"الفعل المضارع", en:"Present/Future Tense", color:"var(--teal)",   note:"Check the BEGINNING + ENDINGS" },
+              { ar:"فعل الأمر / النهي", en:"Commanding / Forbidding", color:"var(--navy)", note:"Built from the مضارع frame" },
+            ].map(t => (
+              <div key={t.en} className="col-card">
+                <div className="col-card-header" style={{ background:t.color,color:t.color==="var(--gold)"?"var(--navy)":"#fff" }}>
+                  <span className="arabic" style={{ fontSize:"1rem" }}>{t.ar}</span>
+                </div>
+                <div className="col-card-body">
+                  <div style={{ fontWeight:600,fontSize:".88rem",marginBottom:".3rem" }}>{t.en}</div>
+                  <div style={{ fontSize:".82rem",color:"var(--mgray)" }}>{t.note}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="sent-structure fade-in">
+            <div className="sent-part"><div className="sent-part-label">الفعل</div><div className="sent-part-ar">نَصَرَ</div><div className="sent-part-en">The Action</div></div>
+            <div style={{ color:"rgba(201,147,59,.6)",fontSize:"1.4rem",alignSelf:"center" }}>+</div>
+            <div className="sent-part"><div className="sent-part-label">الفاعل</div><div className="sent-part-ar">هو / المسلم</div><div className="sent-part-en">The Doer — inside or outside</div></div>
+            <div style={{ color:"rgba(201,147,59,.6)",fontSize:"1.4rem",alignSelf:"center" }}>+</div>
+            <div className="sent-part"><div className="sent-part-label">المفعول</div><div className="sent-part-ar">ستة أنواع</div><div className="sent-part-en">The Detail — 6 types, all منصوب</div></div>
+          </div>
+        </Slide>
+
+        {/* 6.2 MADHI CHART */}
+        <Slide id="s-madhi" dark>
+          <div className="fade-in"><SectionTag>6.2 — الفعل الماضي</SectionTag></div>
+          <div className="fade-in"><SlideTitle>الماضي Chart — نَصَرَ (to help)</SlideTitle></div>
+          <div className="highlight-gold fade-in">The <strong>ENDING</strong> of the ماضي changes to show the inside pronoun. MEMORIZE all 13 forms.</div>
+          <div style={{ overflowX:"auto" }} className="fade-in">
+            <table className="verb-chart">
+              <thead>
+                <tr><th>Pronoun</th><th>الفعل</th><th>Meaning</th><th>Ending Key</th></tr>
+              </thead>
+              <tbody>
+                {MADHI_CHART.map(([pron,verb,en,info]) => (
+                  <tr key={pron+verb}>
+                    <td><div className="vc-label">{info}</div><div className="arabic" style={{ color:"rgba(255,255,255,.7)",fontSize:".9rem" }}>{pron}</div></td>
+                    <td><div className="vc-ar">{verb}</div></td>
+                    <td><div className="vc-en">{en}</div></td>
+                    <td><div className="vc-en">{verb.slice(-2)}</div></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="note-box fade-in" style={{ background:"rgba(255,255,255,.08)",color:"rgba(255,255,255,.8)",marginTop:"1rem" }}>
+            <strong style={{ color:"var(--gold)" }}>Key:</strong> For الفعل الماضي, only the <strong>endings change</strong>. The beginning stays the same — opposite to المضارع which changes both beginning AND ending.
+          </div>
+        </Slide>
+
+        {/* 6.3 FAIIL */}
+        <Slide id="s-faiil">
+          <div className="fade-in"><SectionTag>6.3 — الفاعل</SectionTag></div>
+          <div className="fade-in"><SlideTitle>The Doer — Inside vs Outside</SlideTitle></div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--gold)" }}>Inside فاعل (ضمير مستتر)</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".88rem",color:"var(--mgray)",marginBottom:".7rem" }}>The built-in pronoun every فعل already contains. <em>Every فعل has one.</em></div>
+                <div className="ex-box" style={{ marginBottom:".6rem" }}>
+                  <div className="ex-ar">دَخَلَ الجَنَّةَ</div>
+                  <div className="ex-en">He entered the garden.</div>
+                  <div className="ex-note">Inside pronoun: هو (implied by the فعل's form)</div>
+                </div>
+                <div className="ex-box">
+                  <div className="ex-ar">قَالُوا رَبَّنَا أَعْلَمُ</div>
+                  <div className="ex-en">They said, "Our Master knows best."</div>
+                  <div className="ex-note">Inside pronoun: هم (shown by -وا ending)</div>
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>Outside فاعل — 4 Rules</div>
+              <div className="col-card-body">
+                {[
+                  ["Must come AFTER the فعل", "فاعل always follows its فعل"],
+                  ["Must be مرفوع", "It is the doer — always رفع status"],
+                  ["فعل must be in هو or هي form", "Singular form regardless of the فاعل's number"],
+                  ["فعل MATCHES فاعل in GENDER", "Masculine فاعل → هو form · Feminine → هي form"],
+                ].map(([r,d],i) => (
+                  <div key={i} className="step-item" style={{ marginBottom:".5rem" }}>
+                    <div className="step-num">{i+1}</div>
+                    <div><strong style={{ fontSize:".83rem" }}>{r}</strong><br/><span style={{ fontSize:".82rem",color:"var(--mgray)" }}>{d}</span></div>
+                  </div>
+                ))}
+                <div className="ex-box" style={{ marginTop:".7rem" }}>
+                  <div className="ex-ar">نَصَرَ المُسْلِمُ · نَصَرَتِ المُسْلِمَةُ</div>
+                  <div className="ex-en">The Muslim helped · The Muslimah helped</div>
+                  <div className="ex-note">فعل is singular (هو/هي form) even when فاعل is plural: نَصَرَ المُسْلِمُونَ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="note-box fade-in">
+            <strong>Rule:</strong> Every جملة فعلية must have a فاعل — but you CANNOT have both an inside and outside فاعل at the same time.
+          </div>
+        </Slide>
+
+        {/* 6.4 MAFOOL INTRO */}
+        <Slide id="s-mafool" dark>
+          <div className="fade-in"><SectionTag>6.4 — المفعول</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Six Types of Detail — المفاعيل الستة</SlideTitle></div>
+          <div className="highlight-gold fade-in">All details are <strong>منصوب</strong>. A جملة فعلية does NOT need any مفعول to be complete. There is no limit to how many مفاعيل can appear.</div>
+          <div className="mafool-grid fade-in">
+            {[
+              { ar:"مفعول به",     q:"WHO / WHAT was it done to?",          color:"var(--gold)",   desc:"Most common. Answers the direct object question.", ex:"أَكَلَ الخُبْزَ — He ate the bread" },
+              { ar:"مفعول فيه",   q:"WHEN / WHERE did it happen?",          color:"var(--teal)",   desc:"Often appears as a special مضاف of time/place, or with فِي.", ex:"صَلَّى فِي المَسْجِدِ — He prayed in the masjid" },
+              { ar:"مفعول له",    q:"WHY did the action happen?",            color:"var(--navy)",   desc:"Often a مصدر. Translates as 'because of' or 'out of'.", ex:"صَبَرُوا ابْتِغَاءَ وَجْهِ رَبِّهِمْ — They persevered for their Master's pleasure" },
+              { ar:"مفعول مطلق", q:"Emphasize / describe the action",       color:"var(--green)",  desc:"A مصدر sharing root letters with the فعل. 3 functions: emphasis, description, count.", ex:"وَكَلَّمَ اللَّهُ مُوسَى تَكْلِيمًا — Allah spoke to Musa directly" },
+              { ar:"الحال",       q:"HOW did the action happen?",            color:"var(--purple)", desc:"Describes the state of the doer. Often translates as an adverb or 'while'.", ex:"فَخَرَجَ مِنْهَا خَائِفًا — He left it fearfully" },
+              { ar:"متعلق بالفعل", q:"جار ومجرور linked to the action",     color:"var(--red)",   desc:"When a حرف جر appears in a جملة فعلية, it is متعلق بالفعل (not متعلق بالخبر).", ex:"نَظَرَ إِلَيْهِ — He looked at him (إِلَى always comes with نَظَرَ)" },
+            ].map(m => (
+              <div key={m.ar} className="mafool-card">
+                <div className="mafool-card-top" style={{ background:m.color }} />
+                <div className="mafool-card-body">
+                  <div className="mafool-card-title">{m.ar}</div>
+                  <div className="mafool-card-q">{m.q}</div>
+                  <div className="mafool-card-desc">{m.desc}</div>
+                  <div className="mafool-card-ex">{m.ex.split("—")[0]}</div>
+                  <div className="mafool-card-ex-en">{m.ex.split("—")[1]}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Slide>
+
+        {/* مفعول به */}
+        <Slide id="s-mf1">
+          <div className="fade-in"><SectionTag color="teal">مفعول به</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Who/What the Action Was Done To</SlideTitle></div>
+          <div className="highlight-dark fade-in">
+            The <strong style={{ color:"var(--gold)" }}>مفعول به</strong> is the most common detail. It answers: <em>"Who/what did the doer (verb)?"</em>
+            It appears as either a regular اسم in the sentence, or as a <strong style={{ color:"var(--gold2)" }}>pronoun attached to the فعل</strong>.
+          </div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>As a Regular اسم</div>
+              <div className="col-card-body">
+                <div className="ex-box" style={{ marginBottom:".7rem" }}>
+                  <div className="ex-ar">خَلَقَ السَّمَاوَاتِ وَالأَرْضَ</div>
+                  <div className="ex-en">He created the skies and the earth.</div>
+                  <div className="ex-note">What did He create? السماوات والأرض → مفعول به, منصوب</div>
+                </div>
+                <div className="ex-box">
+                  <div className="ex-ar">فَأَخَذَهُمُ العَذَابُ</div>
+                  <div className="ex-en">Then the punishment took them.</div>
+                  <div className="ex-note">Who did it take? هم (attached pronoun) → فِي مَحَلِّ نَصْب</div>
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--navy)" }}>Attached Pronoun as مفعول به</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".88rem",color:"var(--mgray)",marginBottom:".8rem" }}>
+                  Any pronoun attached to a فعل is <strong>always</strong> a مفعول به and is always <strong>فِي مَحَلِّ نَصْب</strong>.
+                </div>
+                <table className="data-table" style={{ fontSize:".82rem" }}>
+                  <thead><tr><th>فعل + Pronoun</th><th>Inside (doer)</th><th>Attached (detail)</th><th>Translation</th></tr></thead>
+                  <tbody>
+                    {[
+                      ["نَصَرَكُمْ", "هو","كم", "He helped you all"],
+                      ["عَلَّمْنَاهُ","نحن","هو","We taught him"],
+                      ["كَتَبْنَاهَا","نحن","ها","We wrote it (f)"],
+                      ["أَرَادَنِي","هو","ي","He wanted me"],
+                    ].map(([f,i,a,t]) => (
+                      <tr key={f}><td className="td-arabic">{f}</td><td style={{ color:"var(--gold)" }}>{i}</td><td style={{ color:"var(--teal)" }}>{a}</td><td>{t}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="note-box" style={{ marginTop:".7rem" }}>
+                  <strong>Special rule:</strong> For أنتم form, add a helper <span className="arabic" style={{ color:"var(--gold)" }}>و</span> before the attached pronoun for smooth pronunciation.
+                  <br/>e.g. <span className="arabic" style={{ color:"var(--gold)" }}>نَصَرْتُمُوهُ</span> (not نَصَرْتُمْهُ)
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* مفعول فيه + له + مطلق + حال */}
+        <Slide id="s-mf2" dark>
+          <div className="fade-in"><SectionTag>مفعول فيه &amp; مفعول له</SectionTag></div>
+          <div className="fade-in"><SlideTitle>When/Where &amp; Why</SlideTitle></div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>مفعول فيه — WHEN / WHERE</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".7rem" }}>Appears as: (1) special مضاف of time/place · (2) اسم that denotes time · (3) فِي + اسم in a جملة فعلية</div>
+                {[
+                  { ar:"وَرَفَعْنَا فَوْقَكُمُ الطُّورَ", en:"We raised the mount over you.", note:"فَوْق = special مضاف of place (where)" },
+                  { ar:"إِنِّي دَعَوْتُ قَوْمِي لَيْلًا وَنَهَارًا", en:"I called my people night and day.", note:"لَيْل and نَهَار = time words (when)" },
+                  { ar:"مَكَرْتُمُوهُ فِي المَدِينَةِ", en:"You all plotted it in the city.", note:"فِي المدينة = جار ومجرور denoting place" },
+                ].map(e => (
+                  <div key={e.ar} className="ex-box" style={{ marginBottom:".5rem" }}>
+                    <div className="ex-ar" style={{ fontSize:"1.1rem" }}>{e.ar}</div>
+                    <div className="ex-en">{e.en}</div>
+                    <div className="ex-note">{e.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--navy)" }}>مفعول له — WHY</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".7rem" }}>Usually a مصدر. Translates as "because of" / "out of" / "for the sake of".</div>
+                <div className="ex-box" style={{ marginBottom:".6rem" }}>
+                  <div className="ex-ar">صَبَرُوا ابْتِغَاءَ وَجْهِ رَبِّهِمْ</div>
+                  <div className="ex-en">They persevered for the pleasure of their Master.</div>
+                  <div className="ex-note">WHY did they persevere? → ابتغاء = مفعول له</div>
+                </div>
+                <div className="note-box" style={{ marginTop:"1rem",background:"rgba(255,255,255,.08)",color:"rgba(255,255,255,.75)" }}>
+                  <strong style={{ color:"var(--gold)" }}>Note:</strong> The مفعول له is always a مصدر. We will learn to identify مصادر fully when we study صرف.
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        <Slide id="s-mf3">
+          <div className="fade-in"><SectionTag>مفعول مطلق &amp; الحال</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Emphasis &amp; State</SlideTitle></div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--green)" }}>مفعول مطلق — 3 Functions</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".7rem" }}>A مصدر sharing the same root letters as the فعل — always منصوب.</div>
+                {[
+                  { fn:"Emphasize the action",       ex:"وَكَلَّمَ اللَّهُ مُوسَى تَكْلِيمًا", en:"Allah spoke to Musa directly." },
+                  { fn:"Describe the action (+ صفة)", ex:"ضَرَبَهُ ضَرْبًا شَدِيدًا", en:"He hit him a severe strike." },
+                  { fn:"Count the action (+ number)", ex:"نَظَرَ نَظْرَتَيْنِ", en:"He looked two times." },
+                ].map((f,i) => (
+                  <div key={i} className="step-item" style={{ marginBottom:".5rem" }}>
+                    <div className="step-num">{i+1}</div>
+                    <div>
+                      <strong style={{ fontSize:".83rem",color:"var(--navy)" }}>{f.fn}</strong>
+                      <div className="ex-ar" style={{ fontSize:"1rem",color:"var(--gold)",marginTop:".3rem" }}>{f.ex}</div>
+                      <div style={{ fontSize:".8rem",color:"var(--mgray)",fontStyle:"italic" }}>{f.en}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--purple)" }}>الحال — HOW</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".7rem" }}>Describes the STATE of the doer or the done-to at the time of the action. Often translates as an adverb or "while".</div>
+                {[
+                  { ar:"فَخَرَجَ مِنْهَا خَائِفًا",  en:"He left it fearfully.", note:"State of the doer: he was afraid" },
+                  { ar:"وَانقَلَبُوا صَاغِرِينَ",    en:"They returned belittled.", note:"State: they were belittled" },
+                  { ar:"جَاءَ زَيْدٌ رَاكِبًا",      en:"Zayd came riding.", note:"State: he was on a horse" },
+                ].map(e => (
+                  <div key={e.ar} className="ex-box" style={{ marginBottom:".5rem" }}>
+                    <div className="ex-ar" style={{ fontSize:"1.1rem" }}>{e.ar}</div>
+                    <div className="ex-en">{e.en}</div>
+                    <div className="ex-note">{e.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="note-box fade-in">
+            <strong>متعلق بالفعل:</strong> When a جار ومجرور appears inside a جملة فعلية, it is labeled <strong>متعلق بالفعل</strong> (not متعلق بالخبر which is for جملة اسمية). Many أفعال require a specific حرف جر — e.g. نَظَرَ always comes with إِلَى.
+          </div>
+        </Slide>
+
+        {/* 6.6–6.8 ABNORMAL + COMPLEX + QUESTIONS */}
+        <Slide id="s-mf4" dark>
+          <div className="fade-in"><SectionTag>6.4 — مفعول مطلق</SectionTag></div>
+          <div className="fade-in" style={{ height:"0",overflow:"hidden" }}></div>
+        </Slide>
+
+        <Slide id="s-jabnorm">
+          <div className="fade-in"><SectionTag>6.6 · 6.7 · 6.8 — Abnormal, Complex &amp; Questions</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Advanced جملة فعلية Structures</SlideTitle></div>
+          <div className="three-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--gold)" }}>Abnormal Structure</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".6rem" }}>
+                  Normal order: <strong>فعل → فاعل → مفعول</strong><br/>
+                  The فاعل MUST always follow the فعل.<br/>
+                  BUT the <strong>مفعول به</strong> and <strong>متعلق بالفعل</strong> can shift.
+                </div>
+                <div className="ex-box">
+                  <div className="ex-ar">عَلَى اللَّهِ تَوَكَّلْنَا</div>
+                  <div className="ex-en">We have relied only on Allah.</div>
+                  <div className="ex-note">متعلق بالفعل brought forward → exclusivity meaning</div>
+                </div>
+                <div className="note-box" style={{ marginTop:".7rem" }}>
+                  Attached pronouns appearing before the فاعل is NORMAL (not abnormal) because they cannot separate from the فعل.
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>جملة فعلية as خبر</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".6rem" }}>
+                  Just as a جملة اسمية can be a خبر, so can a جملة فعلية. The inside pronoun of the فعل must <strong>match</strong> the مبتدأ in number and gender.
+                </div>
+                <div className="ex-box">
+                  <div className="ex-ar">إِنَّا فَتَحْنَا لَكَ فَتْحًا مُبِينًا</div>
+                  <div className="ex-en">Certainly We have given you a clear victory.</div>
+                  <div className="ex-note">إنا = مبتدأ · فتحنا... = خبر (جملة فعلية) · inside pronoun نحن matches نا</div>
+                </div>
+                <div className="note-box" style={{ marginTop:".7rem" }}>
+                  <strong>مقول القول</strong> — Quotes are a type of مفعول به, answering "What did X say?" Can contain a full جملة اسمية or فعلية.
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--navy)" }}>Question Words — 6.8</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".82rem",color:"var(--mgray)",marginBottom:".5rem" }}>Most question words have no grammatical effect. They are simply added to the front of the sentence.</div>
+                <table className="data-table" style={{ fontSize:".8rem" }}>
+                  <thead><tr><th>Arabic</th><th>Meaning</th></tr></thead>
+                  <tbody>
+                    {[
+                      ["مَنْ","who"], ["مَا / مَاذَا","what"], ["هَلْ / أَ","did / is"], ["مَتَى","when"],
+                      ["أَيْنَ","where"], ["لِمَاذَا","why"], ["كَيْفَ","how"], ["أَيّ","which"],
+                    ].map(([a,e]) => <tr key={a}><td className="td-arabic">{a}</td><td>{e}</td></tr>)}
+                  </tbody>
+                </table>
+                <div className="note-box" style={{ marginTop:".6rem",fontSize:".78rem" }}>
+                  <strong>Special:</strong> When أَيْنَ or مَا follow a حرف جر, the حرف comes FIRST. For مَا, the ا is dropped: عَمَّ (عَنْ + مَا), فِيمَ (فِي + مَا).
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        <Slide id="s-qwords" dark>
+          <div className="fade-in"><SectionTag>6.8 Continued</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Question Words in Action</SlideTitle></div>
+          <div className="two-col fade-in">
+            <div style={{ background:"rgba(255,255,255,.06)",border:"1px solid rgba(201,147,59,.2)",borderRadius:"10px",padding:"1rem 1.2rem" }}>
+              <div style={{ fontWeight:700,color:"var(--gold)",fontSize:".85rem",marginBottom:".8rem" }}>With الجملة الفعلية:</div>
+              {[
+                ["مَنْ دَرَسَ؟","Who studied?"],
+                ["هَلْ دَرَسَتْ زَيْنَبُ؟","Did Zaynab study?"],
+                ["مَتَى دَرَسَتْ زَيْنَبُ؟","When did Zaynab study?"],
+                ["أَيْنَ دَرَسَتْ زَيْنَبُ؟","Where did Zaynab study?"],
+                ["لِمَاذَا دَرَسَتْ زَيْنَبُ؟","Why did Zaynab study?"],
+                ["كَيْفَ دَرَسَتْ زَيْنَبُ؟","How did Zaynab study?"],
+                ["مَاذَا دَرَسَتْ زَيْنَبُ؟","What did Zaynab study?"],
+              ].map(([ar,en]) => (
+                <div key={ar} style={{ display:"flex",justifyContent:"space-between",padding:".35rem 0",borderBottom:"1px solid rgba(255,255,255,.06)",fontSize:".85rem" }}>
+                  <span className="arabic" style={{ color:"var(--gold2)",fontSize:"1rem" }}>{ar}</span>
+                  <span style={{ color:"rgba(255,255,255,.65)" }}>{en}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ background:"rgba(255,255,255,.06)",border:"1px solid rgba(201,147,59,.2)",borderRadius:"10px",padding:"1rem 1.2rem" }}>
+              <div style={{ fontWeight:700,color:"var(--gold)",fontSize:".85rem",marginBottom:".8rem" }}>With الجملة الاسمية:</div>
+              {[
+                ["مَنْ هُوَ؟","Who is he?"],
+                ["هَلْ هُوَ مَوْجُودٌ؟","Is he present?"],
+                ["مَتَى هُوَ؟","When is it?"],
+                ["أَيْنَ هُوَ؟","Where is it?"],
+                ["مَا هُوَ؟","What is it?"],
+                ["مِنْ أَيْنَ هُوَ؟","Where is he from?"],
+                ["عَمَّ يَتَسَاءَلُونَ؟","What are they asking each other about?"],
+              ].map(([ar,en]) => (
+                <div key={ar} style={{ display:"flex",justifyContent:"space-between",padding:".35rem 0",borderBottom:"1px solid rgba(255,255,255,.06)",fontSize:".85rem" }}>
+                  <span className="arabic" style={{ color:"var(--gold2)",fontSize:"1rem" }}>{ar}</span>
+                  <span style={{ color:"rgba(255,255,255,.65)" }}>{en}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Slide>
+
+        {/* ══════════════════ CHAPTER 7 ══════════════════ */}
+        <Slide id="s-ch7" dark>
+          <div className="divider-slide fade-in">
+            <div className="divider-ch">Chapter 7</div>
+            <div className="divider-title" style={{ direction:"rtl" }}>الفِعْلُ الْمُضَارِع</div>
+            <div className="divider-subtitle">The Present / Future Verb</div>
+            <div className="divider-hr" />
+            <p className="divider-sub">Changes BOTH its beginning (أ ي ت ن) AND its endings — unlike ماضي which only changes endings</p>
+          </div>
+        </Slide>
+
+        {/* 7.2 MUDAR CHART */}
+        <Slide id="s-mudar" dark>
+          <div className="fade-in"><SectionTag>7.2 — المضارع Chart</SectionTag></div>
+          <div className="fade-in"><SlideTitle>يَنْصُرُ — Normal (مرفوع) Form</SlideTitle></div>
+          <div className="highlight-gold fade-in">المضارع always begins with <strong>أ · ي · ت · ن</strong> (the الأتن letters). Check both the <strong>beginning AND ending</strong> to identify the inside pronoun.</div>
+          <div style={{ overflowX:"auto" }} className="fade-in">
+            <table className="verb-chart">
+              <thead>
+                <tr><th>Pronoun</th><th>Normal (مرفوع)</th><th>Light (منصوب)</th><th>Lightest (مجزوم)</th><th>Meaning</th></tr>
+              </thead>
+              <tbody>
+                {[
+                  ["هو",   "يَنْصُرُ",    "يَنْصُرَ",   "يَنْصُرْ",   "He helps"],
+                  ["هم",   "يَنْصُرُونَ", "يَنْصُرُوا", "يَنْصُرُوا", "They help"],
+                  ["هما",  "يَنْصُرَانِ", "يَنْصُرَا",  "يَنْصُرَا",  "Both (m) help"],
+                  ["هي",   "تَنْصُرُ",    "تَنْصُرَ",   "تَنْصُرْ",   "She helps"],
+                  ["هن",   "يَنْصُرْنَ",  "يَنْصُرْنَ", "يَنْصُرْنَ", "They (f) — NEVER changes"],
+                  ["هما",  "تَنْصُرَانِ", "تَنْصُرَا",  "تَنْصُرَا",  "Both (f) help"],
+                  ["أنت",  "تَنْصُرُ",    "تَنْصُرَ",   "تَنْصُرْ",   "You (m) help"],
+                  ["أنتم", "تَنْصُرُونَ", "تَنْصُرُوا", "تَنْصُرُوا", "All of you help"],
+                  ["أنتن", "تَنْصُرْنَ",  "تَنْصُرْنَ", "تَنْصُرْنَ", "All of you (f) — NEVER changes"],
+                  ["أنتِ", "تَنْصُرِينَ", "تَنْصُرِي",  "تَنْصُرِي",  "You (f) help"],
+                  ["أنتما","تَنْصُرَانِ", "تَنْصُرَا",  "تَنْصُرَا",  "You two help"],
+                  ["أنا",  "أَنْصُرُ",    "أَنْصُرَ",   "أَنْصُرْ",   "I help"],
+                  ["نحن",  "نَنْصُرُ",    "نَنْصُرَ",   "نَنْصُرْ",   "We help"],
+                ].map(([p,n,li,lst,en]) => (
+                  <tr key={p+n}>
+                    <td><div className="arabic" style={{ fontSize:".9rem",color:"rgba(255,255,255,.65)" }}>{p}</div></td>
+                    <td><div className="vc-ar">{n}</div></td>
+                    <td><div className="vc-ar" style={{ color:"var(--teal2)" }}>{li}</div></td>
+                    <td><div className="vc-ar" style={{ color:"var(--gold)" }}>{lst}</div></td>
+                    <td><div className="vc-en">{en}</div></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="note-box fade-in" style={{ background:"rgba(255,255,255,.08)",color:"rgba(255,255,255,.8)",marginTop:"1rem" }}>
+            <strong style={{ color:"var(--gold)" }}>Never-change rule:</strong> The <strong>هن</strong> (يَنْصُرْنَ) and <strong>أنتن</strong> (تَنْصُرْنَ) forms NEVER change across normal, light, or lightest. They stay the same always.
+          </div>
+        </Slide>
+
+        {/* 7.3 LIGHT */}
+        <Slide id="s-light">
+          <div className="fade-in"><SectionTag>7.3 — الحروف الناصبة للمضارع</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Light Form (مَنْصُوب) — 4 Particles</SlideTitle></div>
+          <div className="highlight-dark fade-in">These particles put the following مضارع in the <strong style={{ color:"var(--gold)" }}>light (منصوب)</strong> form. MEMORIZE them.</div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--gold)" }}>الحروف الناصبة</div>
+              <div className="col-card-body">
+                <table className="data-table">
+                  <thead><tr><th>حرف</th><th>Meaning</th></tr></thead>
+                  <tbody>
+                    {[
+                      ["أَنْ","to (infinitive)"],
+                      ["لَنْ","will not (future negation)"],
+                      ["لِكَيْ / كَيْ / لِـ","so that / in order to"],
+                      ["حَتَّى","until / to the point that"],
+                    ].map(([h,m]) => <tr key={h}><td className="td-arabic">{h}</td><td>{m}</td></tr>)}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>How to Make Light</div>
+              <div className="col-card-body">
+                <div className="step-item" style={{ marginBottom:".5rem" }}>
+                  <div className="step-num">1</div>
+                  <div>If it ends in a <strong>ضمة</strong>, change to <strong>فتحة</strong><br/><span className="arabic" style={{ color:"var(--gold)" }}>يَنْصُرُ</span> → <span className="arabic" style={{ color:"var(--teal)" }}>يَنْصُرَ</span></div>
+                </div>
+                <div className="step-item" style={{ marginBottom:".5rem" }}>
+                  <div className="step-num">2</div>
+                  <div>If it ends in a <strong>نون</strong>, drop the نون<br/><span className="arabic" style={{ color:"var(--gold)" }}>يَنْصُرُونَ</span> → <span className="arabic" style={{ color:"var(--teal)" }}>يَنْصُرُوا</span></div>
+                </div>
+                <div className="step-item">
+                  <div className="step-num">!</div>
+                  <div>هن and أنتن forms <strong>NEVER change</strong></div>
+                </div>
+                <div className="ex-box" style={{ marginTop:".7rem" }}>
+                  <div className="ex-ar">يُرِيدُ أَنْ يُخْرِجَكُمْ</div>
+                  <div className="ex-en">He wants to expel you all.</div>
+                  <div className="ex-note">أَنْ + يُخْرِجَكُمْ (light) — فتحة instead of ضمة</div>
+                </div>
+                <div className="ex-box">
+                  <div className="ex-ar">لَنْ يَنفَعَكُمُ الفِرَارُ</div>
+                  <div className="ex-en">Fleeing will not benefit you all.</div>
+                  <div className="ex-note">لَنْ = future negation · يَنفَعَ = light (منصوب)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* 7.3 LIGHTEST */}
+        <Slide id="s-lightest" dark>
+          <div className="fade-in"><SectionTag>7.3 — الحروف الجازمة للمضارع</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Lightest Form (مَجْزُوم) — 5 Particles</SlideTitle></div>
+          <div className="highlight-gold fade-in">These particles put the مضارع in the <strong>lightest (مجزوم)</strong> form. Each has a unique meaning.</div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--navy)" }}>الحروف الجازمة</div>
+              <div className="col-card-body">
+                <table className="data-table">
+                  <thead><tr><th>حرف</th><th>Meaning</th><th>Note</th></tr></thead>
+                  <tbody>
+                    {[
+                      ["إِنْ","If (conditional)","Can affect TWO فعل: 'If X then Y'"],
+                      ["لَمْ","Did not (past neg.)","Mضارع → past meaning"],
+                      ["لَمَّا","Not yet","Also used with ماضي = 'when' (no effect)"],
+                      ["لِـ","Should (indirect cmd)","'X should Y'"],
+                      ["وَلِـ / فَلِـ","And/Then should","Compound version of لِـ"],
+                    ].map(([h,m,n]) => <tr key={h}><td className="td-arabic">{h}</td><td>{m}</td><td style={{ fontSize:".75rem",color:"var(--mgray)" }}>{n}</td></tr>)}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>How to Make Lightest</div>
+              <div className="col-card-body">
+                <div className="step-item" style={{ marginBottom:".5rem" }}>
+                  <div className="step-num">1</div>
+                  <div>If ends in <strong>ضمة</strong> → change to <strong>سكون</strong><br/><span className="arabic" style={{ color:"var(--gold)" }}>يَنْصُرُ</span> → <span className="arabic" style={{ color:"var(--teal)" }}>يَنْصُرْ</span></div>
+                </div>
+                <div className="step-item" style={{ marginBottom:".5rem" }}>
+                  <div className="step-num">2</div>
+                  <div>If ends in <strong>نون</strong> → drop the نون (same as light)<br/><span className="arabic" style={{ color:"var(--gold)" }}>يَنْصُرُونَ</span> → <span className="arabic" style={{ color:"var(--teal)" }}>يَنْصُرُوا</span></div>
+                </div>
+                <div className="step-item" style={{ marginBottom:".7rem" }}>
+                  <div className="step-num">!</div>
+                  <div>هن and أنتن forms <strong>NEVER change</strong></div>
+                </div>
+                {[
+                  { ar:"إِنْ تَنْصُرُوا اللَّهَ يَنْصُرْكُمْ", en:"If you aid Allah, He will aid you.", note:"إِنْ affects two فعل (both lightest)" },
+                  { ar:"لَمْ يَلِدْ بِهِ سُلْطَانًا", en:"He did not send down authority for it.", note:"لَمْ = did not (past meaning)" },
+                  { ar:"لَمَّا يَذُوقُوا عَذَابِ",  en:"They have not yet tasted My punishment.", note:"لَمَّا = not yet" },
+                ].map(e => (
+                  <div key={e.ar} className="ex-box" style={{ marginBottom:".5rem" }}>
+                    <div className="ex-ar" style={{ fontSize:"1rem" }}>{e.ar}</div>
+                    <div className="ex-en">{e.en}</div>
+                    <div className="ex-note">{e.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* 7.4 COMMANDING */}
+        <Slide id="s-amr">
+          <div className="fade-in"><SectionTag>7.4 — فعل الأمر</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Commanding — How to Build فعل الأمر</SlideTitle></div>
+          <div className="highlight-dark fade-in">Commands address only <strong style={{ color:"var(--gold)" }}>2nd person</strong> (أَنْتَ through أَنْتُنَّ). Built from the مضارع frame.</div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--gold)" }}>4-Step Construction</div>
+              <div className="col-card-body">
+                {[
+                  "Start with the 2nd-person مضارع (matching the one being commanded)",
+                  "Put the فعل in the LIGHTEST form",
+                  "Remove the ت (first letter of the مضارع)",
+                  "If the new first letter has a سكون → add a helper ألف. Its vowel: if 2nd-to-last letter of هو form = ضمة → helper gets ضمة; otherwise gets كسرة",
+                ].map((s,i) => (
+                  <div key={i} className="step-item" style={{ marginBottom:".5rem" }}>
+                    <div className="step-num">{i+1}</div>
+                    <div style={{ fontSize:".85rem" }}>{s}</div>
+                  </div>
+                ))}
+                <div className="note-box" style={{ marginTop:".7rem" }}>
+                  <strong>Exception:</strong> أَسْلَمَ family verbs always begin with أَ (Family IV). Their command form keeps the همزة at the front.
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>Worked Examples</div>
+              <div className="col-card-body" style={{ padding:".7rem" }}>
+                {[
+                  { cmd:"GO!", pron:"أَنْتَ", steps:["تَذْهَبُ","تَذْهَبْ","ذْهَبْ","اِذْهَبْ"] },
+                  { cmd:"AID!", pron:"أَنْتُنَّ", steps:["تَنْصُرْنَ","تَنْصُرْنَ","نْصُرْنَ","اُنْصُرْنَ"] },
+                  { cmd:"WARN!", pron:"أَنْتُمْ", steps:["تُنذِرُونَ","تُنذِرُوا","نذِرُوا","أَنذِرُوا (IV family)"] },
+                ].map(ex => (
+                  <div key={ex.cmd} style={{ background:"rgba(232,228,220,.3)",borderRadius:"8px",padding:".8rem",marginBottom:".6rem" }}>
+                    <div style={{ fontWeight:700,fontSize:".82rem",color:"var(--navy)",marginBottom:".4rem" }}>{ex.cmd} (<span className="arabic">{ex.pron}</span>)</div>
+                    <div style={{ display:"flex",gap:".5rem",alignItems:"center",flexWrap:"wrap" }}>
+                      {ex.steps.map((s,i) => (
+                        <React.Fragment key={i}>
+                          <span className="arabic" style={{ fontSize:"1rem",color:i===ex.steps.length-1?"var(--gold)":"var(--mgray)" }}>{s}</span>
+                          {i < ex.steps.length-1 && <span style={{ color:"var(--mgray)",fontSize:".8rem" }}>→</span>}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* 7.4 FORBIDDING */}
+        <Slide id="s-nahi" dark>
+          <div className="fade-in"><SectionTag>7.4 — فعل النهي</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Forbidding — Direct &amp; Indirect</SlideTitle></div>
+          <div className="highlight-gold fade-in">Forbidding = <strong>لَا + 2nd-person lightest فعل</strong>. Indirect forbidding (3rd person) = <strong>لَا + 3rd-person lightest فعل</strong>.</div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--navy)" }}>3-Step Construction</div>
+              <div className="col-card-body">
+                {[
+                  "Start with 2nd-person مضارع",
+                  "Make it LIGHTEST",
+                  "Add لَا before the فعل",
+                ].map((s,i) => (
+                  <div key={i} className="step-item" style={{ marginBottom:".5rem" }}>
+                    <div className="step-num">{i+1}</div>
+                    <div style={{ fontSize:".85rem" }}>{s}</div>
+                  </div>
+                ))}
+                <div style={{ marginTop:"1rem",background:"rgba(232,228,220,.3)",borderRadius:"8px",padding:".8rem" }}>
+                  <div style={{ fontWeight:700,fontSize:".82rem",color:"var(--navy)",marginBottom:".5rem" }}>Distinguishing نهي from Negation:</div>
+                  <div style={{ fontSize:".82rem",color:"var(--mgray)",lineHeight:1.6 }}>
+                    Both use <span className="arabic" style={{ color:"var(--gold)" }}>لَا</span> before a فعل.<br/>
+                    If the فعل is <strong>LIGHTEST</strong> → it is <strong>نهي</strong> (forbidding).<br/>
+                    If the فعل is <strong>NORMAL</strong> (مرفوع) → it is <strong>negation</strong> (a statement).<br/><br/>
+                    <span className="arabic" style={{ color:"var(--gold)" }}>لَا تَنْصُرِي</span> (lightest) → "Don't help!" (فعل نهي)<br/>
+                    <span className="arabic" style={{ color:"var(--teal)" }}>لَا تَنْصُرِينَ</span> (normal) → "You do not help." (negation)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>Quranic Examples</div>
+              <div className="col-card-body">
+                {[
+                  { ar:"لَا تَتَّخِذُوا الكَافِرِينَ أَوْلِيَاءَ", en:"[You all] don't take the disbelievers as friends.", note:"2nd person forbidding" },
+                  { ar:"لَا يَتَّخِذِ المُؤْمِنُونَ الكَافِرِينَ أَوْلِيَاءَ", en:"The believers should not take the disbelievers as friends.", note:"3rd person indirect forbidding" },
+                  { ar:"فَلَا يَحْزُنكَ كُفْرُهُ", en:"His disbelief should not sadden you.", note:"3rd person: his disbelief SHOULD NOT" },
+                  { ar:"لَا تَحْسَبَنَّ اللَّهَ غَافِلًا", en:"Don't you dare think Allah is unaware!", note:"نهي + نون التوكيد = emphatic forbidding" },
+                ].map(e => (
+                  <div key={e.ar} className="ex-box" style={{ marginBottom:".5rem" }}>
+                    <div className="ex-ar" style={{ fontSize:"1.05rem" }}>{e.ar}</div>
+                    <div className="ex-en">{e.en}</div>
+                    <div className="ex-note">{e.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* 7.7 NOON TAWKID */}
+        <Slide id="s-noon">
+          <div className="fade-in"><SectionTag>7.7 — نون التوكيد</SectionTag></div>
+          <div className="fade-in"><SlideTitle>The ن of Emphasis</SlideTitle></div>
+          <div className="highlight-dark fade-in">
+            A <strong style={{ color:"var(--gold)" }}>نون</strong> attached to the end of a مضارع or نهي for emphasis. A فعل with نون التوكيد always translates in the <strong style={{ color:"var(--gold2)" }}>future tense</strong>. Often paired with لَامُ التوكيد.
+          </div>
+          <div className="two-col fade-in" style={{ marginBottom:"1.2rem" }}>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--gold)" }}>Two Types</div>
+              <div className="col-card-body">
+                <div className="cat-item" style={{ marginBottom:".6rem" }}>
+                  <div className="cat-num">خ</div>
+                  <div>
+                    <div className="cat-title">نون التوكيد الخفيفة (Light ن)</div>
+                    <div className="cat-desc">ONE نون added. Occurs only twice in the Quran.</div>
+                  </div>
+                </div>
+                <div className="cat-item">
+                  <div className="cat-num">ث</div>
+                  <div>
+                    <div className="cat-title">نون التوكيد الثقيلة (Heavy نّ)</div>
+                    <div className="cat-desc">TWO نون (written as شدة نّ). Occurs countless times in the Quran. Focus on this one.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>How the حركة Changes</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".7rem" }}>The حركة before the نون التوكيد tells you the original form:</div>
+                {[
+                  ["فَتْحَة (a) before نّ",  "The original ended in a ضمة", "لَنُخْرِجَنَّ — هو form"],
+                  ["ضَمَّة (u) before نّ",   "The original ended in a وَاو", "لَتَعُودُنَّ — أنتم form"],
+                ].map(([sign,means,ex]) => (
+                  <div key={sign} style={{ background:"rgba(232,228,220,.3)",borderRadius:"6px",padding:".7rem",marginBottom:".5rem" }}>
+                    <div style={{ fontWeight:700,fontSize:".82rem",color:"var(--navy)" }}>{sign}</div>
+                    <div style={{ fontSize:".8rem",color:"var(--mgray)",margin:".2rem 0" }}>{means}</div>
+                    <span className="arabic" style={{ color:"var(--gold)",fontSize:"1rem" }}>{ex}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="two-col fade-in">
+            <div className="ex-box">
+              <div className="ex-ar">لَنُخْرِجَنَّكُمْ مِنْ أَرْضِنَا أَوْ لَتَعُودُنَّ فِي مِلَّتِنَا</div>
+              <div className="ex-en">We will definitely expel you all from our land or you all will definitely return to our religion.</div>
+              <div className="ex-note">Two نون التوكيد forms — فتحة before نّ (هو original) and ضمة before نّ (أنتم/واو original)</div>
+            </div>
+            <div className="ex-box">
+              <div className="ex-ar">لَتُنَبِّئَنَّهُمْ بِأَمْرِهِمْ هَذَا</div>
+              <div className="ex-en">You will most definitely inform them of this matter of theirs.</div>
+              <div className="ex-note">لَامُ التوكيد + نون التوكيد الثقيلة = double emphasis</div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* 7.8 ISM VS FI'L */}
+        <Slide id="s-isvf" dark>
+          <div className="fade-in"><SectionTag>7.8 — Distinguishing</SectionTag></div>
+          <div className="fade-in"><SlideTitle>اسم vs فعل — How to Tell Them Apart</SlideTitle></div>
+          <div style={{ overflowX:"auto" }} className="fade-in">
+            <table className="dark-table">
+              <thead><tr><th>Test</th><th className="arabic" style={{ textAlign:"right" }}>اسم</th><th className="arabic" style={{ textAlign:"right" }}>فعل</th></tr></thead>
+              <tbody>
+                {[
+                  ["Takes تنوين or ال or ة?", "YES — can take all three", "NO — a فعل never takes these"],
+                  ["Ends in a سكون?",          "Rarely",                   "Yes — مجزوم and some ماضي forms"],
+                  ["Ends in ون/ين, first letter ي or ت?", "If starts with other letter → اسم (e.g. مُسْلِمُونَ)", "If starts with ي or ت → فعل (e.g. يَنْصُرُونَ)"],
+                  ["Comes after حرف جر, حرف نصب, or special مضاف?", "YES → it is an اسم", "NO — فعل never follows these"],
+                  ["Comes after حروف ناصبة/جازمة للمضارع, قَد, سـ, سَوْفَ?", "NO — those precede only فعل", "YES → it is a فعل"],
+                ].map(([test, ism, fil]) => (
+                  <tr key={test}>
+                    <td style={{ fontSize:".82rem",color:"rgba(255,255,255,.6)" }}>{test}</td>
+                    <td style={{ fontSize:".85rem",color:"var(--gold2)" }}>{ism}</td>
+                    <td style={{ fontSize:".85rem",color:"var(--teal2)" }}>{fil}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="note-box fade-in" style={{ background:"rgba(255,255,255,.08)",color:"rgba(255,255,255,.8)",marginTop:"1rem" }}>
+            <strong style={{ color:"var(--gold)" }}>اسماء that look like أفعال:</strong> Words like <span className="arabic" style={{ color:"var(--gold)" }}>خَارِجٌ · قَادِمٌ · ذَاهِبٌ · دَارِسٌ · نَائِمٌ</span> look like actions but take تنوين and ال → they are اسماء (active participles).
+          </div>
+        </Slide>
+
+        {/* ══════════════════ CHAPTER 8 ══════════════════ */}
+        <Slide id="s-ch8" dark>
+          <div className="divider-slide fade-in">
+            <div className="divider-ch">Chapter 8</div>
+            <div className="divider-title" style={{ direction:"rtl" }}>الفِعْلُ الْمَبْنِيُّ لِلْمَجْهُول</div>
+            <div className="divider-subtitle">The Passive Verb</div>
+            <div className="divider-hr" />
+            <p className="divider-sub">مجهول = "unknown" — the doer of the action is anonymous</p>
+          </div>
+        </Slide>
+
+        {/* 8.1 PASSIVE INTRO */}
+        <Slide id="s-pass">
+          <div className="fade-in"><SectionTag>8.1 — Introduction</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Active vs Passive — Two Core Parts</SlideTitle></div>
+          <div className="highlight-dark fade-in">
+            <strong style={{ color:"var(--gold)" }}>Active (معلوم):</strong> "The Muslim helped." — doer is known.<br/>
+            <strong style={{ color:"var(--gold2)" }}>Passive (مجهول):</strong> "The Muslim was helped." — doer is anonymous/unknown.
+          </div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>Two Core Parts of Passive Sentence</div>
+              <div className="col-card-body">
+                <div className="cat-item" style={{ marginBottom:".6rem" }}>
+                  <div className="cat-num">١</div>
+                  <div>
+                    <div className="cat-title">الفعل المبني للمجهول</div>
+                    <div className="cat-desc">The passive verb itself — past or present, identified by its distinctive sound pattern.</div>
+                  </div>
+                </div>
+                <div className="cat-item">
+                  <div className="cat-num">٢</div>
+                  <div>
+                    <div className="cat-title">نائب الفاعل — the "Done-To"</div>
+                    <div className="cat-desc">Replaces the فاعل. Takes the same grammatical rules as فاعل: comes AFTER the فعل, is مرفوع, فعل is in هو/هي form.</div>
+                  </div>
+                </div>
+                <div className="note-box" style={{ marginTop:".8rem" }}>
+                  A passive جملة فعلية can NEVER have a فاعل. It also has no مفعول به (except in double-object verbs).
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--navy)" }}>How to Identify Passive</div>
+              <div className="col-card-body">
+                <div className="step-item" style={{ marginBottom:".5rem" }}>
+                  <div className="step-num">1</div>
+                  <div>Determine if past (ماضي) or present (مضارع)</div>
+                </div>
+                <div className="step-item" style={{ marginBottom:".5rem" }}>
+                  <div className="step-num">2</div>
+                  <div>Past passive: listen for the <strong style={{ color:"var(--gold)" }}>u-u-i sound</strong> (ضمة · ضمة · كسرة)</div>
+                </div>
+                <div className="step-item" style={{ marginBottom:".5rem" }}>
+                  <div className="step-num">3</div>
+                  <div>Present passive: listen for the <strong style={{ color:"var(--teal)" }}>u-a-a sound</strong> (ضمة · فتحة · فتحة)</div>
+                </div>
+                <div className="step-item">
+                  <div className="step-num">4</div>
+                  <div>Identify the inside pronoun from the ending</div>
+                </div>
+                <div className="highlight-gold" style={{ marginTop:".8rem",fontSize:".88rem" }}>
+                  Past passive → "X was ___ed."<br/>Present passive → "X is ___ed."
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* 8.2 PAST PASSIVE */}
+        <Slide id="s-passm" dark>
+          <div className="fade-in"><SectionTag>8.2 — الفعل الماضي المبني للمجهول</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Past Passive — The u-u-i Pattern</SlideTitle></div>
+          <div className="highlight-gold fade-in">
+            Past passive sound: <strong>ضمة · ضمة · كسرة</strong> — the second-to-last letter of the original فعل takes كسرة; every other حركة before it becomes ضمة. The LAST حركة remains unchanged.
+          </div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--gold)" }}>Step-by-Step Construction</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".7rem" }}>Start with the <strong>هو form</strong> of the active verb.</div>
+                {[
+                  { active:"اِسْتَغْفَرَ", passive:"اُسْتُغْفِرَ", note:"2nd-to-last = فـ gets كسرة; غ and س get ضمة; last ر stays (فتحة)" },
+                  { active:"قَتَلُوا", passive:"قُتِلُوا", note:"2nd-to-last = تـ gets كسرة; قـ gets ضمة; ending -وا unchanged" },
+                  { active:"نَصَرَ", passive:"نُصِرَ", note:"نـ gets ضمة · صـ gets كسرة · رـ stays (فتحة)" },
+                ].map(e => (
+                  <div key={e.active} className="build-flow" style={{ marginBottom:".5rem" }}>
+                    <div className="build-step"><div className="build-step-ar" style={{ color:"rgba(255,255,255,.5)" }}>{e.active}</div><div className="build-step-label">active</div></div>
+                    <div className="build-arrow">→</div>
+                    <div className="build-step"><div className="build-step-ar">{e.passive}</div><div className="build-step-label">passive</div></div>
+                    <div style={{ fontSize:".75rem",color:"rgba(255,255,255,.45)",flex:2,alignSelf:"center" }}>{e.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>Past Passive Chart — نُصِرَ</div>
+              <div className="col-card-body" style={{ padding:".6rem" }}>
+                <table className="data-table" style={{ fontSize:".8rem" }}>
+                  <thead><tr><th>Pronoun</th><th>Past Passive</th><th>Translation</th></tr></thead>
+                  <tbody>
+                    {[
+                      ["هو","نُصِرَ","He was helped"],
+                      ["هم","نُصِرُوا","They were helped"],
+                      ["هما","نُصِرَا","Both were helped"],
+                      ["هي","نُصِرَتْ","She was helped"],
+                      ["هن","نُصِرْنَ","They (f) were helped"],
+                      ["هما","نُصِرَتَا","Both (f) were helped"],
+                      ["أنت","نُصِرْتَ","You were helped"],
+                      ["أنا","نُصِرْتُ","I was helped"],
+                      ["نحن","نُصِرْنَا","We were helped"],
+                    ].map(([p,v,t]) => (
+                      <tr key={p+v}><td style={{ color:"var(--mgray)" }}>{p}</td><td className="td-arabic">{v}</td><td style={{ fontSize:".78rem" }}>{t}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* 8.2 PRESENT PASSIVE */}
+        <Slide id="s-passp">
+          <div className="fade-in"><SectionTag>8.2 — الفعل المضارع المبني للمجهول</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Present Passive — The u-a-a Pattern</SlideTitle></div>
+          <div className="highlight-dark fade-in">
+            Present passive sound: <strong style={{ color:"var(--gold)" }}>ضمة · فتحة · فتحة</strong> — the first letter gets ضمة; every other حركة (that can change) becomes فتحة. The LAST حركة remains unchanged.
+          </div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>Step-by-Step Construction</div>
+              <div className="col-card-body">
+                <div style={{ fontSize:".85rem",color:"var(--mgray)",marginBottom:".7rem" }}>Start with the <strong>هو form</strong> of the active مضارع.</div>
+                {[
+                  { active:"يَسْتَغْفِرُ", passive:"يُسْتَغْفَرُ", note:"First ي gets ضمة; every other حركة → فتحة; last ر unchanged (ضمة)" },
+                  { active:"يَقْتُلُونَ",  passive:"يُقْتَلُونَ",  note:"First ي gets ضمة; قـ stays سكون; تـ gets فتحة; ending -ونَ unchanged" },
+                  { active:"يَنْصُرُ",    passive:"يُنْصَرُ",    note:"يـ gets ضمة · نـ سكون stays · صـ gets فتحة · رـ stays" },
+                ].map(e => (
+                  <div key={e.active} className="build-flow" style={{ marginBottom:".5rem",background:"rgba(29,122,140,.1)",border:"1px solid rgba(29,122,140,.3)" }}>
+                    <div className="build-step"><div className="build-step-ar" style={{ color:"var(--mgray)" }}>{e.active}</div><div className="build-step-label" style={{ color:"var(--mgray)" }}>active</div></div>
+                    <div className="build-arrow" style={{ color:"var(--teal)" }}>→</div>
+                    <div className="build-step"><div className="build-step-ar" style={{ color:"var(--teal)" }}>{e.passive}</div><div className="build-step-label" style={{ color:"var(--teal)" }}>passive</div></div>
+                    <div style={{ fontSize:".75rem",color:"var(--mgray)",flex:2,alignSelf:"center" }}>{e.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--navy)" }}>Present Passive Chart — يُنْصَرُ</div>
+              <div className="col-card-body" style={{ padding:".6rem" }}>
+                <table className="data-table" style={{ fontSize:".8rem" }}>
+                  <thead><tr><th>Pronoun</th><th>Present Passive</th><th>Translation</th></tr></thead>
+                  <tbody>
+                    {[
+                      ["هو","يُنْصَرُ","He is helped"],
+                      ["هم","يُنْصَرُونَ","They are helped"],
+                      ["هما","يُنْصَرَانِ","Both are helped"],
+                      ["هي","تُنْصَرُ","She is helped"],
+                      ["هن","يُنْصَرْنَ","They (f) are helped"],
+                      ["أنت","تُنْصَرُ","You are helped"],
+                      ["أنتِ","تُنْصَرِينَ","You (f) are helped"],
+                      ["أنا","أُنْصَرُ","I am helped"],
+                      ["نحن","نُنْصَرُ","We are helped"],
+                    ].map(([p,v,t]) => (
+                      <tr key={p+v}><td style={{ color:"var(--mgray)" }}>{p}</td><td className="td-arabic">{v}</td><td style={{ fontSize:".78rem" }}>{t}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div className="note-box fade-in">
+            <strong>Summary of passive sounds:</strong><br/>
+            Past passive: second-to-last letter = <strong style={{ color:"var(--gold)" }}>كسرة</strong>, others before it = <strong style={{ color:"var(--gold)" }}>ضمة</strong><br/>
+            Present passive: first letter = <strong style={{ color:"var(--teal)" }}>ضمة</strong>, all others (that can change) = <strong style={{ color:"var(--teal)" }}>فتحة</strong><br/>
+            In both cases: سكون never changes · last حركة never changes.
+          </div>
+        </Slide>
+
+        {/* 8.2 NAIB FAIIL */}
+        <Slide id="s-naib" dark>
+          <div className="fade-in"><SectionTag>8.2 — نائب الفاعل</SectionTag></div>
+          <div className="fade-in"><SlideTitle>The Done-To — نائب الفاعل</SlideTitle></div>
+          <div className="highlight-gold fade-in">نائب الفاعل follows the SAME rules as فاعل — but its role is "the done-to" not "the doer".</div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--navy)" }}>Four Rules (same as فاعل)</div>
+              <div className="col-card-body">
+                {[
+                  "Must come AFTER the فعل",
+                  "The فعل must be in هو or هي form",
+                  "Must be مرفوع",
+                  "The فعل matches the نائب الفاعل in GENDER",
+                ].map((r,i) => (
+                  <div key={i} className="step-item" style={{ marginBottom:".5rem" }}>
+                    <div className="step-num">{i+1}</div>
+                    <div style={{ fontSize:".85rem" }}>{r}</div>
+                  </div>
+                ))}
+                <div className="note-box" style={{ marginTop:".7rem",background:"rgba(255,255,255,.08)",color:"rgba(255,255,255,.7)" }}>
+                  <strong style={{ color:"var(--gold)" }}>Finding نائب الفاعل:</strong> If the فعل is in هو/هي form → look for the first مرفوع اسم after it — that is the outside نائب الفاعل. If not in هو/هي form → the نائب الفاعل is inside (a pronoun).
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background:"var(--teal)" }}>Quranic Examples</div>
+              <div className="col-card-body">
+                {[
+                  { ar:"ضُرِبَ مَثَلٌ",         en:"An example was struck.",           note:"مَثَلٌ = outside نائب الفاعل (مرفوع)" },
+                  { ar:"أُنْزِلَتْ سُورَةٌ",    en:"A surah was sent down.",           note:"سُورَةٌ = outside نائب الفاعل (feminine → هي form)" },
+                  { ar:"يُرْزَقُونَ فِيهَا",     en:"They are given provisions in it.", note:"هم inside نائب الفاعل" },
+                  { ar:"أُعِدَّتْ لِلْمُتَّقِينَ", en:"It was prepared for the God-conscious.", note:"هي inside نائب الفاعل" },
+                ].map(e => (
+                  <div key={e.ar} className="ex-box" style={{ marginBottom:".6rem" }}>
+                    <div className="ex-ar" style={{ fontSize:"1.1rem" }}>{e.ar}</div>
+                    <div className="ex-en">{e.en}</div>
+                    <div className="ex-note">{e.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* 8.3 RHETORICAL */}
+        <Slide id="s-rhet">
+          <div className="fade-in"><SectionTag>8.3 — Rhetorical Benefits</SectionTag></div>
+          <div className="fade-in"><SlideTitle>Why Use the Passive? Three Reasons</SlideTitle></div>
+          <div className="highlight-dark fade-in">
+            Every passive has an active alternative. Choosing the passive shifts focus to the <strong style={{ color:"var(--gold)" }}>action or the نائب الفاعل</strong> — the doer is deliberately omitted. Three reasons:
+          </div>
+          <div className="cat-list fade-in">
+            {[
+              {
+                n:1, title:"No need to mention the doer",
+                desc:"The command or action applies regardless of who performs it.",
+                ex:"إِذَا سَمِعْتُمْ آيَاتِ اللَّهِ يُكْفَرُ بِهَا",
+                en:"If you hear the signs of Allah being disbelieved in… — who does the disbelieving is irrelevant to the command.",
+              },
+              {
+                n:2, title:"Out of respect for Allah",
+                desc:"When evil is mentioned, passive is used (doer unspecified). When good is mentioned, active is used (Allah named). Jinn associate Allah's name only with good.",
+                ex:"وَأَنَّا لَا نَدْرِي أَشَرٌّ أُرِيدَ بِمَنْ فِي الأَرْضِ أَمْ أَرَادَ بِهِمْ رَبُّهُمْ رَشَدًا",
+                en:"We don't know if evil is intended for those on earth, or if their Master intends guidance for them.",
+              },
+              {
+                n:3, title:"Expanding the scope of the action",
+                desc:"Specifying the فاعل restricts it. Not specifying leaves it open and unlimited — ALL may be included.",
+                ex:"لُعِنُوا فِي الدُّنْيَا وَالآخِرَةِ",
+                en:"They were cursed in this world and the next. (Who cursed them? Everyone and everything — not just Allah.)",
+              },
+            ].map(c => (
+              <div key={c.n} className="cat-item">
+                <div className="cat-num">{c.n}</div>
+                <div>
+                  <div className="cat-title">{c.title}</div>
+                  <div className="cat-desc">{c.desc}</div>
+                  <div className="ex-ar" style={{ fontSize:"1rem",marginTop:".4rem" }}>{c.ex}</div>
+                  <div style={{ fontSize:".8rem",color:"var(--mgray)",fontStyle:"italic",marginTop:".2rem" }}>{c.en}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Slide>
+
+        {/* 8.4 TRANSITIVITY */}
+        <Slide id="s-trans" dark>
+          <div className="fade-in"><SectionTag>8.4 — Transitivity</SectionTag></div>
+          <div className="fade-in"><SlideTitle>فعل لازم · فعل متعدٍّ · متعدٍّ لمفعولين</SlideTitle></div>
+          <div className="highlight-gold fade-in">
+            Only a <strong>transitive فعل</strong> (one that can take a مفعول به) can be made passive. Why? Because the مفعول به becomes the نائب الفاعل — if there's no مفعول به, there's no نائب الفاعل for the passive.
+          </div>
+          <div className="three-col fade-in">
+            {[
+              {
+                title:"فعل لازم", sub:"Intransitive", color:"var(--red)", badge:"CANNOT be passive",
+                desc:"The action only affects the فاعل — it cannot affect anything external.",
+                test:"I [verb] something/someone → DOESN'T MAKE SENSE",
+                ex:"to sleep · to fall · to laugh · to cry · to sit",
+              },
+              {
+                title:"فعل متعدٍّ", sub:"Transitive", color:"var(--green)", badge:"CAN be passive",
+                desc:"The action affects something else or someone else.",
+                test:"I [verb] something/someone → MAKES SENSE",
+                ex:"to read · to write · to eat · to carry · to worship",
+              },
+              {
+                title:"متعدٍّ لمفعولين", sub:"Double-Object", color:"var(--gold)", badge:"Passive + مفعول به",
+                desc:"Takes TWO مفعول به. In passive form: one becomes نائب الفاعل, the other remains مفعول به.",
+                test:"Special: عَلَّمَ · أَعْطَى · جَعَلَ · رَأَى · ظَنَّ",
+                ex:"عَلَّمَهُ البَيَانَ — He taught him language → passive keeps one مفعول به",
+              },
+            ].map(t => (
+              <div key={t.title} className="col-card">
+                <div className="col-card-header" style={{ background:t.color,color:t.color==="var(--gold)"?"var(--navy)":"#fff" }}>
+                  <span className="arabic" style={{ fontSize:".95rem" }}>{t.title}</span><br/>
+                  <span style={{ fontSize:".72rem",fontWeight:400 }}>{t.sub}</span>
+                </div>
+                <div className="col-card-body">
+                  <div style={{ display:"inline-block",background:t.color==="var(--red)"?"rgba(185,64,64,.15)":t.color==="var(--green)"?"rgba(46,125,82,.15)":"rgba(201,147,59,.15)",border:`1px solid ${t.color}`,borderRadius:"4px",padding:".2rem .6rem",fontSize:".72rem",fontWeight:700,color:t.color,marginBottom:".6rem" }}>{t.badge}</div>
+                  <div style={{ fontSize:".83rem",color:"var(--mgray)",marginBottom:".5rem" }}>{t.desc}</div>
+                  <div style={{ fontSize:".78rem",color:"var(--teal)",marginBottom:".4rem",fontStyle:"italic" }}>{t.test}</div>
+                  <div style={{ fontSize:".8rem",color:"var(--navy)" }}>{t.ex}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="note-box fade-in" style={{ marginTop:"1.2rem" }}>
+            <strong>Test for لازم:</strong> Put "something" or "someone" as a placeholder مفعول به. If the sentence still doesn't make sense, or requires a حرف, the فعل is لازم. E.g. "I fell something" ✗ → لازم. "I read something" ✓ → متعدٍّ.
+          </div>
+        </Slide>
+
+        {/* FINAL RECAP */}
+        <Slide id="s-final" dark>
+          <div className="fade-in">
+            <div className="divider-slide" style={{ marginBottom:"1.5rem" }}>
+              <div className="divider-ch">Chapters 6–8 Complete</div>
+              <h2 className="slide-title" style={{ color:"white",textAlign:"center" }}>Master Summary</h2>
+            </div>
+          </div>
+          {[
+            { label:"الجملة الفعلية",     text:"3 parts: الفعل (the action) · الفاعل (inside or outside doer, always مرفوع) · المفعول (6 types of detail, all منصوب)." },
+            { label:"الفعل الماضي",        text:"Only ENDINGS change. 13 forms. Check the ending to identify the inside pronoun." },
+            { label:"المفعول — 6 types",   text:"به (who/what) · فيه (when/where) · له (why) · مطلق (emphasis/description/count, same-root مصدر) · الحال (how/state) · متعلق بالفعل (جار ومجرور in جملة فعلية)." },
+            { label:"الفعل المضارع",       text:"BOTH beginning (أيتن) and ending change. 3 forms: مرفوع (default) · منصوب/light (4 حروف ناصبة) · مجزوم/lightest (5 حروف جازمة). هن/أنتن NEVER change." },
+            { label:"فعل الأمر / النهي",   text:"Commands/forbids: 2nd person only. Built from مضارع. Command: make lightest → remove ت → add helper ألف if needed. Forbid: لَا + 2nd-person lightest. Indirect (3rd): لِـ/لَا + 3rd-person lightest." },
+            { label:"نون التوكيد",          text:"نّ added to مضارع/نهي for emphasis. Always future tense. فتحة before نّ = original was ضمة. ضمة before نّ = original had واو. Paired with لام التوكيد for double emphasis." },
+            { label:"الفعل المجهول",        text:"Past: u-u-i sound (2nd-to-last = كسرة, others = ضمة, last unchanged). Present: u-a-a sound (first = ضمة, others = فتحة, last unchanged). سكون never changes in either." },
+            { label:"نائب الفاعل",          text:"Follows exact same rules as فاعل: comes after فعل, is مرفوع, فعل in هو/هي form, matches gender. Never appears alongside a فاعل." },
+            { label:"Transitivity",         text:"لازم (intransitive) = CANNOT take مفعول به → cannot be made passive. متعدٍّ (transitive) = CAN take مفعول به → can be made passive. متعدٍّ لمفعولين = passive keeps one مفعول به + one نائب الفاعل." },
+          ].map(r => (
+            <div key={r.label} className="recap-row fade-in">
+              <div className="recap-row-label">{r.label}</div>
+              <div className="recap-row-text">{r.text}</div>
+            </div>
+          ))}
+          <div className="fade-in" style={{ borderTop:"1px solid rgba(201,147,59,.3)",marginTop:"1.5rem",paddingTop:"1rem",textAlign:"center",color:"rgba(255,255,255,.4)",fontStyle:"italic",fontSize:".85rem" }}>
+            Next: Chapter 9 — Negation (الجملة الفعلية · الجملة الاسمية · Shared Tools)
+          </div>
+        </Slide>
+
+      </div>{/* end slides-wrapper */}
+
+      <footer>
+        Based on the <a href="#" rel="noopener">Bayyinah Dream Textbook</a> by Sumaya Al-Saadoon
+        &nbsp;·&nbsp; Section 1: Nahw · Chapters 6–8
+        &nbsp;·&nbsp; الفعل الماضي · المضارع · المجهول
+      </footer>
+
+      {showTop && (
+        <button className="scroll-top" onClick={() => window.scrollTo({ top:0, behavior:"smooth" })} aria-label="Back to top">↑</button>
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
