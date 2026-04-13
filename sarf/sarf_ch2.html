@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bayyinah Dream — Sarf · Chapter 2 · الثلاثي المزيد فيه</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1A2744; --navy2: #22304A; --navy3: #1D2A3D;
+      --gold: #C9933B; --gold2: #E8AD55;
+      --cream: #F5F0E8; --cream2: #EDE7D8;
+      --teal: #1D7A8C; --teal2: #258EA3;
+      --white: #FFFFFF; --dgray: #2D2D2D; --mgray: #5A5A6A; --lgray: #E8E4DC;
+      --green: #2E7D52; --purple: #6B3FA0; --red: #B94040; --orange: #C06820;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dgray); min-height: 100vh; }
+    .ar { font-family: 'Noto Naskh Arabic', serif; direction: rtl; }
+
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--teal)); z-index: 1000; transition: width .2s ease; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(26,39,68,.97); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(201,147,59,.25); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; height: 58px; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: .04em; white-space: nowrap; }
+    .nav-logo span { color: var(--white); }
+    .tag-s2 { font-size: .65rem; font-weight: 700; background: var(--teal); color: #fff; padding: .15rem .45rem; border-radius: 3px; margin-left: .4rem; letter-spacing: .05em; vertical-align: middle; }
+    .nav-chapters { display: flex; gap: .15rem; align-items: center; overflow-x: auto; max-width: 78%; }
+    .nav-btn { background: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: .72rem; color: rgba(255,255,255,.5); padding: .3rem .6rem; border-radius: 4px; transition: all .2s; white-space: nowrap; }
+    .nav-btn:hover { color: var(--gold); background: rgba(201,147,59,.1); }
+    .nav-btn.active { color: var(--gold); background: rgba(201,147,59,.18); }
+    .nav-counter { font-size: .7rem; color: rgba(255,255,255,.3); border-left: 1px solid rgba(255,255,255,.1); padding-left: .9rem; margin-left: .4rem; white-space: nowrap; }
+
+    .slides-wrapper { padding-top: 58px; }
+    .slide { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+    .slide-inner { max-width: 1000px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+    .slide-dark { background: var(--navy); color: var(--white); }
+    .slide-dark::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(29,122,140,.18) 0%, transparent 60%), radial-gradient(ellipse at 10% 80%, rgba(201,147,59,.1) 0%, transparent 50%); pointer-events: none; }
+    .slide-light { background: var(--cream); color: var(--dgray); }
+    .slide-light::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 10%, rgba(29,122,140,.07) 0%, transparent 55%); pointer-events: none; }
+    .slide-cream2 { background: var(--cream2); color: var(--dgray); }
+
+    .gold-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold), var(--teal), var(--gold)); }
+    .stag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .3rem .85rem; border-radius: 4px; margin-bottom: 1.2rem; }
+    .stag-gold   { background: var(--gold);   color: var(--navy); }
+    .stag-teal   { background: var(--teal);   color: #fff; }
+    .stag-green  { background: var(--green);  color: #fff; }
+    .stag-purple { background: var(--purple); color: #fff; }
+    .stag-navy   { background: var(--navy);   color: #fff; }
+    .stag-red    { background: var(--red);    color: #fff; }
+    .stag-orange { background: var(--orange); color: #fff; }
+    .stag-s2 { background: linear-gradient(135deg, var(--teal), var(--navy)); color: #fff; }
+
+    .slide-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.8rem; }
+    .slide-dark .slide-title { color: var(--white); }
+    .slide-light .slide-title, .slide-cream2 .slide-title { color: var(--navy); }
+
+    /* HERO */
+    .hero-bismillah { font-family: 'Noto Naskh Arabic', serif; font-size: clamp(1.4rem, 4vw, 2rem); color: var(--gold); text-align: center; margin-bottom: 1.5rem; direction: rtl; animation: fadeUp .8s ease both; }
+    .hero-eyebrow { text-align: center; letter-spacing: .2em; font-size: .8rem; font-weight: 600; color: var(--teal); text-transform: uppercase; margin-bottom: .75rem; animation: fadeUp .8s .1s ease both; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 700; line-height: 1.05; color: var(--white); text-align: center; margin-bottom: 1rem; animation: fadeUp .8s .2s ease both; }
+    .hero-sub { text-align: center; color: rgba(255,255,255,.6); font-size: 1.05rem; margin-bottom: .5rem; animation: fadeUp .8s .3s ease both; }
+    .hero-divider { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 1.5rem auto; animation: fadeUp .8s .4s ease both; }
+    .hero-tagline { text-align: center; color: var(--gold); font-style: italic; font-size: .9rem; animation: fadeUp .8s .5s ease both; }
+    .hero-credit { text-align: center; color: rgba(255,255,255,.3); font-size: .8rem; margin-top: 2.5rem; animation: fadeUp .8s .6s ease both; }
+
+    /* HIGHLIGHT BOXES */
+    .h-dark { background: var(--navy); color: var(--white); border-radius: 8px; padding: 1rem 1.3rem; font-size: .95rem; font-weight: 600; margin-bottom: 1.3rem; }
+    .h-gold { background: var(--gold); color: var(--navy); border-radius: 8px; padding: 1rem 1.3rem; font-size: .95rem; font-weight: 600; margin-bottom: 1.3rem; }
+    .h-teal { background: var(--teal); color: var(--white); border-radius: 8px; padding: 1rem 1.3rem; font-size: .95rem; font-weight: 600; margin-bottom: 1.3rem; }
+    .note { background: var(--lgray); border-radius: 8px; padding: .9rem 1.2rem; font-size: .87rem; color: var(--navy); margin-top: 1.2rem; }
+    .note strong { color: var(--gold); }
+    .note-dk { background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); }
+
+    /* LAYOUT */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media(max-width:680px) { .two-col { grid-template-columns: 1fr; } }
+    .three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    @media(max-width:700px) { .three-col { grid-template-columns: 1fr; } }
+    .card { background: var(--white); border: 1px solid var(--lgray); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.05); }
+    .card-h { padding: .85rem 1.2rem; color: var(--white); font-weight: 700; font-size: .82rem; letter-spacing: .04em; }
+    .card-b { padding: 1rem 1.2rem; }
+
+    /* SARF TABLE — main صرف صغير layout */
+    .sarf-table-wrap { background: var(--navy); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.18); }
+    .sarf-section-label { background: rgba(201,147,59,.15); border-bottom: 1px solid rgba(201,147,59,.25); padding: .4rem 1rem; font-size: .7rem; font-weight: 700; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; display: flex; justify-content: space-between; }
+    .sarf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .sarf-row:last-child { border-bottom: none; }
+    .sarf-cell { padding: .6rem 1rem; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255,255,255,.06); }
+    .sarf-cell:last-child { border-right: none; }
+    .sarf-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.15rem; font-weight: 700; direction: rtl; margin-bottom: .12rem; }
+    .sarf-label { font-size: .67rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+    .sarf-label-extra { font-size: .65rem; color: rgba(255,255,255,.25); margin-top: .05rem; }
+    .sarf-passive .sarf-ar { color: var(--teal2); }
+    .sarf-active .sarf-ar { color: var(--gold2); }
+    .sarf-derived .sarf-ar { color: #8dd5c0; }
+
+    /* FEATURE BADGE STRIP */
+    .feature-strip { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .fbadge { font-size: .75rem; font-weight: 700; padding: .3rem .75rem; border-radius: 5px; font-family: 'DM Sans', sans-serif; }
+
+    /* FAMILY HEADER CARD */
+    .fam-header { border-radius: 12px; overflow: hidden; margin-bottom: 1.3rem; }
+    .fam-header-top { padding: 1.1rem 1.5rem .8rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: .5rem; }
+    .fam-name-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 2.2rem; font-weight: 700; color: var(--white); direction: rtl; line-height: 1; }
+    .fam-name-classical { font-family: 'Noto Naskh Arabic', serif; font-size: 1rem; color: rgba(255,255,255,.65); direction: rtl; margin-top: .25rem; }
+    .fam-bottom { background: rgba(0,0,0,.2); padding: .6rem 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .fam-sample { font-size: .8rem; color: rgba(255,255,255,.6); }
+    .fam-sample strong { color: rgba(255,255,255,.9); }
+
+    /* RHETORICAL BOX */
+    .rhet-box { background: var(--cream); border: 1px solid var(--lgray); border-radius: 8px; padding: .9rem 1.1rem; margin-top: .8rem; border-left: 4px solid var(--gold); }
+    .rhet-title { font-size: .7rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; }
+    .rhet-text { font-size: .87rem; color: var(--dgray); line-height: 1.6; }
+    .rhet-ex { font-family: 'Noto Naskh Arabic', serif; font-size: 1rem; color: var(--gold); direction: rtl; margin-top: .4rem; }
+
+    /* RECOGNITION FLOWCHART */
+    .flow-node { border-radius: 8px; padding: .75rem 1rem; margin-bottom: .7rem; }
+    .flow-q { background: var(--navy); border: 1px solid rgba(201,147,59,.3); }
+    .flow-q-text { font-weight: 700; font-size: .88rem; color: var(--white); margin-bottom: .4rem; }
+    .flow-answers { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .4rem; }
+    .flow-a { background: rgba(255,255,255,.08); border-radius: 5px; padding: .3rem .7rem; font-size: .8rem; color: rgba(255,255,255,.75); }
+    .flow-a strong { color: var(--gold); }
+
+    /* SUMMARY TABLE */
+    .summ-tbl { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; }
+    .summ-tbl th { background: var(--gold); color: var(--navy); font-size: .76rem; font-weight: 700; padding: .6rem .8rem; text-align: left; }
+    .summ-tbl td { padding: .55rem .8rem; font-size: .84rem; border-bottom: 1px solid var(--lgray); vertical-align: middle; }
+    .summ-tbl tr:nth-child(even) td { background: rgba(232,228,220,.4); }
+    .summ-tbl tr:last-child td { border-bottom: none; }
+    .summ-tbl .td-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.05rem; color: var(--gold); }
+    .summ-tbl .td-root { font-family: 'Noto Naskh Arabic', serif; font-size: .95rem; color: var(--teal); }
+
+    /* STEP */
+    .step { display: flex; gap: 1rem; align-items: flex-start; padding: .75rem 1rem; background: var(--white); border: 1px solid var(--lgray); border-radius: 8px; margin-bottom: .6rem; }
+    .step-n { background: var(--teal); color: var(--white); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 700; flex-shrink: 0; }
+
+    /* AGENDA CARD */
+    .agenda-card { display: flex; align-items: center; gap: 1rem; background: var(--white); border: 1px solid var(--lgray); border-radius: 10px; padding: .85rem 1.3rem; margin-bottom: .8rem; box-shadow: 0 2px 10px rgba(0,0,0,.05); transition: transform .18s; }
+    .agenda-card:hover { transform: translateX(3px); }
+    .agenda-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; color: var(--white); flex-shrink: 0; }
+
+    /* RECAP */
+    .recap-row { display: flex; gap: 1rem; align-items: flex-start; background: rgba(255,255,255,.07); border: 1px solid rgba(201,147,59,.25); border-radius: 8px; padding: .9rem 1.2rem; margin-bottom: .75rem; }
+    .recap-lbl { font-size: .73rem; font-weight: 700; color: var(--gold); white-space: nowrap; padding-top: .1rem; min-width: 90px; }
+    .recap-txt { font-size: .88rem; color: rgba(255,255,255,.85); line-height: 1.55; }
+
+    .divider-ch { font-size: .78rem; font-weight: 700; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .5rem; text-align: center; }
+    .divider-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; color: var(--white); margin-bottom: .4rem; text-align: center; }
+    .divider-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 3vw, 1.7rem); color: rgba(255,255,255,.55); margin-bottom: 1.5rem; text-align: center; }
+    .divider-hr { width: 80px; height: 1.5px; background: var(--gold); margin: 0 auto 1.2rem; }
+
+    footer { background: var(--navy); color: rgba(255,255,255,.35); text-align: center; padding: 1.8rem; font-size: .78rem; border-top: 1px solid rgba(201,147,59,.2); }
+    footer a { color: var(--gold); text-decoration: none; }
+    .scroll-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 40px; height: 40px; border-radius: 50%; background: var(--gold); color: var(--navy); border: none; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,.2); transition: transform .2s; z-index: 99; }
+    .scroll-top:hover { transform: translateY(-2px); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fi { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fi.visible { opacity: 1; transform: translateY(0); }
+    @media(max-width:768px) { .nav-chapters { display: none; } .slide { padding: 4.5rem 1.2rem 3rem; } }
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const NAV = [
+  { label: "Intro",        id: "s-intro" },
+  { label: "Overview",     id: "s-overview" },
+  { label: "صرف صغير",    id: "s-sarf-template" },
+  { label: "Family II",    id: "s-f2" },
+  { label: "Family III",   id: "s-f3" },
+  { label: "Family IV",    id: "s-f4" },
+  { label: "Family V",     id: "s-f5" },
+  { label: "Family VI",    id: "s-f6" },
+  { label: "Family VII",   id: "s-f7" },
+  { label: "Family VIII",  id: "s-f8" },
+  { label: "Family IX",    id: "s-f9" },
+  { label: "Family X",     id: "s-f10" },
+  { label: "Recognition",  id: "s-recog" },
+  { label: "Summary",      id: "s-summary" },
+];
+
+function useScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const fn = () => { const el = document.documentElement; const s = el.scrollTop || document.body.scrollTop; const t = el.scrollHeight - el.clientHeight; setP(t > 0 ? (s / t) * 100 : 0); };
+    window.addEventListener("scroll", fn, { passive: true }); return () => window.removeEventListener("scroll", fn);
+  }, []);
+  return p;
+}
+function useActiveSection(ids) {
+  const [active, setActive] = useState(ids[0]);
+  useEffect(() => {
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }), { threshold: .35 });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); }); return () => obs.disconnect();
+  }, [ids]); return active;
+}
+function useFadeIn() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); }), { threshold: .12 });
+    document.querySelectorAll(".fi").forEach(el => obs.observe(el)); return () => obs.disconnect();
+  }, []);
+}
+function useShowTop() {
+  const [show, setShow] = useState(false);
+  useEffect(() => { const fn = () => setShow(window.scrollY > 400); window.addEventListener("scroll", fn, { passive: true }); return () => window.removeEventListener("scroll", fn); }, []);
+  return show;
+}
+
+const Tag = ({ children, color = "gold" }) => <span className={`stag stag-${color}`}>{children}</span>;
+const Title = ({ children }) => <h2 className="slide-title">{children}</h2>;
+function Slide({ id, dark, cream2, children }) {
+  const cls = dark ? "slide slide-dark" : cream2 ? "slide slide-cream2" : "slide slide-light";
+  return <section className={cls} id={id}>{!dark && <div className="gold-bar" />}<div className="slide-inner">{children}</div></section>;
+}
+
+/* ── SARF SMALL TABLE component ── */
+function SarfTable({ data, color }) {
+  const rows = [
+    { label: "فعل ماضي",   subLabel: "active past",        ar: data.madhi,      cls: "sarf-active" },
+    { label: "فعل مضارع",  subLabel: "active present",     ar: data.mudar,      cls: "sarf-active" },
+    { label: "مصدر",       subLabel: "verbal noun",         ar: data.masdar,     cls: "sarf-active" },
+    { label: "اسم فاعل",   subLabel: "active participle",   ar: data.ismFail,    cls: "sarf-active" },
+    { label: "ماضي مجهول", subLabel: "passive past",        ar: data.madhi_p,    cls: "sarf-passive" },
+    { label: "مضارع مجهول",subLabel: "passive present",     ar: data.mudar_p,    cls: "sarf-passive" },
+    { label: "اسم مفعول",  subLabel: "passive participle",  ar: data.ismMafool,  cls: "sarf-passive" },
+    { label: "فعل أمر",    subLabel: "command",             ar: data.amr,        cls: "sarf-derived" },
+    { label: "فعل نهي",    subLabel: "forbidding",          ar: data.nahi,       cls: "sarf-derived" },
+    { label: "اسم ظرف",    subLabel: "time/place name",     ar: data.zarf,       cls: "sarf-derived" },
+  ];
+  const half1 = rows.slice(0, 5);
+  const half2 = rows.slice(5, 10);
+  return (
+    <div className="sarf-table-wrap">
+      <div className="sarf-section-label">
+        <span>Active Side — المعلوم</span>
+        <span>Passive &amp; Derived — المجهول والمشتق</span>
+      </div>
+      {half1.map((r, i) => (
+        <div key={i} className="sarf-row">
+          <div className={`sarf-cell sarf-active`}>
+            <span className="sarf-ar" style={{ color: "var(--gold2)" }}>{r.ar}</span>
+            <span className="sarf-label">{r.label}</span>
+            <span className="sarf-label-extra">{r.subLabel}</span>
+          </div>
+          <div className={`sarf-cell ${half2[i].cls}`}>
+            <span className="sarf-ar" style={{ color: half2[i].cls === "sarf-passive" ? "var(--teal2)" : "#8dd5c0" }}>{half2[i].ar}</span>
+            <span className="sarf-label">{half2[i].label}</span>
+            <span className="sarf-label-extra">{half2[i].subLabel}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ── FAMILY DATA ── */
+const FAMILIES = {
+  f2: {
+    num: "II", classical: "بَابُ تَفْعِيل", color: "#C9933B",
+    root: "ع · ل · م", sampleMeaning: "to teach",
+    features: ["شدة on عين الكلمة", "ضمة on مضارع"],
+    classification: "شدة family + ضمة family",
+    data: {
+      madhi: "عَلَّمَ", mudar: "يُعَلِّمُ", masdar: "تَعْلِيمًا",
+      ismFail: "مُعَلِّمٌ", madhi_p: "عُلِّمَ", mudar_p: "يُعَلَّمُ",
+      ismMafool: "مُعَلَّمٌ", amr: "عَلِّمْ", nahi: "لَا تُعَلِّمْ", zarf: "مُعَلَّمٌ",
+    },
+    placeholder: {
+      madhi: "فَعَّلَ", mudar: "يُفَعِّلُ", masdar: "تَفْعِيلًا",
+      ismFail: "مُفَعِّلٌ", madhi_p: "فُعِّلَ", mudar_p: "يُفَعَّلُ",
+      ismMafool: "مُفَعَّلٌ", amr: "فَعِّلْ", nahi: "لَا تُفَعِّلْ", zarf: "مُفَعَّلٌ",
+    },
+    constants: ["شدة on عين الكلمة in most forms", "مضارع starts with ضمة (يُـ)", "مصدر: تَـ_ْ_ِيل pattern", "اسم فاعل: مُـ_َعِّل", "اسم مفعول: مُـ_َعَّل"],
+    rhetoric: "Generally متعدي. Implies the action is REPETITIVE over a long period of time. Can also imply HYPERBOLE.",
+    rhetEx: ["نَزَّلَ = revealed gradually (the Quran over 23 years) vs أَنْزَلَ = sent down at once", "قَتَّلَ = massacred (hyperbolic) vs قَتَلَ = killed"],
+    confuse: null,
+    passiveNote: null,
+    colorNote: null,
+  },
+  f3: {
+    num: "III", classical: "بَابُ مُفَاعَلَة", color: "#1D7A8C",
+    root: "ج · ه · د", sampleMeaning: "to strive",
+    features: ["extra ألف after فاء الكلمة", "ضمة on مضارع", "two مصدر forms"],
+    classification: "ألف family + ضمة family",
+    data: {
+      madhi: "جَاهَدَ", mudar: "يُجَاهِدُ", masdar: "جِهَادًا وَمُجَاهَدَةً",
+      ismFail: "مُجَاهِدٌ", madhi_p: "جُوهِدَ", mudar_p: "يُجَاهَدُ",
+      ismMafool: "مُجَاهَدٌ", amr: "جَاهِدْ", nahi: "لَا تُجَاهِدْ", zarf: "مُجَاهَدٌ",
+    },
+    placeholder: {
+      madhi: "فَاعَلَ", mudar: "يُفَاعِلُ", masdar: "فِعَالًا وَمُفَاعَلَةً",
+      ismFail: "مُفَاعِلٌ", madhi_p: "فُوعِلَ", mudar_p: "يُفَاعَلُ",
+      ismMafool: "مُفَاعَلٌ", amr: "فَاعِلْ", nahi: "لَا تُفَاعِلْ", zarf: "مُفَاعَلٌ",
+    },
+    constants: ["extra ألف after فاء الكلمة", "TWO مصدر: فِعَال and مُفَاعَلَة (interchangeable)", "مضارع starts with ضمة (يُـ)", "aسم فاعل: مُفَاعِل (كسرة on second-to-last)", "aسم مفعول: مُفَاعَل (فتحة on second-to-last)"],
+    rhetoric: "Implies the action is directed from ONE PARTY TOWARDS ANOTHER individual or party.",
+    rhetEx: ["عَاقَبَ = to punish (one party punishing another)", "جَادَلَ = to debate (one person debating another)", "حَاسَبَ = to hold to account"],
+    confuse: null,
+    passiveNote: null,
+    colorNote: null,
+  },
+  f4: {
+    num: "IV", classical: "بَابُ إِفْعَال", color: "#2E7D52",
+    root: "س · ل · م", sampleMeaning: "to submit (Islam)",
+    features: ["همزة on ماضي، مصدر، أمر", "ضمة on مضارع", "سكون on second letter of مضارع"],
+    classification: "همزة family + ضمة family",
+    data: {
+      madhi: "أَسْلَمَ", mudar: "يُسْلِمُ", masdar: "إِسْلَامًا",
+      ismFail: "مُسْلِمٌ", madhi_p: "أُسْلِمَ", mudar_p: "يُسْلَمُ",
+      ismMafool: "مُسْلَمٌ", amr: "أَسْلِمْ", nahi: "لَا تُسْلِمْ", zarf: "مُسْلَمٌ",
+    },
+    placeholder: {
+      madhi: "أَفْعَلَ", mudar: "يُفْعِلُ", masdar: "إِفْعَالًا",
+      ismFail: "مُفْعِلٌ", madhi_p: "أُفْعِلَ", mudar_p: "يُفْعَلُ",
+      ismMafool: "مُفْعَلٌ", amr: "أَفْعِلْ", nahi: "لَا تُفْعِلْ", zarf: "مُفْعَلٌ",
+    },
+    constants: ["همزة (أَ) at start of ماضي, مصدر, أمر", "مضارع: سكون on second letter (يُفْعِل)", "مصدر: إِفْعَال pattern", "اسم فاعل: مُفْعِل (كسرة on second-to-last)", "اسم مفعول: مُفْعَل (فتحة on second-to-last)"],
+    rhetoric: "Predominantly متعدي. Implies the action was completed IMMEDIATELY and ALL AT ONCE.",
+    rhetEx: ["أَنْزَلَ = sent down all at once (vs نَزَّلَ = revealed gradually)", "أَخْرَجَ = caused to exit immediately", "أَسْلَمَ = submitted completely"],
+    confuse: null,
+    passiveNote: null,
+    colorNote: null,
+  },
+  f5: {
+    num: "V", classical: "بَابُ تَفَعُّل", color: "#6B3FA0",
+    root: "ف · ر · ق", sampleMeaning: "to become separated",
+    features: ["extra ت before the verb", "شدة on عين الكلمة", "فتحات on ماضي and مضارع"],
+    classification: "ت family + شدة family + فتحة family",
+    data: {
+      madhi: "تَفَرَّقَ", mudar: "يَتَفَرَّقُ", masdar: "تَفَرُّقًا",
+      ismFail: "مُتَفَرِّقٌ", madhi_p: "تُفُرِّقَ", mudar_p: "يُتَفَرَّقُ",
+      ismMafool: "مُتَفَرَّقٌ", amr: "تَفَرَّقْ", nahi: "لَا تَتَفَرَّقْ", zarf: "مُتَفَرَّقٌ",
+    },
+    placeholder: {
+      madhi: "تَفَعَّلَ", mudar: "يَتَفَعَّلُ", masdar: "تَفَعُّلًا",
+      ismFail: "مُتَفَعِّلٌ", madhi_p: "تُفُعِّلَ", mudar_p: "يُتَفَعَّلُ",
+      ismMafool: "مُتَفَعَّلٌ", amr: "تَفَعَّلْ", nahi: "لَا تَتَفَعَّلْ", zarf: "مُتَفَعَّلٌ",
+    },
+    constants: ["ت at start of ماضي + شدة on عين in ALL forms", "فتحات (a sounds) across ماضي and مضارع", "مصدر: تَفَعُّل pattern", "Command gets فتحة (تَفَعَّلْ not with همزة!)"],
+    rhetoric: "Predominantly لازم. Can imply the action took EFFORT or GRADUAL progress to complete.",
+    rhetEx: ["تَعَلَّمَ = he learned (effort involved)", "تَكَبَّرَ = he became arrogant (gradual)", "تَقَبَّلَ = he accepted (effort/gradual)"],
+    confuse: "⚠ Do NOT confuse with Family II (باب تفعيل). BOTH have شدة. Family V is distinguished by the extra ت at the beginning.",
+    passiveNote: null,
+    colorNote: null,
+  },
+  f6: {
+    num: "VI", classical: "بَابُ تَفَاعُل", color: "#B94040",
+    root: "ع · و · ن", sampleMeaning: "to cooperate",
+    features: ["extra ت before the verb", "extra ألف after فاء الكلمة", "فتحات on ماضي and مضارع"],
+    classification: "ت family + ا family + فتحة family",
+    data: {
+      madhi: "تَعَاوَنَ", mudar: "يَتَعَاوَنُ", masdar: "تَعَاوُنًا",
+      ismFail: "مُتَعَاوِنٌ", madhi_p: "تُعُووِنَ", mudar_p: "يُتَعَاوَنُ",
+      ismMafool: "مُتَعَاوَنٌ", amr: "تَعَاوَنْ", nahi: "لَا تَتَعَاوَنْ", zarf: "مُتَعَاوَنٌ",
+    },
+    placeholder: {
+      madhi: "تَفَاعَلَ", mudar: "يَتَفَاعَلُ", masdar: "تَفَاعُلًا",
+      ismFail: "مُتَفَاعِلٌ", madhi_p: "تُفُووِلَ", mudar_p: "يُتَفَاعَلُ",
+      ismMafool: "مُتَفَاعَلٌ", amr: "تَفَاعَلْ", nahi: "لَا تَتَفَاعَلْ", zarf: "مُتَفَاعَلٌ",
+    },
+    constants: ["ت + ألف in ALL forms", "فتحات (a sounds) across ماضي and مضارع", "مصدر: تَفَاعُل pattern", "Command gets فتحة (تَفَاعَلْ)"],
+    rhetoric: "Usually implies the action takes place BETWEEN TWO PARTIES (mutual action).",
+    rhetEx: ["تَسَاءَلَ = to ask one another", "تَلَاوَمَ = to blame one another", "تَعَاوَنَ = to cooperate with each other", "تَنَازَعَ = to dispute with one another"],
+    confuse: "⚠ Do NOT confuse with Family III (باب مفاعلة). BOTH have ألف. Family VI is distinguished by the extra ت at the beginning.",
+    passiveNote: null,
+    colorNote: null,
+  },
+  f7: {
+    num: "VII", classical: "بَابُ اِنْفِعَال", color: "#C06820",
+    root: "ق · ل · ب", sampleMeaning: "to flip/turn around",
+    features: ["extra نون in ALL forms", "همزة الوصل (اِ) on ماضي، مصدر، أمر"],
+    classification: "اِنـ family (همزة الوصل family)",
+    data: {
+      madhi: "اِنْقَلَبَ", mudar: "يَنْقَلِبُ", masdar: "اِنْقِلَابًا",
+      ismFail: "مُنْقَلِبٌ", madhi_p: "—", mudar_p: "—",
+      ismMafool: "—", amr: "اِنْقَلِبْ", nahi: "لَا تَنْقَلِبْ", zarf: "مُنْقَلَبٌ",
+    },
+    placeholder: {
+      madhi: "اِنْفَعَلَ", mudar: "يَنْفَعِلُ", masdar: "اِنْفِعَالًا",
+      ismFail: "مُنْفَعِلٌ", madhi_p: "—", mudar_p: "—",
+      ismMafool: "—", amr: "اِنْفَعِلْ", nahi: "لَا تَنْفَعِلْ", zarf: "مُنْفَعَلٌ",
+    },
+    constants: ["نون immediately after اِ in ماضي, مصدر, أمر", "مضارع: يَنـ (no همزة at start)", "NO passives (always لازم)"],
+    rhetoric: "Always لازم. English translations often SOUND passive even though it is NOT.",
+    rhetEx: ["اِنْقَلَبَ = was turned / flipped (sounds passive, but it's active-لازم)", "اِنْفَطَرَ = was split apart", "اِنْبَعَثَ = was dispatched"],
+    confuse: null,
+    passiveNote: "🚫 NO PASSIVES — this family is ALWAYS لازم and CANNOT be made passive.",
+    colorNote: null,
+  },
+  f8: {
+    num: "VIII", classical: "بَابُ اِفْتِعَال", color: "#1D7A8C",
+    root: "ق · ر · ب", sampleMeaning: "to come close",
+    features: ["extra ت after فاء الكلمة in ALL forms", "همزة الوصل (اِ) on ماضي، مصدر، أمر"],
+    classification: "اِتـ family (همزة الوصل family)",
+    data: {
+      madhi: "اِقْتَرَبَ", mudar: "يَقْتَرِبُ", masdar: "اِقْتِرَابًا",
+      ismFail: "مُقْتَرِبٌ", madhi_p: "اُقْتُرِبَ", mudar_p: "يُقْتَرَبُ",
+      ismMafool: "مُقْتَرَبٌ", amr: "اِقْتَرِبْ", nahi: "لَا تَقْتَرِبْ", zarf: "مُقْتَرَبٌ",
+    },
+    placeholder: {
+      madhi: "اِفْتَعَلَ", mudar: "يَفْتَعِلُ", masdar: "اِفْتِعَالًا",
+      ismFail: "مُفْتَعِلٌ", madhi_p: "اُفْتُعِلَ", mudar_p: "يُفْتَعَلُ",
+      ismMafool: "مُفْتَعَلٌ", amr: "اِفْتَعِلْ", nahi: "لَا تَفْتَعِلْ", zarf: "مُفْتَعَلٌ",
+    },
+    constants: ["ت one letter AFTER the اِ (after فاء الكلمة)", "مضارع: يَفْتَعِل (no همزة at start)", "HAS passives (unlike Family VII)"],
+    rhetoric: "Usually لازم. Can imply HYPERBOLE in some cases.",
+    rhetEx: ["سَمِعَ = to hear vs اِسْتَمَعَ = to listen carefully (hyperbolic intensity)"],
+    confuse: "⚠ Do NOT confuse with Family VII. Both rhyme. KEY TEST: if ن is 2nd letter → VII. If ت is 2nd or 3rd letter → VIII. When both ن and ت appear (e.g. اِنْتَقَمَ), the ت always wins → VIII.",
+    passiveNote: null,
+    colorNote: null,
+  },
+  f9: {
+    num: "IX", classical: "بَابُ اِفْعِلَال", color: "#2E7D52",
+    root: "ح · م · ر", sampleMeaning: "to become red",
+    features: ["شدة on لام الكلمة (last root letter)", "همزة الوصل (اِ) on ماضي"],
+    classification: "همزة الوصل family — COLORS ONLY",
+    data: {
+      madhi: "اِحْمَرَّ", mudar: "يَحْمَرُّ", masdar: "اِحْمِرَارًا",
+      ismFail: "مُحْمَرٌّ", madhi_p: "—", mudar_p: "—",
+      ismMafool: "—", amr: "اِحْمَرَّ / اِحْمَرِّ / اِحْمَرِرْ", nahi: "لَا تَحْمَرَّ / لَا تَحْمَرِّ / لَا تَحْمَرِرْ", zarf: "مُحْمَرٌّ",
+    },
+    placeholder: {
+      madhi: "اِفْعَلَّ", mudar: "يَفْعَلُّ", masdar: "اِفْعِلَالًا",
+      ismFail: "مُفْعَلٌّ", madhi_p: "—", mudar_p: "—",
+      ismMafool: "—", amr: "اِفْعَلَّ / اِفْعَلِّ / اِفْعَلِلْ", nahi: "لَا تَفْعَلَّ / etc.", zarf: "مُفْعَلٌّ",
+    },
+    constants: ["شدة on the LAST root letter (لام الكلمة) in ALL forms", "ONLY used for COLORS (to become a color)", "THREE interchangeable forms for أمر and نهي", "اسم فاعل = اسم ظرف (identical)"],
+    rhetoric: "Exclusive to COLOR meanings — means 'to BECOME a color'.",
+    rhetEx: ["اِحْمَرَّ = became red", "اِبْيَضَّ = became white", "اِصْفَرَّ = became yellow", "اِخْضَرَّ = became green", "اِزْرَقَّ = became blue", "اِسْوَدَّ = became black"],
+    confuse: null,
+    passiveNote: "🚫 NO PASSIVES — this family is ALWAYS لازم and CANNOT be made passive.",
+    colorNote: "🎨 COLORS ONLY: This family is exclusively used for turning a color. Root letters are always color-related.",
+  },
+  f10: {
+    num: "X", classical: "بَابُ اِسْتِفْعَال", color: "#6B3FA0",
+    root: "غ · ف · ر", sampleMeaning: "to seek forgiveness",
+    features: ["اِسْتَـ prefix in ALL forms", "همزة الوصل (اِ) on ماضي، مصدر، أمر"],
+    classification: "اِسْتـ family (همزة الوصل family)",
+    data: {
+      madhi: "اِسْتَغْفَرَ", mudar: "يَسْتَغْفِرُ", masdar: "اِسْتِغْفَارًا",
+      ismFail: "مُسْتَغْفِرٌ", madhi_p: "اُسْتُغْفِرَ", mudar_p: "يُسْتَغْفَرُ",
+      ismMafool: "مُسْتَغْفَرٌ", amr: "اِسْتَغْفِرْ", nahi: "لَا تَسْتَغْفِرْ", zarf: "مُسْتَغْفَرٌ",
+    },
+    placeholder: {
+      madhi: "اِسْتَفْعَلَ", mudar: "يَسْتَفْعِلُ", masdar: "اِسْتِفْعَالًا",
+      ismFail: "مُسْتَفْعِلٌ", madhi_p: "اُسْتُفْعِلَ", mudar_p: "يُسْتَفْعَلُ",
+      ismMafool: "مُسْتَفْعَلٌ", amr: "اِسْتَفْعِلْ", nahi: "لَا تَسْتَفْعِلْ", zarf: "مُسْتَفْعَلٌ",
+    },
+    constants: ["اِسْتَـ prefix in ALL forms", "مضارع: يَسْتَفْعِل (no همزة at start)", "مصدر: اِسْتِفْعَال — three root letters come at the end"],
+    rhetoric: "Usually implies WANTING, SEEKING, or TRYING to do something.",
+    rhetEx: ["غَفَرَ = to forgive → اِسْتَغْفَرَ = to SEEK forgiveness", "نَصَرَ = to help → اِسْتَنْصَرَ = to ASK FOR help", "عَجَلَ = to rush → اِسْتَعْجَلَ = to try to expedite", "كَبُرَ = to be big → اِسْتَكْبَرَ = to SEEK greatness (arrogance)"],
+    confuse: null,
+    passiveNote: null,
+    colorNote: null,
+  },
+};
+
+const FAM_COLORS = {
+  f2: "#C9933B", f3: "#1D7A8C", f4: "#2E7D52", f5: "#6B3FA0",
+  f6: "#B94040", f7: "#C06820", f8: "#1D7A8C", f9: "#2E7D52", f10: "#6B3FA0",
+};
+
+function FamilySlide({ id, famKey }) {
+  const f = FAMILIES[famKey];
+  const col = f.color;
+  return (
+    <Slide id={id} cream2>
+      {/* Header */}
+      <div className="fam-header fi" style={{ background: col }}>
+        <div className="fam-header-top">
+          <div>
+            <div className="fam-name-ar">{f.data.madhi}</div>
+            <div className="fam-name-classical">{f.classical}</div>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: ".72rem", fontWeight: 700, color: "rgba(255,255,255,.7)", textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".2rem" }}>Family {f.num}</div>
+            <div style={{ fontSize: ".85rem", color: "rgba(255,255,255,.9)", fontWeight: 600 }}>{f.classification}</div>
+          </div>
+        </div>
+        <div className="fam-bottom">
+          <div className="fam-sample">Sample root: <strong>{f.root}</strong></div>
+          <div className="fam-sample">Meaning: <strong>{f.sampleMeaning}</strong></div>
+          {f.features.map(ft => (
+            <span key={ft} className="fbadge" style={{ background: "rgba(255,255,255,.25)", color: "#fff" }}>{ft}</span>
+          ))}
+        </div>
+      </div>
+
+      <div className="two-col fi">
+        {/* Left: sarf table */}
+        <div>
+          <div style={{ fontWeight: 700, color: "var(--navy)", marginBottom: ".5rem", fontSize: ".85rem" }}>
+            الصرف الصغير — with root {f.root}:
+          </div>
+          <SarfTable data={f.data} color={col} />
+          {f.passiveNote && (
+            <div style={{ background: "rgba(185,64,64,.1)", border: "1px solid var(--red)", borderRadius: "8px", padding: ".7rem 1rem", marginTop: ".8rem", fontSize: ".85rem", color: "var(--red)", fontWeight: 600 }}>
+              {f.passiveNote}
+            </div>
+          )}
+          {f.colorNote && (
+            <div style={{ background: "rgba(46,125,82,.1)", border: "1px solid var(--green)", borderRadius: "8px", padding: ".7rem 1rem", marginTop: ".5rem", fontSize: ".85rem", color: "var(--green)", fontWeight: 600 }}>
+              {f.colorNote}
+            </div>
+          )}
+        </div>
+
+        {/* Right: constants + rhetoric */}
+        <div>
+          <div style={{ fontWeight: 700, color: "var(--navy)", marginBottom: ".5rem", fontSize: ".85rem" }}>الثوابت — What stays constant:</div>
+          <div className="card" style={{ marginBottom: ".8rem" }}>
+            <div className="card-b">
+              {f.constants.map((c, i) => (
+                <div key={i} className="step" style={{ marginBottom: ".4rem" }}>
+                  <div className="step-n" style={{ background: col }}>✓</div>
+                  <div style={{ fontSize: ".84rem" }}>{c}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {f.confuse && (
+            <div style={{ background: "rgba(185,64,64,.08)", border: "1px solid rgba(185,64,64,.35)", borderRadius: "8px", padding: ".7rem 1rem", marginBottom: ".8rem", fontSize: ".83rem", color: "var(--red)" }}>
+              {f.confuse}
+            </div>
+          )}
+          <div className="rhet-box">
+            <div className="rhet-title">Rhetorical Implication</div>
+            <div className="rhet-text">{f.rhetoric}</div>
+            {f.rhetEx.map((ex, i) => (
+              <div key={i} style={{ fontSize: ".83rem", color: "var(--mgray)", marginTop: ".3rem" }}>• {ex}</div>
+            ))}
+          </div>
+          {/* Placeholder pattern */}
+          <div className="note" style={{ marginTop: ".8rem" }}>
+            <strong>Pattern (placeholder ف·ع·ل):</strong>{" "}
+            <span className="ar" style={{ color: "var(--gold)", fontSize: "1rem" }}>{f.placeholder.madhi}</span>{" "}·{" "}
+            <span className="ar" style={{ color: "var(--gold)", fontSize: "1rem" }}>{f.placeholder.mudar}</span>{" "}·{" "}
+            <span className="ar" style={{ color: "var(--gold)", fontSize: "1rem" }}>{f.placeholder.masdar}</span>
+          </div>
+        </div>
+      </div>
+    </Slide>
+  );
+}
+
+function App() {
+  const ids = NAV.map(n => n.id);
+  const progress = useScrollProgress();
+  const active = useActiveSection(ids);
+  const showTop = useShowTop();
+  useFadeIn();
+
+  return (<>
+    <div id="progress-bar" style={{ width: `${progress}%` }} />
+    <nav>
+      <div className="nav-inner">
+        <a className="nav-logo" href="#">Bayyinah <span>Dream</span><span className="tag-s2">Sarf · Ch 2</span></a>
+        <div className="nav-chapters">
+          {NAV.map(n => (
+            <button key={n.id} className={`nav-btn${active === n.id ? " active" : ""}`}
+              onClick={() => document.getElementById(n.id)?.scrollIntoView({ behavior: "smooth" })}>
+              {n.label}
+            </button>
+          ))}
+        </div>
+        <div className="nav-counter">{NAV.findIndex(n => n.id === active) + 1} / {NAV.length}</div>
+      </div>
+    </nav>
+    <div className="slides-wrapper">
+
+    {/* HERO */}
+    <Slide id="s-intro" dark>
+      <div className="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      <div className="hero-eyebrow">Bayyinah Dream · Sarf · Chapter 2</div>
+      <h1 className="hero-title">الثلاثي المزيد فيه</h1>
+      <p className="hero-sub">The Nine Augmented Trilateral Families</p>
+      <div className="hero-divider" />
+      <p className="hero-tagline">Families II – X · الصرف الصغير · Recognition &amp; Construction</p>
+      <div className="hero-credit">Based on the Dream Textbook · Sumaya Al-Saadoon</div>
+    </Slide>
+
+    {/* OVERVIEW */}
+    <Slide id="s-overview">
+      <div className="fi"><Tag>Chapter 2</Tag></div>
+      <div className="fi"><Title>Nine Families — One Goal</Title></div>
+      <div className="h-dark fi">By the end of this chapter you will be able to look at ANY مزيد فيه word and identify: <strong style={{ color: "var(--gold)" }}>1) Its family (الباب) · 2) Its member (الصيغة) · 3) Its root letters (الجذر)</strong></div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: ".7rem" }} className="fi">
+        {Object.entries(FAMILIES).map(([key, f]) => (
+          <div key={key} className="agenda-card" style={{ padding: ".7rem 1rem", cursor: "pointer" }}
+            onClick={() => document.getElementById(`s-f${f.num === "X" ? 10 : f.num === "IX" ? 9 : f.num === "VIII" ? 8 : f.num === "VII" ? 7 : f.num === "VI" ? 6 : parseInt(f.num) + 1}`)?.scrollIntoView({ behavior: "smooth" })}>
+            <div className="agenda-num" style={{ background: f.color, width: "28px", height: "28px", fontSize: ".78rem" }}>{f.num}</div>
+            <div>
+              <div style={{ fontWeight: 700, fontSize: ".83rem", color: "var(--navy)" }}>{f.classical}</div>
+              <div style={{ fontSize: ".75rem", color: "var(--mgray)" }}>{f.classification.split("+")[0].trim()}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="note fi">
+        <strong>Approach:</strong> For each family we learn the (1) family features, (2) الصرف الصغير with a sample root, (3) constants (what stays the same when root changes), and (4) rhetorical implications.
+      </div>
+    </Slide>
+
+    {/* SARF TEMPLATE */}
+    <Slide id="s-sarf-template" dark>
+      <div className="fi"><Tag color="teal">2.1 — Introduction</Tag></div>
+      <div className="fi"><Title>الصرف الصغير — The Recitation Template</Title></div>
+      <div className="h-gold fi">Every family is memorized using this 10-member template. MEMORIZE this layout — it is the same for all 9 families.</div>
+      <div className="two-col fi">
+        <div>
+          <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".6rem", fontSize: ".85rem" }}>الصرف الكبير vs الصرف الصغير:</div>
+          {[
+            ["الصرف الصغير (Small)", "The 10 core family members in the هو form — this is what we MEMORIZE."],
+            ["الصرف الكبير (Big)", "Every فعل fully conjugated (14 forms) + every اسم through the مسلم chart (18 forms). Recognition only — not full memorization."],
+          ].map(([t, d]) => (
+            <div key={t} className="step" style={{ marginBottom: ".6rem" }}>
+              <div className="step-n" style={{ background: "var(--gold)", color: "var(--navy)" }}>★</div>
+              <div><strong style={{ fontSize: ".85rem" }}>{t}</strong><br/><span style={{ fontSize: ".82rem", color: "var(--mgray)" }}>{d}</span></div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".6rem", fontSize: ".85rem" }}>The 10-member order (recitation flow):</div>
+          <div style={{ background: "rgba(255,255,255,.06)", border: "1px solid rgba(201,147,59,.25)", borderRadius: "10px", overflow: "hidden" }}>
+            {[
+              ["1", "فعل ماضي (active)",         "he verbed",            "var(--gold2)"],
+              ["2", "فعل مضارع (active)",        "he verbs",             "var(--gold2)"],
+              ["3", "مصدر",                       "the verbal noun",      "var(--gold2)"],
+              ["4", "اسم فاعل",                   "active participle",    "var(--gold2)"],
+              ["5", "ماضي مبني للمجهول (passive)","he was verbed",       "var(--teal2)"],
+              ["6", "مضارع مبني للمجهول",        "he is verbed",         "var(--teal2)"],
+              ["7", "اسم مفعول",                  "passive participle",   "var(--teal2)"],
+              ["8", "فعل أمر",                    "verb!",                "#8dd5c0"],
+              ["9", "فعل نهي",                    "don't verb!",          "#8dd5c0"],
+              ["10","اسم ظرف",                    "time/place of verb",   "#8dd5c0"],
+            ].map(([n, label, meaning, col]) => (
+              <div key={n} style={{ display: "flex", gap: ".8rem", padding: ".4rem .9rem", borderBottom: "1px solid rgba(255,255,255,.06)", alignItems: "center" }}>
+                <span style={{ color: "var(--gold)", fontWeight: 700, fontSize: ".78rem", minWidth: "16px" }}>{n}</span>
+                <span className="ar" style={{ color: col, fontSize: ".95rem", minWidth: "120px" }}>{label}</span>
+                <span style={{ fontSize: ".78rem", color: "rgba(255,255,255,.45)" }}>{meaning}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Slide>
+
+    {/* FAMILIES II–X */}
+    <FamilySlide id="s-f2"  famKey="f2" />
+    <FamilySlide id="s-f3"  famKey="f3" />
+    <FamilySlide id="s-f4"  famKey="f4" />
+    <FamilySlide id="s-f5"  famKey="f5" />
+    <FamilySlide id="s-f6"  famKey="f6" />
+    <FamilySlide id="s-f7"  famKey="f7" />
+    <FamilySlide id="s-f8"  famKey="f8" />
+    <FamilySlide id="s-f9"  famKey="f9" />
+    <FamilySlide id="s-f10" famKey="f10" />
+
+    {/* RECOGNITION FLOWCHART */}
+    <Slide id="s-recog" dark>
+      <div className="fi"><Tag color="teal">2.11 — Recognition Guide</Tag></div>
+      <div className="fi"><Title>How to Identify Any مزيد فيه Word</Title></div>
+      <div className="two-col fi">
+        <div>
+          <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".7rem", fontSize: ".88rem" }}>If it is a VERB (فعل) → take it to its هو form, then:</div>
+          {[
+            { q: "Does the مضارع start with a ضمة (يُـ)?", answers: [
+              { a: "has شدة → FAMILY II (يُعَلِّمُ)", col: "#C9933B" },
+              { a: "has ألف → FAMILY III (يُجَاهِدُ)", col: "#1D7A8C" },
+              { a: "has سكون on 2nd letter → FAMILY IV (يُسْلِمُ)", col: "#2E7D52" },
+            ]},
+            { q: "Does the ماضي start with تَـ?", answers: [
+              { a: "has شدة → FAMILY V (تَفَرَّقَ)", col: "#6B3FA0" },
+              { a: "has ألف → FAMILY VI (تَعَاوَنَ)", col: "#B94040" },
+            ]},
+            { q: "Is the SECOND letter a نون?", answers: [
+              { a: "→ FAMILY VII (اِنْقَلَبَ) — but if 3rd letter is ت → FAMILY VIII wins!", col: "#C06820" },
+            ]},
+            { q: "Is a ت one letter AFTER the start (3rd position)?", answers: [
+              { a: "→ FAMILY VIII (اِقْتَرَبَ)", col: "#1D7A8C" },
+            ]},
+            { q: "Does the ماضي start with اِ and have شدة on the LAST letter?", answers: [
+              { a: "→ FAMILY IX (اِحْمَرَّ) — Colors only!", col: "#2E7D52" },
+            ]},
+            { q: "Does the ماضي start with اِسْتَـ followed by 3 letters?", answers: [
+              { a: "→ FAMILY X (اِسْتَغْفَرَ)", col: "#6B3FA0" },
+            ]},
+          ].map((node, i) => (
+            <div key={i} className="flow-node flow-q" style={{ marginBottom: ".5rem" }}>
+              <div className="flow-q-text">{node.q}</div>
+              <div className="flow-answers">
+                {node.answers.map((a, j) => (
+                  <div key={j} className="flow-a" style={{ background: a.col + "33", border: `1px solid ${a.col}55` }}>
+                    <strong style={{ color: a.col }}>✓</strong> {a.a}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".7rem", fontSize: ".88rem" }}>If it is a NOUN (اسم) → take to singular, then:</div>
+          <div className="flow-node flow-q" style={{ marginBottom: ".8rem" }}>
+            <div className="flow-q-text">Does it start with مُـ?</div>
+            <div style={{ fontSize: ".83rem", color: "rgba(255,255,255,.75)", marginTop: ".4rem", lineHeight: 1.7 }}>
+              • <strong style={{ color: "var(--gold)" }}>مُـ + كسرة on 2nd-to-last</strong> → <strong>اسم فاعل</strong><br/>
+              • <strong style={{ color: "var(--teal2)" }}>مُـ + فتحة on 2nd-to-last</strong> → <strong>اسم مفعول</strong> or <strong>ظرف</strong><br/>
+              (ظرف in مزيد فيه cannot have ة)<br/>
+              • Pattern of <span className="ar" style={{ color: "var(--gold)" }}>مُفَاعَلَة</span> → could be <strong>مصدر from Family III</strong>
+            </div>
+          </div>
+          <div className="flow-node flow-q" style={{ marginBottom: ".8rem" }}>
+            <div className="flow-q-text">Does NOT start with مُـ → likely a مصدر</div>
+            <div style={{ marginTop: ".5rem" }}>
+              {[
+                ["II", "تَعْلِيم", "تَفْعِيل pattern"],
+                ["III", "جِهَاد / مُجَاهَدَة", "فِعَال or مُفَاعَلَة"],
+                ["IV", "إِسْلَام", "إِفْعَال pattern"],
+                ["V", "تَفَرُّق", "تَفَعُّل pattern"],
+                ["VI", "تَعَاوُن", "تَفَاعُل pattern"],
+                ["VII", "اِنْقِلَاب", "اِنْفِعَال pattern"],
+                ["VIII", "اِقْتِرَاب", "اِفْتِعَال pattern"],
+                ["IX", "اِحْمِرَار", "اِفْعِلَال pattern"],
+                ["X", "اِسْتِغْفَار", "اِسْتِفْعَال pattern"],
+              ].map(([n, ex, pat]) => (
+                <div key={n} style={{ display: "flex", gap: ".7rem", padding: ".25rem 0", borderBottom: "1px solid rgba(255,255,255,.06)", fontSize: ".8rem" }}>
+                  <span style={{ color: "var(--gold)", fontWeight: 700, minWidth: "24px" }}>{n}</span>
+                  <span className="ar" style={{ color: "var(--gold2)", fontSize: ".9rem", minWidth: "110px" }}>{ex}</span>
+                  <span style={{ color: "rgba(255,255,255,.45)" }}>{pat}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="note note-dk" style={{ fontSize: ".83rem" }}>
+            <strong style={{ color: "var(--gold)" }}>Family VII, IX special:</strong> No passives — always لازم.<br/>
+            <strong style={{ color: "var(--teal2)" }}>Family IX special:</strong> Colors only. Three أمر/نهي forms (interchangeable).
+          </div>
+        </div>
+      </div>
+    </Slide>
+
+    {/* SUMMARY */}
+    <Slide id="s-summary" dark>
+      <div className="fi" style={{ textAlign: "center", marginBottom: "1.2rem" }}>
+        <div className="divider-ch">Chapter 2 Complete</div>
+        <h2 className="slide-title" style={{ color: "var(--white)", textAlign: "center" }}>All 9 Families — Master Summary</h2>
+      </div>
+      <div className="fi" style={{ overflowX: "auto" }}>
+        <table className="summ-tbl">
+          <thead>
+            <tr>
+              <th>#</th><th>Classical Name</th><th>Key Feature</th><th>Classification</th>
+              <th>ماضي</th><th>مضارع</th><th>مصدر</th><th>Rhetoric</th><th>Special</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["II",  "بابُ تَفْعِيل",    "شدة on عين",          "شدة + ضمة",    "فَعَّلَ",     "يُفَعِّلُ",   "تَفْعِيل",    "Repetitive / hyperbole",     "—"],
+              ["III", "بابُ مُفَاعَلَة",   "ألف after فاء",       "ألف + ضمة",    "فَاعَلَ",     "يُفَاعِلُ",   "فِعَال/مُفَاعَلَة","Directed one→another",  "Two مصدر forms"],
+              ["IV",  "بابُ إِفْعَال",     "همزة on ماضي/أمر",   "همزة + ضمة",   "أَفْعَلَ",    "يُفْعِلُ",    "إِفْعَال",    "Immediate / all-at-once",    "—"],
+              ["V",   "بابُ تَفَعُّل",     "ت + شدة on عين",      "ت + شدة + فتح","تَفَعَّلَ",   "يَتَفَعَّلُ", "تَفَعُّل",    "Effortful / gradual",        "⚠ ≠ Family II"],
+              ["VI",  "بابُ تَفَاعُل",     "ت + ألف after فاء",  "ت + ا + فتح",  "تَفَاعَلَ",   "يَتَفَاعَلُ", "تَفَاعُل",    "Mutual (between parties)",   "⚠ ≠ Family III"],
+              ["VII", "بابُ اِنْفِعَال",   "نون in all forms",    "اِنـ family",  "اِنْفَعَلَ",  "يَنْفَعِلُ",  "اِنْفِعَال",  "Sounds passive (لازم only)", "🚫 No passives"],
+              ["VIII","بابُ اِفْتِعَال",   "ت after فاء",         "اِتـ family",  "اِفْتَعَلَ",  "يَفْتَعِلُ",  "اِفْتِعَال",  "Hyperbole / intensity",      "⚠ ≠ Family VII"],
+              ["IX",  "بابُ اِفْعِلَال",   "شدة on لام",          "اِ + شدة",     "اِفْعَلَّ",   "يَفْعَلُّ",   "اِفْعِلَال",  "Colors only",                "🚫 No passives 🎨 Colors"],
+              ["X",   "بابُ اِسْتِفْعَال", "اِسْتَـ prefix",       "اِسْتـ family","اِسْتَفْعَلَ","يَسْتَفْعِلُ","اِسْتِفْعَال","Seeking / wanting",          "—"],
+            ].map(([n, cl, feat, clas, madi, mudar, masd, rhet, sp]) => (
+              <tr key={n}>
+                <td style={{ fontWeight: 700, color: Object.values(FAMILIES).find(f => f.num === n)?.color || "var(--gold)" }}>{n}</td>
+                <td className="td-ar">{cl}</td>
+                <td style={{ fontSize: ".8rem" }}>{feat}</td>
+                <td style={{ fontSize: ".78rem", color: "var(--mgray)" }}>{clas}</td>
+                <td className="td-root">{madi}</td>
+                <td className="td-root">{mudar}</td>
+                <td className="td-root">{masd}</td>
+                <td style={{ fontSize: ".78rem", color: "var(--dgray)" }}>{rhet}</td>
+                <td style={{ fontSize: ".75rem", color: "var(--red)" }}>{sp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="fi" style={{ borderTop: "1px solid rgba(201,147,59,.3)", marginTop: "1.5rem", paddingTop: "1rem", textAlign: "center", color: "rgba(255,255,255,.4)", fontStyle: "italic", fontSize: ".85rem" }}>
+        Next: Chapter 3 — الثلاثي المجرد (The Bare Trilateral Families)
+      </div>
+    </Slide>
+
+    </div>
+    <footer>Based on the <a href="#" rel="noopener">Bayyinah Dream Textbook</a> by Sumaya Al-Saadoon &nbsp;·&nbsp; Section 2: Sarf · Chapter 2 — الثلاثي المزيد فيه</footer>
+    {showTop && <button className="scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">↑</button>}
+  </>);
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

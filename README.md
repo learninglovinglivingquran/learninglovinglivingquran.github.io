@@ -5,9 +5,13 @@
 ## Arabic
 
 ### Basic nahw
-- [Nahw - Ism](./nahw/nahw_ism.html)
-- [Nahw - Fi'l](./nahw/nahw_fil.html)
-- [Nahw - Miscellaneous](./nahw/nahw_misc.html)
+- [Nahw - Intro & Ism](./nahw/nahw_ch1-5.html)
+- [Nahw - Fi'l](./nahw/nahw_6-8.html)
+- [Nahw - Miscellaneous](./nahw/nahw_9-end.html)
+
+### Basic Sarf
+- [Sarf - Intro](./sarf/sarf_ch1.html)
+- [Sarf - Thulathi Mazid Fih - The 9 Augmented Families](./sarf/sarf_ch2.html)
 
 # App
 Start here: [LQ App](./app/README.md)

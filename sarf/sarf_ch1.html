@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bayyinah Dream — Arabic of the Quran · Section 2: Sarf · Chapter 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #1A2744; --navy2: #22304A; --navy3: #1D2A3D;
+      --gold:  #C9933B; --gold2: #E8AD55;
+      --cream: #F5F0E8; --cream2: #EDE7D8;
+      --teal:  #1D7A8C; --teal2: #258EA3;
+      --white: #FFFFFF; --dgray: #2D2D2D; --mgray: #5A5A6A; --lgray: #E8E4DC;
+      --green: #2E7D52; --purple: #6B3FA0; --red: #B94040;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dgray); min-height: 100vh; }
+    .arabic { font-family: 'Noto Naskh Arabic', serif; direction: rtl; }
+    .serif  { font-family: 'Cormorant Garamond', serif; }
+
+    /* PROGRESS */
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--teal)); z-index: 1000; transition: width .2s ease; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(26,39,68,.97); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(201,147,59,.25); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; height: 58px; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: .04em; white-space: nowrap; }
+    .nav-logo span { color: var(--white); }
+    .nav-logo .tag-s2 { font-size: .65rem; font-weight: 700; background: var(--teal); color: #fff; padding: .15rem .45rem; border-radius: 3px; margin-left: .4rem; letter-spacing: .05em; vertical-align: middle; }
+    .nav-chapters { display: flex; gap: .15rem; align-items: center; overflow-x: auto; max-width: 78%; }
+    .nav-btn { background: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: .72rem; color: rgba(255,255,255,.5); padding: .3rem .6rem; border-radius: 4px; transition: all .2s; white-space: nowrap; }
+    .nav-btn:hover { color: var(--gold); background: rgba(201,147,59,.1); }
+    .nav-btn.active { color: var(--gold); background: rgba(201,147,59,.18); }
+    .nav-counter { font-size: .7rem; color: rgba(255,255,255,.3); border-left: 1px solid rgba(255,255,255,.1); padding-left: .9rem; margin-left: .4rem; white-space: nowrap; }
+
+    /* SLIDES */
+    .slides-wrapper { padding-top: 58px; }
+    .slide { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+    .slide-inner { max-width: 1000px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+    .slide-dark { background: var(--navy); color: var(--white); }
+    .slide-dark::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(29,122,140,.18) 0%, transparent 60%), radial-gradient(ellipse at 10% 80%, rgba(201,147,59,.1) 0%, transparent 50%); pointer-events: none; }
+    .slide-light { background: var(--cream); color: var(--dgray); }
+    .slide-light::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 10%, rgba(29,122,140,.07) 0%, transparent 55%); pointer-events: none; }
+    .slide-cream2 { background: var(--cream2); color: var(--dgray); }
+    .slide-cream2::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 15%, rgba(201,147,59,.08) 0%, transparent 55%); pointer-events: none; }
+
+    /* DECORATIONS */
+    .gold-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--gold), var(--teal), var(--gold)); }
+    .section-tag { display: inline-block; background: var(--gold); color: var(--navy); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .3rem .85rem; border-radius: 4px; margin-bottom: 1.2rem; }
+    .section-tag-teal   { background: var(--teal);   color: #fff; }
+    .section-tag-green  { background: var(--green);  color: #fff; }
+    .section-tag-purple { background: var(--purple); color: #fff; }
+    .section-tag-navy   { background: var(--navy);   color: #fff; }
+    .section-tag-s2 { background: linear-gradient(135deg, var(--teal), var(--navy)); color: #fff; }
+
+    /* TITLES */
+    .slide-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.8rem; }
+    .slide-dark .slide-title { color: var(--white); }
+    .slide-light .slide-title, .slide-cream2 .slide-title { color: var(--navy); }
+
+    /* HERO */
+    .hero-bismillah { font-family: 'Noto Naskh Arabic', serif; font-size: clamp(1.4rem, 4vw, 2rem); color: var(--gold); text-align: center; margin-bottom: 1.5rem; direction: rtl; animation: fadeUp .8s ease both; }
+    .hero-eyebrow { text-align: center; letter-spacing: .2em; font-size: .8rem; font-weight: 600; color: var(--teal); text-transform: uppercase; margin-bottom: .75rem; animation: fadeUp .8s .1s ease both; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 700; line-height: 1.05; color: var(--white); text-align: center; margin-bottom: 1rem; animation: fadeUp .8s .2s ease both; }
+    .hero-sub { text-align: center; color: rgba(255,255,255,.6); font-size: 1.05rem; margin-bottom: .5rem; animation: fadeUp .8s .3s ease both; }
+    .hero-divider { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 1.5rem auto; animation: fadeUp .8s .4s ease both; }
+    .hero-tagline { text-align: center; color: var(--gold); font-style: italic; font-size: .9rem; animation: fadeUp .8s .5s ease both; }
+    .hero-credit { text-align: center; color: rgba(255,255,255,.3); font-size: .8rem; margin-top: 2.5rem; animation: fadeUp .8s .6s ease both; }
+
+    /* HIGHLIGHT BOXES */
+    .highlight-dark { background: var(--navy); color: var(--white); border-radius: 8px; padding: 1rem 1.3rem; font-size: .95rem; font-weight: 600; margin-bottom: 1.3rem; }
+    .highlight-gold { background: var(--gold); color: var(--navy); border-radius: 8px; padding: 1rem 1.3rem; font-size: .95rem; font-weight: 600; margin-bottom: 1.3rem; }
+    .highlight-teal { background: var(--teal); color: var(--white); border-radius: 8px; padding: 1rem 1.3rem; font-size: .95rem; font-weight: 600; margin-bottom: 1.3rem; }
+    .note-box { background: var(--lgray); border-radius: 8px; padding: .9rem 1.2rem; font-size: .87rem; color: var(--navy); margin-top: 1.2rem; }
+    .note-box strong { color: var(--gold); }
+    .note-dark { background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); }
+
+    /* COLUMNS */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media(max-width:680px) { .two-col { grid-template-columns: 1fr; } }
+    .three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    @media(max-width:700px) { .three-col { grid-template-columns: 1fr; } }
+    .col-card { background: var(--white); border: 1px solid var(--lgray); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.05); }
+    .col-card-header { padding: .85rem 1.2rem; color: var(--white); font-weight: 700; font-size: .82rem; letter-spacing: .04em; }
+    .col-card-body { padding: 1rem 1.2rem; }
+
+    /* ANALOGY BOX */
+    .analogy-box { background: var(--white); border: 2px dashed var(--gold); border-radius: 12px; padding: 1.5rem; text-align: center; }
+    .analogy-word { font-family: 'Noto Naskh Arabic', serif; font-size: 2.5rem; font-weight: 700; color: var(--navy); direction: rtl; margin-bottom: .5rem; }
+    .analogy-label { font-size: .8rem; font-weight: 700; color: var(--mgray); text-transform: uppercase; letter-spacing: .08em; }
+
+    /* ROOT DISPLAY */
+    .root-display { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .root-letter { text-align: center; }
+    .root-letter-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 3rem; font-weight: 700; line-height: 1; display: block; }
+    .root-letter-name { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-top: .4rem; }
+    .root-letter-name-ar { font-family: 'Noto Naskh Arabic', serif; font-size: .85rem; display: block; margin-top: .15rem; direction: rtl; }
+
+    /* WORD GRID - same root */
+    .word-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .7rem; margin: 1rem 0; }
+    @media(max-width:600px) { .word-grid { grid-template-columns: repeat(2,1fr); } }
+    .word-tile { background: var(--white); border: 1px solid var(--lgray); border-radius: 8px; padding: .8rem .7rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.04); transition: transform .18s; }
+    .word-tile:hover { transform: translateY(-2px); }
+    .word-tile-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold); direction: rtl; }
+    .word-tile-en { font-size: .75rem; color: var(--mgray); margin-top: .3rem; }
+    .word-tile-root { font-size: .7rem; color: var(--teal); font-weight: 600; margin-top: .2rem; }
+
+    /* FAMILY TABLE */
+    .family-table { width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; }
+    .family-table th { padding: .7rem 1rem; font-size: .78rem; font-weight: 700; text-align: left; letter-spacing: .04em; }
+    .family-table td { padding: .65rem 1rem; font-size: .88rem; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .family-table tr:last-child td { border-bottom: none; }
+    .family-table .td-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.1rem; color: var(--gold2); text-align: center; }
+    .family-table .td-label { font-family: 'Noto Naskh Arabic', serif; font-size: .95rem; color: rgba(255,255,255,.7); direction: rtl; }
+    .family-table .td-en { font-size: .82rem; color: rgba(255,255,255,.6); }
+    .family-table .td-type { font-size: .68rem; font-weight: 700; padding: .15rem .45rem; border-radius: 3px; }
+
+    /* DIVIDER */
+    .divider-ch { font-size: .78rem; font-weight: 700; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .5rem; text-align: center; }
+    .divider-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem,7vw,4.5rem); font-weight: 700; color: var(--white); margin-bottom: .4rem; text-align: center; }
+    .divider-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem,3vw,1.9rem); color: rgba(255,255,255,.55); margin-bottom: 1.5rem; text-align: center; }
+    .divider-hr { width: 80px; height: 1.5px; background: var(--gold); margin: 0 auto 1.2rem; }
+    .divider-p { font-size: .95rem; color: rgba(255,255,255,.5); font-style: italic; margin-bottom: 2rem; text-align: center; }
+
+    /* STEP LIST */
+    .step-item { display: flex; gap: 1rem; align-items: flex-start; padding: .8rem 1.1rem; background: var(--white); border: 1px solid var(--lgray); border-radius: 8px; margin-bottom: .7rem; font-size: .9rem; color: var(--dgray); }
+    .step-num { background: var(--teal); color: var(--white); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 700; flex-shrink: 0; }
+
+    /* COMPARE CARDS */
+    .compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.2rem 0; }
+    @media(max-width:620px) { .compare-pair { grid-template-columns: 1fr; } }
+    .compare-card { border-radius: 12px; overflow: hidden; }
+    .compare-card-head { padding: 1.1rem 1.3rem .8rem; }
+    .compare-card-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1.1; direction: rtl; }
+    .compare-card-roman { font-family: 'Cormorant Garamond', serif; font-size: .9rem; font-weight: 600; letter-spacing: .12em; color: rgba(255,255,255,.7); text-transform: uppercase; margin-top: .25rem; }
+    .compare-card-body { background: var(--white); padding: 1rem 1.3rem; }
+    .compare-card-def { font-size: .88rem; color: var(--mgray); line-height: 1.6; }
+    .compare-card-feature { font-size: .8rem; font-weight: 700; color: var(--teal); margin-top: .4rem; }
+
+    /* FAMILIES GRID */
+    .families-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: .6rem; margin: 1rem 0; }
+    @media(max-width:700px) { .families-grid { grid-template-columns: repeat(3,1fr); } }
+    .family-chip { background: var(--white); border: 1px solid var(--lgray); border-radius: 8px; padding: .6rem .5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+    .family-chip-num { font-size: .62rem; font-weight: 700; color: var(--mgray); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .2rem; }
+    .family-chip-name { font-size: .72rem; font-weight: 700; color: var(--navy); }
+    .family-chip-extra { font-family: 'Noto Naskh Arabic', serif; font-size: .9rem; color: var(--gold); direction: rtl; margin-top: .2rem; }
+
+    /* CONTAINER VISUAL */
+    .container-visual { background: rgba(255,255,255,.08); border: 1px solid rgba(201,147,59,.3); border-radius: 10px; padding: 1.2rem; margin-bottom: .8rem; }
+    .container-visual-top { display: flex; gap: .8rem; align-items: center; margin-bottom: .5rem; flex-wrap: wrap; }
+    .cv-badge { font-size: .7rem; font-weight: 700; padding: .25rem .6rem; border-radius: 4px; }
+    .cv-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold2); direction: rtl; }
+    .cv-arrow { color: rgba(201,147,59,.5); font-size: 1rem; }
+    .cv-result { font-family: 'Noto Naskh Arabic', serif; font-size: 1.2rem; font-weight: 700; color: var(--teal2); direction: rtl; }
+    .cv-note { font-size: .8rem; color: rgba(255,255,255,.55); margin-top: .3rem; }
+
+    /* RECAP ROWS */
+    .recap-row { display: flex; gap: 1rem; align-items: flex-start; background: rgba(255,255,255,.07); border: 1px solid rgba(201,147,59,.25); border-radius: 8px; padding: .95rem 1.2rem; margin-bottom: .8rem; }
+    .recap-row-label { font-size: .74rem; font-weight: 700; color: var(--gold); white-space: nowrap; padding-top: .1rem; min-width: 110px; }
+    .recap-row-text { font-size: .9rem; color: rgba(255,255,255,.85); line-height: 1.55; }
+
+    /* EXAMPLE PAIRS */
+    .ex-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+    @media(max-width:600px) { .ex-pair { grid-template-columns: 1fr; } }
+    .ex-box { background: var(--white); border: 1px solid var(--lgray); border-radius: 10px; padding: 1rem 1.2rem; }
+    .ex-ar { font-family: 'Noto Naskh Arabic', serif; font-size: 1.35rem; font-weight: 700; color: var(--navy); direction: rtl; margin-bottom: .35rem; }
+    .ex-en { font-size: .87rem; color: var(--mgray); font-style: italic; }
+    .ex-note { font-size: .79rem; color: var(--teal); margin-top: .3rem; font-weight: 600; }
+
+    /* AGENDA */
+    .agenda-card { display: flex; align-items: center; gap: 1.2rem; background: var(--white); border: 1px solid var(--lgray); border-radius: 10px; padding: 1rem 1.4rem; margin-bottom: .9rem; box-shadow: 0 2px 12px rgba(0,0,0,.05); transition: transform .2s, box-shadow .2s; }
+    .agenda-card:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0,0,0,.09); }
+    .agenda-num { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .88rem; color: var(--white); flex-shrink: 0; }
+    .agenda-card-label { font-weight: 600; font-size: .85rem; margin-bottom: .15rem; }
+    .agenda-card-desc { font-size: .88rem; color: var(--mgray); }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,.35); text-align: center; padding: 1.8rem; font-size: .78rem; border-top: 1px solid rgba(201,147,59,.2); }
+    footer a { color: var(--gold); text-decoration: none; }
+    .scroll-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 40px; height: 40px; border-radius: 50%; background: var(--gold); color: var(--navy); border: none; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,.2); transition: opacity .3s, transform .2s; z-index: 99; }
+    .scroll-top:hover { transform: translateY(-2px); }
+
+    /* ANIMATION */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media(max-width:768px) { .nav-chapters { display: none; } .slide { padding: 4.5rem 1.2rem 3rem; } }
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const NAV_LINKS = [
+  { label: "Intro",         id: "slide-intro" },
+  { label: "Overview",      id: "slide-overview" },
+  { label: "1.1 What is Sarf?", id: "slide-what" },
+  { label: "1.2 جامد vs مشتق", id: "slide-jamid" },
+  { label: "1.3 Contents",  id: "slide-contents" },
+  { label: "Root Letters",  id: "slide-roots" },
+  { label: "1.3 Container", id: "slide-container" },
+  { label: "Family Members",id: "slide-members" },
+  { label: "أفعال Members", id: "slide-af3al" },
+  { label: "أسماء Members", id: "slide-asma" },
+  { label: "1.4 Families",  id: "slide-families" },
+  { label: "مجرد",          id: "slide-mujarrad" },
+  { label: "مزيد فيه",     id: "slide-mazid" },
+  { label: "10 Families",   id: "slide-tenfam" },
+  { label: "Summary",       id: "slide-summary" },
+];
+
+function useScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const fn = () => { const el = document.documentElement; const s = el.scrollTop || document.body.scrollTop; const t = el.scrollHeight - el.clientHeight; setP(t > 0 ? (s/t)*100 : 0); };
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+  return p;
+}
+function useActiveSection(ids) {
+  const [active, setActive] = useState(ids[0]);
+  useEffect(() => {
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) setActive(e.target.id); }), { threshold: .35 });
+    ids.forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, [ids]);
+  return active;
+}
+function useFadeIn() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("visible"); }), { threshold: .12 });
+    document.querySelectorAll(".fade-in").forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+}
+function useShowTop() {
+  const [show, setShow] = useState(false);
+  useEffect(() => { const fn = () => setShow(window.scrollY > 400); window.addEventListener("scroll", fn, { passive: true }); return () => window.removeEventListener("scroll", fn); }, []);
+  return show;
+}
+
+const STag = ({ children, color }) => <span className={`section-tag${color ? " section-tag-"+color : ""}`}>{children}</span>;
+const STitle = ({ children }) => <h2 className="slide-title">{children}</h2>;
+
+function Slide({ id, dark, cream2, children }) {
+  const cls = dark ? "slide slide-dark" : cream2 ? "slide slide-cream2" : "slide slide-light";
+  return (
+    <section className={cls} id={id}>
+      {!dark && <div className="gold-bar" />}
+      <div className="slide-inner">{children}</div>
+    </section>
+  );
+}
+
+const FAMILY_MEMBERS = [
+  { num: 1, label: "الفِعْلُ الْمَاضِي",              example: "عَلَّمَ",   meaning: "he taught",              type: "فعل", typecol: "#C9933B" },
+  { num: 2, label: "الفِعْلُ الْمُضَارِع",             example: "يُعَلِّمُ",  meaning: "he teaches",             type: "فعل", typecol: "#C9933B" },
+  { num: 3, label: "الْمَاضِي الْمَبْنِيُّ لِلْمَجْهُول", example: "عُلِّمَ",   meaning: "he was taught",          type: "فعل", typecol: "#C9933B" },
+  { num: 4, label: "الْمُضَارِع الْمَبْنِيُّ لِلْمَجْهُول",example: "يُعَلَّمُ",  meaning: "he is taught",           type: "فعل", typecol: "#C9933B" },
+  { num: 5, label: "فِعْلُ الْأَمْر",                  example: "عَلِّمْ",   meaning: "teach!",                 type: "فعل", typecol: "#C9933B" },
+  { num: 6, label: "فِعْلُ النَّهْي",                   example: "لَا تُعَلِّمْ", meaning: "don't teach!",          type: "فعل", typecol: "#C9933B" },
+  { num: 7, label: "الْمَصْدَر",                        example: "تَعْلِيمًا",  meaning: "the idea of teaching / education", type: "اسم", typecol: "#1D7A8C" },
+  { num: 8, label: "اِسْمُ الْفَاعِل",                  example: "مُعَلِّمٌ",  meaning: "teacher (the one who teaches)", type: "اسم", typecol: "#1D7A8C" },
+  { num: 9, label: "اِسْمُ الْمَفْعُول",                example: "مُعَلَّمٌ",  meaning: "one who is taught",      type: "اسم", typecol: "#1D7A8C" },
+  { num:10, label: "اِسْمُ الظَّرْف",                   example: "مُعَلَّمٌ",  meaning: "a time/place of teaching", type: "اسم", typecol: "#1D7A8C" },
+];
+
+const MUJARRAD_EXTRA = [
+  { label: "اِسْمُ الْآلَة",     example: "مِيزَانٌ",   meaning: "a tool used to weigh (scale)",    note: "Tools & devices" },
+  { label: "اِسْمُ التَّفْضِيل", example: "أَكْبَرُ",   meaning: "bigger (comparative/superlative)", note: "Comparatives" },
+  { label: "اِسْمُ الصِّفَة",    example: "كَرِيمٌ",    meaning: "noble/generous (permanent quality)",note: "Permanent adjectives" },
+  { label: "اِسْمُ الْمُبَالَغَة",example: "خَوَّانٌ",   meaning: "a constant/excessive traitor",    note: "Hyperbolic فاعل" },
+];
+
+const MAZID_FAMILIES = [
+  { num: "II",   ar: "فَعَّلَ",     extra: "شدة on ع",         ex: "عَلَّمَ",  exen: "he taught" },
+  { num: "III",  ar: "فَاعَلَ",     extra: "ألف after ف",       ex: "جَاهَدَ", exen: "he strove" },
+  { num: "IV",   ar: "أَفْعَلَ",    extra: "أ before ف",        ex: "أَسْلَمَ", exen: "he submitted" },
+  { num: "V",    ar: "تَفَعَّلَ",   extra: "ت + شدة on ع",     ex: "تَعَلَّمَ", exen: "he learned" },
+  { num: "VI",   ar: "تَفَاعَلَ",   extra: "ت + ألف after ف",  ex: "تَعَاوَنَ", exen: "they cooperated" },
+  { num: "VII",  ar: "اِنْفَعَلَ",  extra: "ان prefix",         ex: "اِنْقَلَبَ", exen: "he turned/flipped" },
+  { num: "VIII", ar: "اِفْتَعَلَ",  extra: "ا + ت after ف",    ex: "اِجْتَمَعَ", exen: "they gathered" },
+  { num: "IX",   ar: "اِفْعَلَّ",   extra: "ا prefix + شدة on ل", ex: "اِحْمَرَّ", exen: "it became red" },
+  { num: "X",    ar: "اِسْتَفْعَلَ",extra: "استـ prefix",       ex: "اِسْتَغْفَرَ", exen: "he sought forgiveness" },
+];
+
+function App() {
+  const ids      = NAV_LINKS.map(n => n.id);
+  const progress = useScrollProgress();
+  const active   = useActiveSection(ids);
+  const showTop  = useShowTop();
+  useFadeIn();
+
+  return (
+    <>
+      <div id="progress-bar" style={{ width: `${progress}%` }} />
+
+      <nav>
+        <div className="nav-inner">
+          <a className="nav-logo" href="#">
+            Bayyinah <span>Dream</span>
+            <span className="tag-s2">Section 2 · Sarf</span>
+          </a>
+          <div className="nav-chapters">
+            {NAV_LINKS.map(n => (
+              <button key={n.id} className={`nav-btn${active === n.id ? " active" : ""}`}
+                onClick={() => document.getElementById(n.id)?.scrollIntoView({ behavior: "smooth" })}>
+                {n.label}
+              </button>
+            ))}
+          </div>
+          <div className="nav-counter">{NAV_LINKS.findIndex(n => n.id === active) + 1} / {NAV_LINKS.length}</div>
+        </div>
+      </nav>
+
+      <div className="slides-wrapper">
+
+        {/* ── HERO ── */}
+        <Slide id="slide-intro" dark>
+          <div className="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <div className="hero-eyebrow">Bayyinah Dream · Section 2</div>
+          <h1 className="hero-title">الصَّرْف<br/>Morphology</h1>
+          <p className="hero-sub">Chapter 1 — An Introduction to Sarf</p>
+          <div className="hero-divider" />
+          <p className="hero-tagline">The study of word patterns and how meaning is derived from them</p>
+          <div className="hero-credit">Based on the Dream Textbook · Sumaya Al-Saadoon</div>
+        </Slide>
+
+        {/* ── OVERVIEW ── */}
+        <Slide id="slide-overview">
+          <div className="fade-in"><STag color="s2">Section 2 · Chapter 1</STag></div>
+          <div className="fade-in"><STitle>What This Chapter Covers</STitle></div>
+          {[
+            { num: "1.1", color: "var(--gold)",   label: "What is Sarf?",             desc: "The science of word patterns and how meaning is derived" },
+            { num: "1.2", color: "var(--teal)",   label: "جامد vs مشتق",              desc: "Rigid words (cannot be transformed) vs derivable words (can be)" },
+            { num: "1.3", color: "var(--navy)",   label: "Contents and Container",    desc: "The three root letters (الجذر) and the pattern they sit in (الصيغة)" },
+            { num: "",    color: "var(--green)",  label: "Family Members",             desc: "10 shared members across all families: 6 أفعال + 4 أسماء" },
+            { num: "1.4", color: "var(--purple)", label: "مجرد vs مزيد فيه",          desc: "Two major groups of Sarf families — and the 9 مزيد فيه families" },
+          ].map((a, i) => (
+            <div key={i} className="agenda-card fade-in">
+              <div className="agenda-num" style={{ background: a.color }}>{a.num || "✦"}</div>
+              <div>
+                <div className="agenda-card-label">{a.label}</div>
+                <div className="agenda-card-desc">{a.desc}</div>
+              </div>
+            </div>
+          ))}
+          <div className="note-box fade-in">
+            <strong>Connection to Nahw (Section 1):</strong> In Nahw we learned HOW words interact with each other. In Sarf we learn HOW words are formed and how to derive multiple words from a single root. Both sciences work together.
+          </div>
+        </Slide>
+
+        {/* ── 1.1 WHAT IS SARF ── */}
+        <Slide id="slide-what" dark>
+          <div className="fade-in"><STag>1.1 — What is Sarf?</STag></div>
+          <div className="fade-in"><STitle>الصَّرْف — The Science of Word Patterns</STitle></div>
+          <div className="highlight-gold fade-in">
+            <strong>الصَّرْف</strong> is the study of <strong>word patterns</strong> and how meaning can be derived based on these patterns. It is a mechanism to recognize the pattern of a majority of words in Arabic — and to construct many words from a single given word.
+          </div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background: "var(--teal)" }}>What Sarf Lets You Do</div>
+              <div className="col-card-body">
+                {[
+                  ["Recognize",  "Identify the root and pattern of almost any Arabic word"],
+                  ["Derive",     "Generate all family members from a single root word"],
+                  ["Understand", "Know how form relates to meaning — same root, related meanings"],
+                  ["Analyze",    "Spot passive forms, مصادر, active/passive participles, and more"],
+                ].map(([t, d]) => (
+                  <div key={t} className="step-item" style={{ marginBottom: ".5rem" }}>
+                    <div className="step-num" style={{ background: "var(--gold)", color: "var(--navy)" }}>→</div>
+                    <div><strong style={{ fontSize: ".85rem" }}>{t}</strong><br/><span style={{ fontSize: ".82rem", color: "var(--mgray)" }}>{d}</span></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="fade-in" style={{ textAlign: "center", margin: "1rem 0" }}>
+                <div style={{ fontSize: ".8rem", fontWeight: 700, color: "rgba(255,255,255,.5)", textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".7rem" }}>Same root عَلَّمَ → many words</div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: ".5rem" }}>
+                  {[
+                    ["عَلَّمَ", "he taught"],
+                    ["يُعَلِّمُ", "he teaches"],
+                    ["عِلْمٌ", "knowledge"],
+                    ["مُعَلِّمٌ", "teacher"],
+                    ["تَعَلَّمَ", "he learned"],
+                    ["مَعْلُومَةٌ", "a fact"],
+                    ["تَعْلِيمٌ", "education"],
+                    ["أَعْلَمُ", "most knowledgeable"],
+                  ].map(([ar, en]) => (
+                    <div key={ar} style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(201,147,59,.2)", borderRadius: "6px", padding: ".5rem .7rem", textAlign: "center" }}>
+                      <div className="arabic" style={{ color: "var(--gold)", fontSize: "1.1rem" }}>{ar}</div>
+                      <div style={{ fontSize: ".72rem", color: "rgba(255,255,255,.5)", marginTop: ".15rem" }}>{en}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ fontSize: ".75rem", color: "rgba(255,255,255,.35)", fontStyle: "italic", marginTop: ".6rem" }}>All share root letters: ع · ل · م</div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* ── 1.2 JAMID VS MUSHTAQ ── */}
+        <Slide id="slide-jamid">
+          <div className="fade-in"><STag>1.2 — جامد vs مشتق</STag></div>
+          <div className="fade-in"><STitle>Two Types of Arabic Words</STitle></div>
+          <div className="highlight-dark fade-in">
+            Most Arabic words are <strong style={{ color: "var(--gold)" }}>مشتق</strong> (derivable). In our study of Sarf we concern ourselves only with <strong style={{ color: "var(--gold)" }}>مشتق</strong> words.
+          </div>
+          <div className="compare-pair fade-in">
+            <div className="compare-card">
+              <div className="compare-card-head" style={{ background: "var(--navy)" }}>
+                <div className="compare-card-arabic">جَامِد</div>
+                <div className="compare-card-roman">Jāmid — Rigid</div>
+              </div>
+              <div className="compare-card-body">
+                <div className="compare-card-def">Words that <strong>cannot</strong> be transformed or derived. They have no Sarf of their own.</div>
+                <div className="compare-card-feature">Examples: اسماء that refer to specific things — أسد (lion), ماء (water), تراب (dirt) — often concrete nouns without a derivable root pattern.</div>
+              </div>
+            </div>
+            <div className="compare-card">
+              <div className="compare-card-head" style={{ background: "var(--gold)" }}>
+                <div className="compare-card-arabic">مُشْتَق</div>
+                <div className="compare-card-roman">Mushtaq — Derivable</div>
+              </div>
+              <div className="compare-card-body">
+                <div className="compare-card-def">Words that <strong>can</strong> be transformed and derived. They follow a specific pattern and can generate an entire family of related words.</div>
+                <div className="compare-card-feature">These are the words we study in Sarf. Examples: كَتَبَ (to write) → كِتَابٌ، مَكْتُوبٌ، كَاتِبٌ، مَكْتَبٌ…</div>
+              </div>
+            </div>
+          </div>
+          <div className="note-box fade-in">
+            <strong>Technical terms to memorize:</strong><br/>
+            <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.1rem" }}>الْجَامِد</span> = a word that cannot be transformed &nbsp;|&nbsp;
+            <span className="arabic" style={{ color: "var(--teal)", fontSize: "1.1rem" }}>الْمُشْتَق</span> = a word that can be transformed and derived
+          </div>
+        </Slide>
+
+        {/* ── 1.3 CONTENTS ── */}
+        <Slide id="slide-contents" dark>
+          <div className="fade-in"><STag>1.3 — Contents &amp; Container</STag></div>
+          <div className="fade-in"><STitle>Every مشتق Word Has Two Elements</STitle></div>
+          <div className="highlight-gold fade-in">
+            Every مشتق word = <strong>CONTENTS</strong> (the root letters) + <strong>CONTAINER</strong> (the pattern/shape). The same contents can be poured into different containers — producing related but distinct meanings.
+          </div>
+          <div className="two-col fade-in">
+            <div>
+              <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(201,147,59,.3)", borderRadius: "10px", padding: "1.2rem", marginBottom: "1rem" }}>
+                <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".7rem", fontSize: ".88rem" }}>CONTENTS = الجذر (Root Letters)</div>
+                <div style={{ fontSize: ".87rem", color: "rgba(255,255,255,.8)", lineHeight: 1.6, marginBottom: ".8rem" }}>
+                  The three root letters are the meaning-core of the word. They appear in every derived word from that family, regardless of the shape.
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: ".75rem", color: "rgba(255,255,255,.45)", marginBottom: ".4rem" }}>Root ك · ت · ب (to write)</div>
+                  <div style={{ display: "flex", gap: ".5rem", justifyContent: "center", flexWrap: "wrap" }}>
+                    {[["كَتَبَ","wrote"],["يَكْتُبُ","writes"],["كِتَابٌ","book"],["كَاتِبٌ","writer"],["مَكْتُوبٌ","written"],["مَكْتَبٌ","desk/office"]].map(([ar,en]) => (
+                      <div key={ar} style={{ background: "rgba(201,147,59,.15)", borderRadius: "5px", padding: ".3rem .6rem", textAlign: "center" }}>
+                        <div className="arabic" style={{ color: "var(--gold)", fontSize: "1rem" }}>{ar}</div>
+                        <div style={{ fontSize: ".68rem", color: "rgba(255,255,255,.45)" }}>{en}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="note-box note-dark" style={{ fontSize: ".85rem" }}>
+                <strong style={{ color: "var(--gold)" }}>MEMORIZE:</strong> The technical term for root letters is <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.1rem" }}>الْجَذْر</span>
+              </div>
+            </div>
+            <div>
+              <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(29,122,140,.4)", borderRadius: "10px", padding: "1.2rem" }}>
+                <div style={{ fontWeight: 700, color: "var(--teal2)", marginBottom: ".7rem", fontSize: ".88rem" }}>CONTAINER = الصيغة (Pattern/Shape)</div>
+                <div style={{ fontSize: ".87rem", color: "rgba(255,255,255,.8)", lineHeight: 1.6, marginBottom: ".8rem" }}>
+                  Everything in the word aside from the three root letters is the container. This includes all حركات AND any extra letters.
+                </div>
+                <div style={{ textAlign: "center", marginBottom: ".6rem" }}>
+                  <div style={{ fontSize: ".75rem", color: "rgba(255,255,255,.45)", marginBottom: ".4rem" }}>اسم فاعل container: مُـ_ِ_ٌ</div>
+                  <div style={{ display: "flex", gap: ".5rem", justifyContent: "center", flexWrap: "wrap" }}>
+                    {[["مُرْسِلٌ","sender","ر·س·ل"],["مُؤْمِنٌ","believer","ء·م·ن"],["مُسْلِمٌ","submitter","س·ل·م"],["مُصْلِحٌ","reformer","ص·ل·ح"]].map(([ar,en,root]) => (
+                      <div key={ar} style={{ background: "rgba(29,122,140,.2)", borderRadius: "5px", padding: ".3rem .6rem", textAlign: "center" }}>
+                        <div className="arabic" style={{ color: "var(--teal2)", fontSize: "1rem" }}>{ar}</div>
+                        <div style={{ fontSize: ".68rem", color: "rgba(255,255,255,.45)" }}>{root}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ fontSize: ".72rem", color: "rgba(255,255,255,.35)", marginTop: ".4rem", fontStyle: "italic" }}>Same container, different contents — they all rhyme!</div>
+                </div>
+              </div>
+              <div className="note-box note-dark" style={{ marginTop: ".8rem", fontSize: ".85rem" }}>
+                <strong style={{ color: "var(--gold)" }}>MEMORIZE:</strong> The technical term for family member/pattern is <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.1rem" }}>الصِّيغَة</span>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* ── ROOT LETTERS ── */}
+        <Slide id="slide-roots">
+          <div className="fade-in"><STag>1.3 — Root Letter Terminology</STag></div>
+          <div className="fade-in"><STitle>Naming the Root Letters — Using فَعَلَ as the Model</STitle></div>
+          <div className="highlight-dark fade-in">
+            The three root letters are named using the letters of the word <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.2rem" }}>فَعَلَ</span> as a model. Every root letter has a name and a position.
+          </div>
+          <div className="root-display fade-in">
+            {[
+              { ar: "ف", name: "فاء الكلمة", name_ar: "فَاءُ الكَلِمَة", pos: "1st root letter", color: "var(--gold)" },
+              { ar: "ع", name: "عين الكلمة", name_ar: "عَيْنُ الكَلِمَة", pos: "2nd root letter", color: "var(--teal)" },
+              { ar: "ل", name: "لام الكلمة", name_ar: "لَامُ الكَلِمَة", pos: "3rd root letter", color: "var(--navy)" },
+            ].map(r => (
+              <div key={r.ar} className="root-letter">
+                <span className="root-letter-ar arabic" style={{ color: r.color }}>{r.ar}</span>
+                <div className="root-letter-name" style={{ color: r.color === "var(--navy)" ? "var(--navy)" : r.color }}>{r.pos}</div>
+                <span className="root-letter-name-ar" style={{ color: "var(--mgray)" }}>{r.name_ar}</span>
+              </div>
+            ))}
+          </div>
+          <div className="highlight-gold fade-in" style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+            Example: Root letters <strong>ك · ت · ب</strong> &nbsp;→&nbsp;
+            <span className="arabic" style={{ fontSize: "1.1rem" }}>ك = فاءُ الكلمة &nbsp;|&nbsp; ت = عينُ الكلمة &nbsp;|&nbsp; ب = لامُ الكلمة</span>
+          </div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background: "var(--navy)" }}>Identifying Root Letters</div>
+              <div className="col-card-body">
+                <div style={{ fontSize: ".88rem", color: "var(--mgray)", lineHeight: 1.6, marginBottom: ".8rem" }}>
+                  To find the root, remove all the "container" elements — the حركات and any extra letters. What remains are the three root letters (الجذر).
+                </div>
+                {[
+                  { word: "مُعَلِّمٌ", root: "ع · ل · م", container: "مُـ + شدة + tanwīn" },
+                  { word: "مَكْتُوبٌ", root: "ك · ت · م", container: "مَـ_ْ_ُو_ٌ" },
+                  { word: "اِسْتَغْفَرَ", root: "غ · ف · ر", container: "اِسْتَـ + حركات" },
+                  { word: "تَعَاوُنٌ", root: "ع · و · ن", container: "تَـ + ا + حركات" },
+                ].map(e => (
+                  <div key={e.word} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: ".4rem 0", borderBottom: "1px solid var(--lgray)", fontSize: ".85rem" }}>
+                    <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.05rem" }}>{e.word}</span>
+                    <span style={{ color: "var(--teal)", fontWeight: 600 }}>Root: {e.root}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background: "var(--teal)" }}>Why فَعَلَ As the Model?</div>
+              <div className="col-card-body">
+                <div style={{ fontSize: ".88rem", color: "var(--mgray)", lineHeight: 1.6 }}>
+                  The word <span className="arabic" style={{ color: "var(--gold)", fontSize: "1rem" }}>فَعَلَ</span> (to do / to act) is used as a placeholder because it is a simple, common verb with three distinct letters. Its letters serve as a universal naming convention:<br/><br/>
+                  <strong>فاء الكلمة</strong> = position 1 (like the ف in فَعَلَ)<br/>
+                  <strong>عين الكلمة</strong> = position 2 (like the ع in فَعَلَ)<br/>
+                  <strong>لام الكلمة</strong> = position 3 (like the ل in فَعَلَ)<br/><br/>
+                  When grammarians say a word is on the pattern "مُفَعِّل" — the ف, ع, ل represent the three root letters of whatever word we are analyzing.
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* ── CONTAINER ── */}
+        <Slide id="slide-container" dark>
+          <div className="fade-in"><STag>1.3 — The Container</STag></div>
+          <div className="fade-in"><STitle>What Is the Container?</STitle></div>
+          <div className="highlight-gold fade-in">
+            The <strong>container</strong> (الصيغة) = everything in the word that is NOT the three root letters. This includes all حركات AND any extra letters added to the word.
+          </div>
+          <div className="fade-in" style={{ marginBottom: "1.3rem" }}>
+            <div style={{ textAlign: "center", marginBottom: ".8rem", fontSize: ".85rem", color: "rgba(255,255,255,.6)" }}>Same family's اسم فاعل — different contents, same container pattern مُفَعِّل</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: ".6rem" }}>
+              {[
+                { ar: "مُرْسِلٌ",  root: "ر·س·ل",  en: "sender" },
+                { ar: "مُؤْمِنٌ",  root: "ء·م·ن",  en: "believer" },
+                { ar: "مُشْرِكٌ",  root: "ش·ر·ك",  en: "polytheist" },
+                { ar: "مُسْلِمٌ",  root: "س·ل·م",  en: "Muslim" },
+                { ar: "مُصْلِحٌ",  root: "ص·ل·ح",  en: "reformer" },
+                { ar: "مُفْسِدٌ",  root: "ف·س·د",  en: "corrupter" },
+                { ar: "مُحْسِنٌ",  root: "ح·س·ن",  en: "one who does good" },
+                { ar: "مُتَكَلِّمٌ", root: "ك·ل·م",  en: "speaker" },
+              ].map(w => (
+                <div key={w.ar} style={{ background: "rgba(255,255,255,.07)", border: "1px solid rgba(201,147,59,.25)", borderRadius: "8px", padding: ".6rem .5rem", textAlign: "center" }}>
+                  <div className="arabic" style={{ color: "var(--gold2)", fontSize: "1.1rem" }}>{w.ar}</div>
+                  <div style={{ fontSize: ".68rem", color: "rgba(255,255,255,.45)", marginTop: ".15rem" }}>{w.root}</div>
+                  <div style={{ fontSize: ".68rem", color: "rgba(255,255,255,.35)", fontStyle: "italic" }}>{w.en}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: "center", fontSize: ".72rem", color: "rgba(255,255,255,.35)", marginTop: ".5rem", fontStyle: "italic" }}>They all rhyme — same container. Different meaning-cores.</div>
+          </div>
+          <div className="two-col fade-in">
+            <div style={{ background: "rgba(255,255,255,.07)", border: "1px solid rgba(201,147,59,.25)", borderRadius: "10px", padding: "1rem 1.2rem" }}>
+              <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".7rem", fontSize: ".85rem" }}>Family features — what sets families apart:</div>
+              {[
+                ["Family II",   "Extra شدة on عين الكلمة",  "عَلَّمَ → شدة on ل"],
+                ["Family III",  "Extra ألف after فاء الكلمة","جَاهَدَ → ا after ج"],
+                ["Family IV",   "Extra أ before فاء الكلمة", "أَسْلَمَ → أ before س"],
+                ["Family V",    "ت prefix + شدة on عين",    "تَعَلَّمَ → ت + شدة on ل"],
+                ["Family X",    "اِسْتَـ prefix",             "اِسْتَغْفَرَ → استـ"],
+              ].map(([fam, feat, ex]) => (
+                <div key={fam} style={{ display: "flex", gap: ".8rem", padding: ".35rem 0", borderBottom: "1px solid rgba(255,255,255,.06)", fontSize: ".82rem" }}>
+                  <span style={{ color: "var(--gold2)", fontWeight: 700, minWidth: "80px" }}>{fam}</span>
+                  <span style={{ color: "rgba(255,255,255,.7)" }}>{feat}</span>
+                  <span className="arabic" style={{ color: "rgba(255,255,255,.45)", marginLeft: "auto", fontSize: ".95rem" }}>{ex.split("→")[1]}</span>
+                </div>
+              ))}
+            </div>
+            <div className="note-box note-dark">
+              <strong style={{ color: "var(--gold)" }}>KEY INSIGHT:</strong><br/>
+              Within each family, a given <strong>family member (الصيغة)</strong> will ALWAYS look the same — regardless of what contents (root letters) are inside. The container shape is fixed per family per member.<br/><br/>
+              This is the power of Sarf: once you know the 10 families and their 10 members, you can derive or recognize any word in Arabic.
+            </div>
+          </div>
+        </Slide>
+
+        {/* ── FAMILY MEMBERS INTRO ── */}
+        <Slide id="slide-members">
+          <div className="fade-in"><STag>1.3 — Family Members</STag></div>
+          <div className="fade-in"><STitle>Every Family Has the Same 10 Members</STitle></div>
+          <div className="highlight-dark fade-in">
+            Almost every Sarf family has the <strong style={{ color: "var(--gold)" }}>same 10 members</strong> — <strong style={{ color: "var(--gold2)" }}>6 أفعال</strong> and <strong style={{ color: "var(--teal2)" }}>4 أسماء</strong>. Think of a family: every family has a father, mother, son, daughter, etc. — but each family is unique.
+          </div>
+          <div className="fade-in" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
+            <div style={{ background: "rgba(201,147,59,.12)", border: "1px solid rgba(201,147,59,.4)", borderRadius: "10px", padding: "1rem 1.2rem", textAlign: "center" }}>
+              <div style={{ fontSize: ".72rem", fontWeight: 700, color: "var(--gold)", textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".4rem" }}>6 أفعال</div>
+              <div className="arabic" style={{ color: "var(--gold)", fontSize: "1rem", lineHeight: 1.8 }}>
+                ماضي · مضارع<br/>
+                ماضي للمجهول · مضارع للمجهول<br/>
+                أمر · نهي
+              </div>
+            </div>
+            <div style={{ background: "rgba(29,122,140,.12)", border: "1px solid rgba(29,122,140,.4)", borderRadius: "10px", padding: "1rem 1.2rem", textAlign: "center" }}>
+              <div style={{ fontSize: ".72rem", fontWeight: 700, color: "var(--teal)", textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".4rem" }}>4 أسماء</div>
+              <div className="arabic" style={{ color: "var(--teal2)", fontSize: "1rem", lineHeight: 1.8 }}>
+                المصدر<br/>
+                اسم الفاعل · اسم المفعول<br/>
+                اسم الظرف
+              </div>
+            </div>
+          </div>
+          <div className="note-box fade-in">
+            <strong>The technical term for "family member" is:</strong> <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.2rem" }}>الصِّيغَة</span>
+            <br/>Plural: <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.1rem" }}>الصِّيَغ</span>
+            &nbsp;·&nbsp; <strong>MEMORIZE</strong> this term and use it.
+          </div>
+        </Slide>
+
+        {/* ── THE 6 AFAL ── */}
+        <Slide id="slide-af3al" dark>
+          <div className="fade-in"><STag>Family Members — 6 أفعال</STag></div>
+          <div className="fade-in"><STitle>The Six Verb Members — Using عَلَّمَ (Family II)</STitle></div>
+          <div className="fade-in" style={{ overflowX: "auto" }}>
+            <table className="family-table" style={{ background: "rgba(255,255,255,.04)", borderRadius: "10px", overflow: "hidden" }}>
+              <thead>
+                <tr style={{ background: "var(--gold)" }}>
+                  <th style={{ color: "var(--navy)", padding: ".7rem 1rem", fontSize: ".78rem" }}>#</th>
+                  <th style={{ color: "var(--navy)", padding: ".7rem 1rem", fontSize: ".78rem" }}>Arabic Name</th>
+                  <th style={{ color: "var(--navy)", padding: ".7rem 1rem", fontSize: ".78rem" }}>Meaning</th>
+                  <th style={{ color: "var(--navy)", padding: ".7rem 1rem", fontSize: ".78rem" }}>Example (root ع·ل·م)</th>
+                  <th style={{ color: "var(--navy)", padding: ".7rem 1rem", fontSize: ".78rem" }}>Translation</th>
+                </tr>
+              </thead>
+              <tbody>
+                {FAMILY_MEMBERS.filter(m => m.type === "فعل").map(m => (
+                  <tr key={m.num}>
+                    <td style={{ color: "var(--gold)", fontWeight: 700, padding: ".65rem 1rem" }}>{m.num}</td>
+                    <td className="td-label">{m.label}</td>
+                    <td className="td-en">{m.meaning.includes("he") ? m.meaning.charAt(0).toUpperCase() + m.meaning.slice(1) : m.meaning}</td>
+                    <td className="td-ar">{m.example}</td>
+                    <td className="td-en">{m.meaning}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="fade-in" style={{ marginTop: "1.2rem" }}>
+            <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".6rem", fontSize: ".85rem" }}>These six are the same as the verb types we learned in Nahw:</div>
+            <div style={{ display: "flex", gap: ".5rem", flexWrap: "wrap" }}>
+              {[
+                ["الفعل الماضي", "Ch 6"],
+                ["الفعل المضارع", "Ch 7"],
+                ["الماضي المبني للمجهول", "Ch 8"],
+                ["المضارع المبني للمجهول", "Ch 8"],
+                ["فعل الأمر", "Ch 7"],
+                ["فعل النهي", "Ch 7"],
+              ].map(([t, ch]) => (
+                <div key={t} style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(201,147,59,.2)", borderRadius: "6px", padding: ".4rem .8rem", fontSize: ".78rem" }}>
+                  <span className="arabic" style={{ color: "var(--gold2)", fontSize: ".95rem" }}>{t}</span>
+                  <span style={{ color: "rgba(255,255,255,.35)", marginLeft: ".4rem" }}>({ch})</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="note-box fade-in note-dark" style={{ marginTop: ".8rem" }}>
+            <strong style={{ color: "var(--gold)" }}>Connection to Nahw:</strong> All the verb forms we learned in Section 1 (Chapters 6–8) are here as family members. Sarf teaches how to construct each of these from a given root.
+          </div>
+        </Slide>
+
+        {/* ── THE 4 ASMA ── */}
+        <Slide id="slide-asma">
+          <div className="fade-in"><STag>Family Members — 4 أسماء</STag></div>
+          <div className="fade-in"><STitle>The Four اسم Members + Extra مجرد Members</STitle></div>
+          <div className="two-col fade-in">
+            <div>
+              <div style={{ fontWeight: 700, color: "var(--navy)", marginBottom: ".8rem", fontSize: ".88rem" }}>The 4 أسماء in EVERY Family:</div>
+              {FAMILY_MEMBERS.filter(m => m.type === "اسم").map(m => (
+                <div key={m.num} className="step-item" style={{ marginBottom: ".6rem" }}>
+                  <div style={{ background: "var(--teal)", color: "#fff", width: "26px", height: "26px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".78rem", fontWeight: 700, flexShrink: 0 }}>{m.num}</div>
+                  <div>
+                    <div style={{ display: "flex", gap: ".8rem", alignItems: "center", marginBottom: ".2rem" }}>
+                      <span className="arabic" style={{ color: "var(--teal)", fontSize: "1rem", fontWeight: 700 }}>{m.label}</span>
+                      <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.1rem" }}>{m.example}</span>
+                    </div>
+                    <div style={{ fontSize: ".82rem", color: "var(--mgray)" }}>{m.meaning}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div>
+              <div style={{ fontWeight: 700, color: "var(--navy)", marginBottom: ".8rem", fontSize: ".88rem" }}>
+                4 Extra Members — مجرد Families ONLY:
+              </div>
+              <div style={{ background: "rgba(46,125,82,.08)", border: "1px solid rgba(46,125,82,.3)", borderRadius: "8px", padding: ".7rem .9rem", marginBottom: ".8rem", fontSize: ".82rem", color: "var(--mgray)" }}>
+                These اسماء <strong style={{ color: "var(--red)" }}>NEVER appear</strong> in مزيد فيه families — only in مجرد.
+              </div>
+              {MUJARRAD_EXTRA.map(m => (
+                <div key={m.label} className="step-item" style={{ marginBottom: ".6rem" }}>
+                  <div style={{ background: "var(--green)", color: "#fff", width: "26px", height: "26px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".65rem", fontWeight: 700, flexShrink: 0 }}>م</div>
+                  <div>
+                    <div style={{ display: "flex", gap: ".8rem", alignItems: "center", marginBottom: ".2rem" }}>
+                      <span className="arabic" style={{ color: "var(--green)", fontSize: "1rem", fontWeight: 700 }}>{m.label}</span>
+                      <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.1rem" }}>{m.example}</span>
+                    </div>
+                    <div style={{ fontSize: ".82rem", color: "var(--mgray)" }}>{m.meaning}</div>
+                    <div style={{ fontSize: ".75rem", color: "var(--teal)", marginTop: ".1rem" }}>{m.note}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="note-box fade-in">
+            <strong>Total per family:</strong> مزيد فيه families have <strong style={{ color: "var(--gold)" }}>10 members</strong> (6 أفعال + 4 أسماء). مجرد families have <strong style={{ color: "var(--green)" }}>14 members</strong> (6 أفعال + 4 أسماء + 4 extra). The extra 4 are unique to مجرد.
+          </div>
+        </Slide>
+
+        {/* ── 1.4 FAMILIES ── */}
+        <Slide id="slide-families" dark>
+          <div className="fade-in">
+            <div className="divider-ch">1.4 — The Families</div>
+            <div className="divider-title">المجرد والمزيد فيه</div>
+            <div className="divider-sub">Two Major Groups of Sarf Families</div>
+            <div className="divider-hr" />
+            <div className="divider-p">Every Sarf family belongs to one of these two large groups</div>
+          </div>
+        </Slide>
+
+        {/* ── MUJARRAD ── */}
+        <Slide id="slide-mujarrad">
+          <div className="fade-in"><STag>1.4 — المجرد</STag></div>
+          <div className="fade-in"><STitle>المجرد — The Bare/Unaugmented Family</STitle></div>
+          <div className="highlight-dark fade-in">
+            <strong style={{ color: "var(--gold)" }}>المجرد</strong> families have a container (in the هو form of the ماضي) made up of <strong style={{ color: "var(--gold2)" }}>حركات ONLY</strong> — no extra letters. The three root letters stand alone.
+          </div>
+          <div className="two-col fade-in">
+            <div className="col-card">
+              <div className="col-card-header" style={{ background: "var(--navy)" }}>مجرد Examples — Pure Root</div>
+              <div className="col-card-body">
+                <div style={{ fontSize: ".85rem", color: "var(--mgray)", marginBottom: ".8rem" }}>Notice: only the 3 root letters + حركات. No extra letters at all.</div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: ".5rem" }}>
+                  {[
+                    ["كَتَبَ", "he wrote"],
+                    ["فَهِمَ", "he understood"],
+                    ["ضَرَبَ", "he hit"],
+                    ["سَمِعَ", "he heard"],
+                    ["كَرُمَ", "he was noble"],
+                    ["نَصَرَ", "he helped"],
+                  ].map(([ar, en]) => (
+                    <div key={ar} style={{ background: "var(--lgray)", borderRadius: "6px", padding: ".6rem .8rem", textAlign: "center" }}>
+                      <div className="arabic" style={{ color: "var(--gold)", fontSize: "1.2rem" }}>{ar}</div>
+                      <div style={{ fontSize: ".75rem", color: "var(--mgray)", marginTop: ".15rem" }}>{en}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="col-card">
+              <div className="col-card-header" style={{ background: "var(--teal)" }}>What Makes مجرد Special</div>
+              <div className="col-card-body">
+                {[
+                  ["Container = حركات only", "In the هو ماضي form: _َ_َ_َ or _َ_ِ_َ or _َ_ُ_َ"],
+                  ["Sub-families by حركة on عين", "The vowel on the middle letter distinguishes sub-families"],
+                  ["14 family members total", "Includes 4 extra أسماء (آلة, تفضيل, صفة, مبالغة) not in مزيد فيه"],
+                  ["Studied in Chapter 3", "الثلاثي المجرد — the unaugmented trilateral verb"],
+                ].map(([t, d]) => (
+                  <div key={t} className="step-item" style={{ marginBottom: ".5rem" }}>
+                    <div className="step-num">✦</div>
+                    <div><strong style={{ fontSize: ".83rem" }}>{t}</strong><br/><span style={{ fontSize: ".8rem", color: "var(--mgray)" }}>{d}</span></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* ── MAZID FIHI ── */}
+        <Slide id="slide-mazid" dark>
+          <div className="fade-in"><STag>1.4 — المزيد فيه</STag></div>
+          <div className="fade-in"><STitle>المزيد فيه — The Augmented Family</STitle></div>
+          <div className="highlight-gold fade-in">
+            <strong>المزيد فيه</strong> families always have <strong>extra letters</strong> added to the container — in addition to حركات. These extra letters are the "family marks" that identify which family a word belongs to.
+          </div>
+          <div className="two-col fade-in">
+            <div>
+              <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".6rem", fontSize: ".85rem" }}>مزيد فيه Examples — Extra Letters Visible:</div>
+              {[
+                { ar: "اِسْتَغْفَرَ", extra: "اِسْتَ prefix (Family X)", root: "غ·ف·ر" },
+                { ar: "تَعَاوَنَ",  extra: "تَ + ا (Family VI)",        root: "ع·و·ن" },
+                { ar: "تَفَرَّقَ",  extra: "تَ + شدة on ر (Family V)", root: "ف·ر·ق" },
+                { ar: "أَسْلَمَ",   extra: "أَ prefix (Family IV)",     root: "س·ل·م" },
+                { ar: "جَاهَدَ",   extra: "ا after ج (Family III)",     root: "ج·ه·د" },
+                { ar: "اِنْقَلَبَ", extra: "اِن prefix (Family VII)",   root: "ق·ل·ب" },
+              ].map(e => (
+                <div key={e.ar} className="container-visual" style={{ marginBottom: ".5rem" }}>
+                  <div className="container-visual-top">
+                    <span className="cv-ar">{e.ar}</span>
+                    <span className="cv-arrow">→</span>
+                    <span style={{ fontSize: ".8rem", color: "rgba(255,255,255,.65)" }}>{e.extra}</span>
+                    <span style={{ marginLeft: "auto", fontSize: ".75rem", color: "rgba(255,255,255,.35)" }}>root: {e.root}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div>
+              <div style={{ fontWeight: 700, color: "var(--gold)", marginBottom: ".6rem", fontSize: ".85rem" }}>Why we study مزيد فيه FIRST:</div>
+              <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(201,147,59,.25)", borderRadius: "8px", padding: "1rem 1.1rem", marginBottom: "1rem", fontSize: ".87rem", color: "rgba(255,255,255,.8)", lineHeight: 1.7 }}>
+                The مزيد فيه families are more systematic and predictable — each family has a clear, recognizable marker (the extra letters). This makes them the ideal starting point for learning Sarf.<br/><br/>
+                The مجرد families are more complex because the sub-families are differentiated only by حركات, which are harder to see and memorize.
+              </div>
+              <div className="note-box note-dark">
+                <strong style={{ color: "var(--gold)" }}>Important:</strong> The extra letters in مزيد فيه are not random. Each family's extra letters add a consistent <strong>meaning nuance</strong> to the root — e.g. Family IV (أَفْعَلَ) often adds causative meaning, Family X (اِسْتَفْعَلَ) often adds "seeking" meaning.
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        {/* ── 10 FAMILIES ── */}
+        <Slide id="slide-tenfam">
+          <div className="fade-in"><STag>The 9 مزيد فيه Families</STag></div>
+          <div className="fade-in"><STitle>Families II–X — The Building Blocks of Sarf</STitle></div>
+          <div className="highlight-dark fade-in">
+            There are <strong style={{ color: "var(--gold)" }}>9 مزيد فيه families</strong> (Families II–X). Family I is the مجرد family. Each مزيد فيه family has a unique set of extra letters in the container.
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: ".8rem" }} className="fade-in">
+            {MAZID_FAMILIES.map((f, i) => (
+              <div key={f.num} style={{ background: "var(--white)", border: "1px solid var(--lgray)", borderRadius: "10px", overflow: "hidden", boxShadow: "0 2px 10px rgba(0,0,0,.05)" }}>
+                <div style={{ background: i % 3 === 0 ? "var(--gold)" : i % 3 === 1 ? "var(--teal)" : "var(--navy)", color: i % 3 === 0 ? "var(--navy)" : "#fff", padding: ".6rem 1rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontWeight: 700, fontSize: ".85rem" }}>Family {f.num}</span>
+                  <span className="arabic" style={{ fontSize: "1.1rem" }}>{f.ar}</span>
+                </div>
+                <div style={{ padding: ".75rem 1rem" }}>
+                  <div style={{ fontSize: ".78rem", color: "var(--teal)", fontWeight: 600, marginBottom: ".3rem" }}>{f.extra}</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span className="arabic" style={{ color: "var(--gold)", fontSize: "1.05rem" }}>{f.ex}</span>
+                    <span style={{ fontSize: ".78rem", color: "var(--mgray)", fontStyle: "italic" }}>{f.exen}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="note-box fade-in" style={{ marginTop: "1rem" }}>
+            <strong>In your vocabulary lists:</strong> Words labeled "FAMILY II", "FAMILY III", etc. belong to these مزيد فيه families. You have been building familiarity with these families throughout Chapters 6–11 of Nahw. Sarf Chapter 2 covers these families in depth.
+          </div>
+        </Slide>
+
+        {/* ── SUMMARY ── */}
+        <Slide id="slide-summary" dark>
+          <div className="fade-in" style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+            <div className="divider-ch">Chapter 1 Complete</div>
+            <h2 className="slide-title" style={{ color: "var(--white)", textAlign: "center" }}>Master Summary</h2>
+          </div>
+          {[
+            { label: "What is Sarf?",       text: "The study of word patterns (الصيغ) and how meaning is derived from them. Lets you recognize, construct, and derive Arabic words systematically." },
+            { label: "جامد vs مشتق",        text: "جامد = rigid word that cannot be transformed (e.g. أسد). مشتق = derivable word that follows a pattern and generates a family of related words. Sarf studies مشتق words only." },
+            { label: "الجذر (Contents)",    text: "The three root letters — the meaning-core of every مشتق word. Named using فَعَلَ as the model: فاء الكلمة (1st) · عين الكلمة (2nd) · لام الكلمة (3rd). MEMORIZE: الجذر." },
+            { label: "الصيغة (Container)", text: "Everything in the word besides the root letters — includes حركات AND extra letters. The container's shape is fixed per family per family member. MEMORIZE: الصيغة." },
+            { label: "Family Members",      text: "Every family has 10 members: 6 أفعال (ماضي · مضارع · ماضي للمجهول · مضارع للمجهول · أمر · نهي) + 4 أسماء (المصدر · اسم الفاعل · اسم المفعول · اسم الظرف). مجرد has 4 extra أسماء: آلة · تفضيل · صفة · مبالغة." },
+            { label: "الباب (Family)",      text: "MEMORIZE: الباب = the family. What sets families apart: the shape of the container. Same members, different container shapes." },
+            { label: "مجرد vs مزيد فيه",   text: "مجرد = no extra letters in container (only حركات). Has 4 extra اسم members unique to it. مزيد فيه = always has extra letters in container. 9 مزيد فيه families (II–X). We study مزيد فيه first." },
+          ].map(r => (
+            <div key={r.label} className="recap-row fade-in">
+              <div className="recap-row-label">{r.label}</div>
+              <div className="recap-row-text">{r.text}</div>
+            </div>
+          ))}
+          <div className="fade-in" style={{ borderTop: "1px solid rgba(201,147,59,.3)", marginTop: "1.5rem", paddingTop: "1rem", textAlign: "center", color: "rgba(255,255,255,.4)", fontStyle: "italic", fontSize: ".85rem" }}>
+            Next: Chapter 2 — الثلاثي المزيد فيه (The 9 Augmented Families in Detail)
+          </div>
+        </Slide>
+
+      </div>{/* end slides-wrapper */}
+
+      <footer>
+        Based on the <a href="#" rel="noopener">Bayyinah Dream Textbook</a> by Sumaya Al-Saadoon
+        &nbsp;·&nbsp; Section 2: Sarf · Chapter 1 — An Introduction to الصرف
+      </footer>
+
+      {showTop && (
+        <button className="scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">↑</button>
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
