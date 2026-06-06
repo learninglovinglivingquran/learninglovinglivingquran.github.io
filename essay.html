@@ -464,16 +464,97 @@
 
     .footer-links a:hover { color: var(--gold-light); }
 
+    /* ── Mobile burger ── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 101;
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--green-deep);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+
+    .nav-burger.is-open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .nav-burger.is-open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-burger.is-open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .essay-header { padding: 120px 1.5rem 40px; }
       .essay-body { padding: 0 1.5rem 4rem; }
       .essay-cta { padding: 3rem 1.5rem; margin: 0 1.5rem 4rem; }
       .question-block { padding: 2rem 1.5rem; }
-      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        border-bottom: 1px solid rgba(196,149,74,0.25);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+        display: flex !important;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-6px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        z-index: 99;
+      }
+      .nav-links.is-open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+      }
+      .nav-links li {
+        border-bottom: 1px solid rgba(196,149,74,0.12);
+      }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-links a {
+        display: block;
+        padding: 1.1rem 2rem !important;
+        font-size: 0.95rem !important;
+        letter-spacing: 0.1em;
+        color: var(--ink-soft) !important;
+        background: none !important;
+        border-radius: 0 !important;
+      }
+      .nav-links a:hover { color: var(--green-deep) !important; }
+      .nav-links .nav-cta {
+        background: var(--green-deep) !important;
+        color: var(--cream) !important;
+        text-align: center;
+        padding: 1.25rem 2rem !important;
+      }
+      .nav-links .nav-cta:hover {
+        background: var(--green-mid) !important;
+        color: var(--cream) !important;
+      }
       .cta-form { flex-direction: column; }
       .cta-input, .cta-submit { width: 100%; }
     }
+
   </style>
 </head>
 <body>
@@ -491,6 +572,11 @@
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#start" class="nav-cta">Start Here</a></li>
       </ul>
+      <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -1088,6 +1174,38 @@
       const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       bar.style.width = pct + '%';
     });
+  </script>
+
+
+  <script>
+    (function() {
+      var burger = document.querySelector('.nav-burger');
+      var navLinks = document.querySelector('.nav-links');
+      if (!burger || !navLinks) return;
+
+      function closeMenu() {
+        navLinks.classList.remove('is-open');
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+
+      burger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = navLinks.classList.toggle('is-open');
+        burger.classList.toggle('is-open');
+        burger.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+          closeMenu();
+        }
+      });
+    })();
   </script>
 
 </body>
