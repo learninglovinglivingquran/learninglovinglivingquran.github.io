@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+  ═══════════════════════════════════════════════════
+  BLOG POST TEMPLATE — LQ
+  ═══════════════════════════════════════════════════
+  To create a new post:
+  1. Duplicate this file and rename it (e.g. the-dependent-universe.html)
+  2. Update the <title> and <meta name="description"> below
+  3. Fill in the post header: title, subtitle, label, meta
+  4. Write your content inside <article class="essay-body">
+  5. Update the footer nav links if needed
+
+  AVAILABLE CONTENT BLOCKS (copy from examples below):
+  — Paragraph             → <p>text</p>
+  — Pull quote            → <div class="pull-quote"><p>text</p></div>
+  — Section separator     → <div class="essay-separator"><span>✦</span></div>
+  — H2 section heading    → <h2>Heading</h2>
+  — H3 subsection heading → <h3>Subheading</h3>
+  — Dark question block   → .question-block (see example in essay.html)
+  — Surah / quote block   → .surah-block (see example in essay.html)
+  — Bold inline           → <strong>text</strong>
+  — Italic inline         → <em>text</em>
+  — Arabic transliteration → <span class="arabic-transliteration">text</span>
+  ═══════════════════════════════════════════════════
+  -->
+
+  <!-- ① UPDATE: Page title -->
+  <title>Post Title Here — LQ</title>
+
+  <!-- ② UPDATE: Meta description (1–2 sentences, shown in search results) -->
+  <meta name="description" content="A short description of this post for search engines and social sharing.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:    #1c3528;
+      --green-mid:     #2d5040;
+      --green-soft:    #3d6b55;
+      --gold:          #c4954a;
+      --gold-light:    #d4aa6a;
+      --cream:         #f7f2e8;
+      --cream-dark:    #ede6d5;
+      --ink:           #1a1a16;
+      --ink-soft:      #3a3a30;
+      --ink-faint:     #6a6a58;
+      --serif-display: 'Cormorant Garamond', Georgia, serif;
+      --serif-body:    'Crimson Pro', Georgia, serif;
+    }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif-body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open { overflow: hidden; }
+
+    /* ── Geometric background pattern ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(196,149,74,0.04) 40px, rgba(196,149,74,0.04) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(196,149,74,0.04) 40px, rgba(196,149,74,0.04) 41px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(247,242,232,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,149,74,0.2);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      text-decoration: none;
+      position: relative;
+      z-index: 201;
+    }
+
+    .nav-logo-mark {
+      font-family: var(--serif-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo-arabic {
+      font-size: 1.1rem;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--serif-body);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green-deep); }
+
+    .nav-cta {
+      background: var(--green-deep);
+      color: var(--cream) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2px;
+    }
+
+    /* ── Burger ── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      z-index: 201;
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--green-deep);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+
+    .nav-burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Mobile menu ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      z-index: 199;
+      background: rgba(247,242,232,0.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      padding: 2rem;
+      overflow-y: auto;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
+
+    .mobile-menu-links { list-style: none; display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }
+    .mobile-menu-links li { border-bottom: 1px solid rgba(196,149,74,0.15); }
+
+    .mobile-menu-links a {
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 0;
+      font-family: var(--serif-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--green-deep);
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .mobile-menu-links a:hover { color: var(--gold); padding-left: 0.5rem; }
+
+    .mobile-menu-cta { margin-top: 2rem; }
+
+    .mobile-menu-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-deep);
+      color: var(--cream);
+      font-family: var(--serif-body);
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 2px;
+      width: 100%;
+    }
+
+    .mobile-menu-ornament {
+      margin-top: auto;
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--gold);
+      opacity: 0.3;
+      letter-spacing: 0.5rem;
+    }
+
+    /* ── Reading progress bar ── */
+    #progress-bar {
+      position: fixed;
+      top: 64px; left: 0;
+      height: 2px;
+      background: var(--gold);
+      width: 0%;
+      z-index: 99;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--serif-body);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      text-decoration: none;
+      padding: 2rem 2rem 0;
+      max-width: 780px;
+      margin: 0 auto;
+      display: block;
+      padding-top: 100px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--green-deep); }
+
+    /* ── Essay header ── */
+    .essay-header {
+      position: relative;
+      z-index: 1;
+      padding: 1.5rem 2rem 60px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .essay-label {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .essay-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .essay-title {
+      font-family: var(--serif-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      color: var(--green-deep);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .essay-subtitle {
+      font-family: var(--serif-display);
+      font-size: 1.25rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-faint);
+      margin-bottom: 2.5rem;
+      line-height: 1.4;
+    }
+
+    .essay-meta {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid rgba(196,149,74,0.2);
+      border-bottom: 1px solid rgba(196,149,74,0.2);
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+      flex-wrap: wrap;
+    }
+
+    .essay-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ── Essay body ── */
+    .essay-body {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    /* Opening paragraph — slightly larger */
+    .essay-body .opening {
+      font-size: 1.18rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-soft);
+      margin-bottom: 1.6rem;
+    }
+
+    .essay-body p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-soft);
+      margin-bottom: 1.6rem;
+    }
+
+    .essay-body em  { font-style: italic; color: var(--ink); }
+    .essay-body strong { font-weight: 600; color: var(--ink); }
+
+    .essay-body h2 {
+      font-family: var(--serif-display);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--green-deep);
+      margin: 3.5rem 0 1.25rem;
+      line-height: 1.2;
+    }
+
+    .essay-body h3 {
+      font-family: var(--serif-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--green-deep);
+      margin: 3rem 0 1rem;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 0.5rem 0 0.5rem 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .pull-quote p {
+      font-family: var(--serif-display);
+      font-size: 1.35rem !important;
+      font-weight: 400 !important;
+      font-style: italic;
+      color: var(--green-deep) !important;
+      line-height: 1.5 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* Separator */
+    .essay-separator {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .essay-separator::before,
+    .essay-separator::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,149,74,0.3));
+    }
+
+    .essay-separator::after {
+      background: linear-gradient(90deg, rgba(196,149,74,0.3), transparent);
+    }
+
+    .essay-separator span {
+      color: var(--gold);
+      opacity: 0.5;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+    }
+
+    /* Dark block (for contrast boxes, question blocks, etc.) */
+    .dark-block {
+      background: var(--green-deep);
+      padding: 2.5rem 3rem;
+      margin: 2.5rem 0;
+    }
+
+    .dark-block h3 {
+      color: var(--cream) !important;
+      margin-top: 0 !important;
+      margin-bottom: 1rem;
+    }
+
+    .dark-block p {
+      color: rgba(247,242,232,0.75) !important;
+      margin-bottom: 1rem;
+    }
+
+    .dark-block p:last-child { margin-bottom: 0; }
+
+    .dark-block .sub-block {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(196,149,74,0.2);
+    }
+
+    /* Surah / quote block */
+    .surah-block {
+      background: var(--cream-dark);
+      border: 1px solid rgba(196,149,74,0.25);
+      border-left: 3px solid var(--gold);
+      padding: 2rem 2.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .surah-block .surah-name {
+      font-family: var(--serif-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .surah-block .surah-text {
+      font-family: var(--serif-display);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--green-deep);
+      line-height: 1.6;
+    }
+
+    /* Centered surah block variant */
+    .surah-block-center {
+      background: var(--cream-dark);
+      border: 1px solid rgba(196,149,74,0.2);
+      padding: 2rem 2.5rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+
+    .surah-block-center .surah-name {
+      font-family: var(--serif-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .surah-block-center .surah-text {
+      font-family: var(--serif-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--green-deep);
+      line-height: 1.6;
+    }
+
+    /* Arabic inline */
+    .arabic-inline {
+      font-size: 1.2rem;
+      direction: rtl;
+      color: var(--green-deep);
+      font-style: normal;
+      line-height: 2;
+    }
+
+    .arabic-transliteration {
+      font-style: italic;
+      color: var(--ink-faint);
+    }
+
+    /* Key term highlight */
+    .key-term {
+      font-family: var(--serif-display);
+      font-style: italic;
+      color: var(--green-deep);
+    }
+
+    /* ── End-of-post CTA ── */
+    .post-cta {
+      position: relative;
+      z-index: 1;
+      background: var(--green-deep);
+      padding: 4rem 3rem;
+      max-width: 680px;
+      margin: 0 auto 6rem;
+      text-align: center;
+    }
+
+    .post-cta h3 {
+      font-family: var(--serif-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .post-cta p {
+      font-size: 1rem;
+      color: rgba(247,242,232,0.65);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .cta-form {
+      display: flex;
+      border: 1px solid rgba(196,149,74,0.3);
+      overflow: hidden;
+    }
+
+    .cta-input {
+      flex: 1;
+      padding: 0.9rem 1.25rem;
+      font-family: var(--serif-body);
+      font-size: 1rem;
+      font-weight: 300;
+      background: rgba(255,255,255,0.07);
+      color: var(--cream);
+      border: none;
+      outline: none;
+      min-width: 0;
+    }
+
+    .cta-input::placeholder { color: rgba(247,242,232,0.3); }
+
+    .cta-submit {
+      background: var(--gold);
+      color: var(--green-deep);
+      font-family: var(--serif-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.5rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .cta-submit:hover { background: var(--gold-light); }
+
+    /* ── Related posts ── */
+    .related-posts {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+
+    .related-label {
+      font-family: var(--serif-body);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      border: 1px solid rgba(196,149,74,0.2);
+      padding: 1.5rem;
+      text-decoration: none;
+      transition: box-shadow 0.2s;
+    }
+
+    .related-card:hover { box-shadow: 0 4px 16px rgba(28,53,40,0.07); }
+
+    .related-card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .related-card-title {
+      font-family: var(--serif-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--green-deep);
+      line-height: 1.3;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--green-deep);
+      color: rgba(247,242,232,0.5);
+      padding: 2.5rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      font-family: var(--serif-display);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--cream);
+    }
+
+    .footer-brand span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(247,242,232,0.35);
+      margin-top: 0.2rem;
+    }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,242,232,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .essay-header .essay-label    { animation: fadeUp 0.6s ease both; }
+    .essay-header .essay-title    { animation: fadeUp 0.6s 0.1s ease both; }
+    .essay-header .essay-subtitle { animation: fadeUp 0.6s 0.2s ease both; }
+    .essay-header .essay-meta     { animation: fadeUp 0.6s 0.3s ease both; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links  { display: none; }
+      .nav-burger { display: flex; }
+
+      .back-link { padding-top: 88px; padding-left: 1.25rem; }
+      .essay-header { padding: 1.5rem 1.25rem 40px; }
+      .essay-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+      .essay-subtitle { font-size: 1.1rem; }
+      .essay-meta { gap: 0.75rem; font-size: 0.8rem; }
+
+      .essay-body { padding: 0 1.25rem 4rem; }
+      .essay-body p { font-size: 1rem; line-height: 1.85; }
+      .essay-body h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; }
+      .essay-body h3 { font-size: 1.3rem; margin: 2rem 0 0.75rem; }
+
+      .pull-quote { padding: 0.25rem 0 0.25rem 1.25rem; margin: 2rem 0; }
+      .pull-quote p { font-size: 1.15rem !important; }
+
+      .dark-block { padding: 1.75rem 1.25rem; margin: 2rem 0; }
+      .surah-block { padding: 1.5rem 1.25rem; margin: 2rem 0; }
+      .surah-block-center { padding: 1.5rem 1.25rem; }
+      .surah-block-center .surah-text { font-size: 1.15rem; }
+
+      .essay-separator { margin: 2rem 0; }
+
+      .post-cta { padding: 3rem 1.5rem; margin: 0 1.25rem 4rem; }
+      .cta-form { flex-direction: column; }
+      .cta-input, .cta-submit { width: 100%; }
+
+      .related-posts { padding: 0 1.25rem 4rem; }
+      .related-grid { grid-template-columns: 1fr; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+    }
+
+    @media (max-width: 400px) {
+      html { font-size: 16px; }
+      .essay-header { padding: 1.5rem 1rem 32px; }
+      .essay-body { padding: 0 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-mark">LQ</span>
+        <span class="nav-logo-arabic">ل ق</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="blog.html">Essays</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#start" class="nav-cta">Start Here</a></li>
+      </ul>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+    <ul class="mobile-menu-links">
+      <li><a href="blog.html">Essays</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+    <div class="mobile-menu-cta"><a href="index.html#start">Start Here →</a></div>
+    <div class="mobile-menu-ornament">&#10022; &#10022; &#10022;</div>
+  </div>
+
+  <!-- Reading progress bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Back link -->
+  <a href="blog.html" class="back-link">&#8592; All Essays</a>
+
+  <!-- ═══════════════════════════════════════════════
+       ③ UPDATE: Post header
+       ═══════════════════════════════════════════════ -->
+  <header class="essay-header">
+
+    <!-- Label: "Stage · Topic category" e.g. "Learn Stage · Rational Questions" -->
+    <p class="essay-label">Learn Stage &middot; Post Category</p>
+
+    <!-- Post title -->
+    <h1 class="essay-title">Your Post Title Goes Here</h1>
+
+    <!-- Post subtitle / tagline -->
+    <p class="essay-subtitle">A short, honest description of what this piece is about</p>
+
+    <!-- Meta: read time, stage, date -->
+    <div class="essay-meta">
+      <span>&#128336; 10 min read</span>
+      <span>&#9679; Learn Stage</span>
+      <span>&#9679; Month Year</span>
+    </div>
+
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       ④ WRITE: Post body content
+       All your content goes inside this <article>
+       ═══════════════════════════════════════════════ -->
+  <article class="essay-body">
+
+    <!-- ─── OPENING PARAGRAPH ───────────────────────
+         Use class="opening" on the first paragraph
+         for a slightly larger, more prominent lead.
+         ─────────────────────────────────────────── -->
+    <p class="opening">
+      This is your opening paragraph. It should hook the reader immediately and signal what kind of essay this is. The opening paragraph sits slightly larger than the body text — use it to set tone and direction.
+    </p>
+
+    <p>
+      This is a regular body paragraph. Write your content here. You can use <em>italics for emphasis or titles</em>, and <strong>bold for key claims or distinctions</strong> you want the reader to hold onto.
+    </p>
+
+    <!-- ─── PULL QUOTE ────────────────────────────
+         Use for the most important line in the section.
+         One per major section at most.
+         ─────────────────────────────────────────── -->
+    <div class="pull-quote">
+      <p>This is a pull quote. Use it for the most striking or important single idea in the section.</p>
+    </div>
+
+    <p>
+      Continue the argument after the pull quote. The pull quote creates a natural pause — use what follows to develop the idea the quote names.
+    </p>
+
+    <!-- ─── SECTION SEPARATOR ────────────────────
+         Use between major sections of the essay.
+         ─────────────────────────────────────────── -->
+    <div class="essay-separator"><span>&#10022;</span></div>
+
+    <!-- ─── H2 SECTION HEADING ───────────────────
+         Use for major sections. Keep short and clear.
+         ─────────────────────────────────────────── -->
+    <h2>A Major Section Heading</h2>
+
+    <p>
+      Section content goes here. Each major section should make one clear argument or move. Don't try to do too much in one section.
+    </p>
+
+    <!-- ─── H3 SUBSECTION HEADING ────────────────
+         Use for questions, steps, or sub-arguments
+         within a major section.
+         ─────────────────────────────────────────── -->
+    <h3>A Subsection or Question</h3>
+
+    <p>Subsection content. Works well for questions the essay is walking through, or distinct steps in an argument.</p>
+
+    <!-- ─── DARK BLOCK ───────────────────────────
+         Use for contrast — presenting options,
+         a set of arguments, or a list of criteria.
+         ─────────────────────────────────────────── -->
+    <div class="dark-block">
+      <h3>Option one: The first option</h3>
+      <p>Explain the first option here. The dark block creates visual contrast and signals the reader that you're presenting alternatives or a structured set of ideas.</p>
+      <div class="sub-block">
+        <h3>Option two: The second option</h3>
+        <p>Explain the second option here. Use as many sub-blocks as you need — each separated by the border.</p>
+      </div>
+      <div class="sub-block">
+        <h3>Option three: The third option</h3>
+        <p>Third option. The dark block works especially well when presenting binary or multiple-choice arguments.</p>
+      </div>
+    </div>
+
+    <p>
+      Continue after the dark block. Typically this is where you analyze or evaluate the options you just presented.
+    </p>
+
+    <div class="essay-separator"><span>&#10022;</span></div>
+
+    <!-- ─── SURAH / AYAH BLOCK (left-bordered) ───
+         Use for Quranic references with left gold border.
+         ─────────────────────────────────────────── -->
+    <div class="surah-block">
+      <span class="surah-name">Surah Name &middot; Chapter:Verse</span>
+      <p class="surah-text">"The translation of the ayah goes here, in quotation marks, in italic Garamond."</p>
+    </div>
+
+    <!-- ─── SURAH / AYAH BLOCK (centered) ────────
+         Use for prominent, standalone ayah display.
+         ─────────────────────────────────────────── -->
+    <div class="surah-block-center">
+      <span class="surah-name">Surah Name &middot; Chapter:Verse</span>
+      <p class="surah-text">"The translation of the ayah goes here, centered, for maximum emphasis."</p>
+    </div>
+
+    <p>
+      Explain the significance of the ayah after presenting it. Don't leave it floating without context.
+    </p>
+
+    <!-- ─── ARABIC TRANSLITERATION ───────────────
+         Use for Arabic words/phrases in the text.
+         ─────────────────────────────────────────── -->
+    <p>
+      The Arabic word <span class="arabic-transliteration">tadabbur</span> means something that cannot be fully captured by translation — deep, penetrating reflection that goes all the way through. Use <span class="arabic-transliteration">arabic-transliteration</span> spans for any Arabic words appearing inline.
+    </p>
+
+    <!-- ─── KEY TERM ──────────────────────────────
+         Use to highlight a technical or important term
+         on first introduction.
+         ─────────────────────────────────────────── -->
+    <p>
+      The concept of <span class="key-term">huda</span> — guidance — appears throughout the Quran not just as direction toward right action, but as inward revelation. Use <span class="key-term">key-term</span> spans for important Arabic or technical terms.
+    </p>
+
+    <div class="essay-separator"><span>&#10022;</span></div>
+
+    <!-- ─── CLOSING ───────────────────────────────
+         End with an invitation, not a conclusion.
+         Leave something open. The tone should be
+         calm and honest, not triumphant.
+         ─────────────────────────────────────────── -->
+    <p>
+      Your closing paragraphs go here. End on something that invites the reader forward — into the next essay, into the text itself, into their own reflection. Don't wrap up too neatly. Leave something for the reader to carry.
+    </p>
+
+  </article>
+
+  <!-- ═══════════════════════════════════════════════
+       NEWSLETTER CTA — leave as-is or update copy
+       ═══════════════════════════════════════════════ -->
+  <div style="position:relative; z-index:1; padding: 0 2rem;">
+    <div class="post-cta">
+      <h3>Continue the journey</h3>
+      <p>New essays follow the Learn → Love → Live arc. Honest. Written for people who take the questions seriously.</p>
+      <form class="cta-form" onsubmit="return false;">
+        <input type="email" class="cta-input" placeholder="Your email address" aria-label="Email">
+        <button type="submit" class="cta-submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       ⑤ UPDATE: Related posts
+       Link to 2 relevant essays. Remove section if
+       not enough posts exist yet.
+       ═══════════════════════════════════════════════ -->
+  <div class="related-posts">
+    <p class="related-label">Continue reading</p>
+    <div class="related-grid">
+
+      <a href="essay.html" class="related-card">
+        <p class="related-card-label">Learn Stage</p>
+        <p class="related-card-title">Which Leap Are You Taking?</p>
+      </a>
+
+      <!-- Add or update the second card -->
+      <a href="#" class="related-card">
+        <p class="related-card-label">Learn Stage</p>
+        <p class="related-card-title">Related Post Title Here</p>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        LQ
+        <span>Learning, Loving, Living the Quran</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Essays</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <p style="font-size:0.8rem; color:rgba(247,242,232,0.3);">© 2026 LQ. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Reading progress bar
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop  = window.scrollY;
+      const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+      const pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width  = pct + '%';
+    });
+
+    // Burger menu
+    const burger = document.getElementById('navBurger');
+    const menu   = document.getElementById('mobileMenu');
+
+    function openMenu() {
+      burger.classList.add('active');
+      menu.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
+    }
+    function closeMenu() {
+      burger.classList.remove('active');
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+
+    burger.addEventListener('click', () => burger.classList.contains('active') ? closeMenu() : openMenu());
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  </script>
+
+</body>
+</html>
