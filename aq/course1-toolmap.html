@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Arabic Toolkit — Course 1 | LQ</title>
+<meta name="description" content="Course 1 of the LQ Arabic Toolkit: seven sessions, seven tools, one outcome — reading the Qur'an through an Arabic lens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep:    #1c3528;
+    --green-mid:     #2d5040;
+    --green-soft:    #3d6b55;
+    --gold:          #c4954a;
+    --gold-light:    #d4aa6a;
+    --cream:         #f7f2e8;
+    --cream-dark:    #ede6d5;
+    --ink:           #1a1a16;
+    --ink-soft:      #3a3a30;
+    --ink-faint:     #6a6a58;
+    --serif-display: 'Cormorant Garamond', Georgia, serif;
+    --serif-body:    'Crimson Pro', Georgia, serif;
+  }
+
+  html { font-size: 18px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif-body);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(196,149,74,0.04) 40px, rgba(196,149,74,0.04) 41px),
+      repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(196,149,74,0.04) 40px, rgba(196,149,74,0.04) 41px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(247,242,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,149,74,0.2);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    font-family: var(--serif-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--green-deep);
+    letter-spacing: 0.05em;
+  }
+  .nav-logo-arabic { font-size: 1.1rem; color: var(--gold); opacity: 0.8; }
+  .nav-tag {
+    font-family: var(--serif-body);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 150px 2rem 30px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .hero-title {
+    font-family: var(--serif-display);
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 400;
+    color: var(--green-deep);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .hero-subtitle {
+    font-family: var(--serif-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-faint);
+    max-width: 600px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.5;
+  }
+  .hero-body {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .hero-body strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Toolbox rail (signature element) ── */
+  .toolbox-rail {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 2.5rem auto 0;
+    padding: 0 2rem;
+  }
+  .toolbox-label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.75rem;
+  }
+  .toolbox-count { color: var(--gold); font-weight: 600; letter-spacing: 0.05em; }
+  .toolbox-slots {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.6rem;
+  }
+  .tool-slot {
+    aspect-ratio: 1 / 1;
+    border: 1.5px dashed rgba(28,53,40,0.25);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif-display);
+    font-size: 1rem;
+    color: rgba(28,53,40,0.3);
+    background: rgba(196,149,74,0.03);
+    transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+  }
+  .tool-slot.filled {
+    border: 1.5px solid var(--gold);
+    background: var(--green-deep);
+    color: var(--gold-light);
+    transform: translateY(-3px) scale(1.04);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tool-slot { transition: none; }
+  }
+
+  /* ── Architecture strip ── */
+  .arch-strip {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 1.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+  }
+  .arch-strip .step { color: var(--green-deep); font-weight: 600; }
+  .arch-strip .step.current {
+    background: var(--green-deep);
+    color: var(--cream);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+  .arch-arrow { color: var(--gold); opacity: 0.6; }
+
+  /* ── Section intro ── */
+  .section-intro {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 4.5rem auto 2rem;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  .section-intro h2 {
+    font-family: var(--serif-display);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--green-deep);
+    margin-bottom: 0.75rem;
+  }
+  .section-intro p { color: var(--ink-soft); font-size: 1rem; }
+
+  /* ── Accordion ── */
+  .sessions {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
+  }
+
+  .session {
+    border: 1px solid rgba(196,149,74,0.25);
+    background: var(--cream-dark);
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .session-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--serif-body);
+  }
+
+  .session-num {
+    font-family: var(--serif-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--gold);
+    min-width: 2.2rem;
+  }
+
+  .session-heading { flex: 1; }
+
+  .session-title {
+    font-family: var(--serif-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--green-deep);
+    margin-bottom: 0.2rem;
+  }
+
+  .session-outcome {
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .session-chevron {
+    font-size: 1rem;
+    color: var(--gold);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  .session.is-open .session-chevron { transform: rotate(180deg); }
+
+  .session-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .session.is-open .session-panel { max-height: 1400px; }
+  @media (prefers-reduced-motion: reduce) {
+    .session-panel, .session-chevron { transition: none; }
+  }
+
+  .session-panel-inner {
+    padding: 0 1.5rem 1.75rem;
+    border-top: 1px solid rgba(196,149,74,0.2);
+  }
+
+  .tag-row {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1.25rem 0 1.5rem;
+    flex-wrap: wrap;
+  }
+  .pill {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-weight: 400;
+  }
+  .pill.science { background: rgba(61,107,85,0.15); color: var(--green-soft); border: 1px solid rgba(61,107,85,0.3); }
+  .pill.art { background: rgba(196,149,74,0.18); color: var(--gold); border: 1px solid rgba(196,149,74,0.4); }
+
+  .block { margin-bottom: 1.5rem; }
+  .block:last-child { margin-bottom: 0; }
+  .block-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .block p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+
+  .quran-example {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.25rem;
+    margin-top: 0.6rem;
+  }
+  .quran-example + .quran-example { margin-top: 0.75rem; }
+  .quran-arabic {
+    font-family: var(--serif-display);
+    font-size: 1.3rem;
+    direction: rtl;
+    color: var(--green-deep);
+    margin-bottom: 0.35rem;
+  }
+  .quran-gloss { font-size: 0.9rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ── Footer ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    background: var(--green-deep);
+    color: rgba(247,242,232,0.5);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  footer strong { color: var(--cream); font-family: var(--serif-display); font-size: 1rem; font-weight: 400; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .hero { padding: 130px 1.25rem 20px; }
+    .toolbox-slots { grid-template-columns: repeat(4, 1fr); }
+    .toolbox-rail { padding: 0 1.25rem; }
+    .arch-strip { font-size: 0.75rem; padding: 1.25rem 1rem; }
+    .sessions { padding: 0 1.25rem; }
+    .session-toggle { padding: 1rem 1.1rem; gap: 0.85rem; }
+    .session-panel-inner { padding: 0 1.1rem 1.5rem; }
+    .quran-arabic { font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">LQ</span>
+      <span class="nav-logo-arabic">ل ق</span>
+    </a>
+    <span class="nav-tag">The Arabic Toolkit · Course 1</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="hero-eyebrow">Live Cohort · Learn Stage</p>
+  <h1 class="hero-title">The Arabic Toolkit</h1>
+  <p class="hero-subtitle">Course 1 — Foundations</p>
+  <p class="hero-body">
+    This isn't a language course. Nobody here needs to speak Arabic or hold a conversation in it —
+    that's a different project entirely. What we're building instead is a <strong>toolkit</strong>:
+    a small, deliberate set of tools whose only job is to let you look directly at the Qur'an, instead
+    of only ever through someone else's translation. Seven sessions. Seven tools. Take one, take all seven —
+    each one is yours to keep either way.
+  </p>
+</header>
+
+<div class="toolbox-rail">
+  <div class="toolbox-label">
+    <span>Your toolbox</span>
+    <span class="toolbox-count"><span id="collected-count">0</span> of 7 tools collected</span>
+  </div>
+  <div class="toolbox-slots" id="toolbox-slots">
+    <div class="tool-slot" data-slot="1">01</div>
+    <div class="tool-slot" data-slot="2">02</div>
+    <div class="tool-slot" data-slot="3">03</div>
+    <div class="tool-slot" data-slot="4">04</div>
+    <div class="tool-slot" data-slot="5">05</div>
+    <div class="tool-slot" data-slot="6">06</div>
+    <div class="tool-slot" data-slot="7">07</div>
+  </div>
+</div>
+
+<div class="arch-strip">
+  <span class="step current">Course 1 · Foundations</span>
+  <span class="arch-arrow">&rarr;</span>
+  <span class="step">Course 2 · Building Sentences</span>
+  <span class="arch-arrow">&rarr;</span>
+  <span class="step">Course 3 · Sarf / Word Patterns</span>
+</div>
+
+<div class="section-intro">
+  <h2>Seven Sessions, Seven Tools</h2>
+  <p>Click any session to open it. Each one adds exactly one new tool to the box — a reason to want it, a way to use it responsibly, and real examples straight from the Qur'an.</p>
+</div>
+
+<main class="sessions" id="sessions">
+
+  <!-- Session 1 -->
+  <div class="session is-open" data-session="1">
+    <button class="session-toggle" aria-expanded="true">
+      <span class="session-num">01</span>
+      <span class="session-heading">
+        <span class="session-title">Word Types — Ism, Fiʿl, Ḥarf</span>
+        <span class="session-outcome">Sort any word into noun, verb, or connector — on sight.</span>
+      </span>
+      <span class="session-chevron">&#9662;</span>
+    </button>
+    <div class="session-panel">
+      <div class="session-panel-inner">
+        <div class="tag-row"><span class="pill science">Science</span></div>
+        <div class="block">
+          <div class="block-label">Why This Tool</div>
+          <p>Most people believe what they believe about their faith one of two ways: because it has been reported so consistently, by so many people across so much time, that a lie could never have survived intact — or because they reasoned their way there. There's a third way of knowing, far rarer than either: direct experience. The Qur'an makes an unusual claim about itself — that its own linguistic miracle can be seen directly, by anyone equipped to look, in the Arabic itself. This session opens with a small taste of that: the word <em>qara'a</em>, "he read," and its connection to <em>Qur'an</em> itself — "a recitation" — a hint of what sits underneath a single word once translation is set aside.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">Guardrail</div>
+          <p>This is not tafsīr. Learning to notice grammar isn't the same as deriving rulings — it deepens engagement with what scholars have already written, rather than replacing it.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">The Tool</div>
+          <p>Every word in Arabic is exactly one of three things: <strong>ism</strong> (a noun), <strong>fiʿl</strong> (a verb), or <strong>ḥarf</strong> (a connector — "in," "to," "and"). A fiʿl always carries a sense of time built into its shape. An ism never does.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">In the Qur'an</div>
+          <div class="quran-example">
+            <div class="quran-arabic">خَلَقَ الْإِنسَانَ</div>
+            <div class="quran-gloss">"He created mankind" — خَلَقَ is fiʿl, الْإِنسَانَ is ism.</div>
+          </div>
+          <div class="quran-example">
+            <div class="quran-arabic">فِي بَيْتِهِ</div>
+            <div class="quran-gloss">"In his house" — فِي is ḥarf, بَيْتِهِ is ism.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session 2 -->
+  <div class="session" data-session="2">
+    <button class="session-toggle" aria-expanded="false">
+      <span class="session-num">02</span>
+      <span class="session-heading">
+        <span class="session-title">Status — The Job a Noun Is Doing</span>
+        <span class="session-outcome">Read the ending on a noun and know its role in the sentence.</span>
+      </span>
+      <span class="session-chevron">&#9662;</span>
+    </button>
+    <div class="session-panel">
+      <div class="session-panel-inner">
+        <div class="tag-row"><span class="pill science">Science</span></div>
+        <div class="block">
+          <div class="block-label">Why This Tool</div>
+          <p>In English, "The dog bit the man" and "The man bit the dog" mean opposite things, because position carries the meaning. In Arabic, meaning is carried by an ending attached to the word itself — so word order is free to move for emphasis without ever losing track of who is doing what to whom. That freedom is part of why certain ayāt can front a word for emphasis in a way no translation can fully preserve.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">Guardrail</div>
+          <p>Multiple right answers is a feature, not a failure. Classical scholars have documented cases where a single word can be legitimately read more than one way — richness, not sloppiness.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">The Tool</div>
+          <p><strong>Rafaʿ</strong> — the doer, marked with a damma (ـُ). <strong>Naṣb</strong> — the added detail, marked with a fatha (ـَ). <strong>Jarr</strong> — after a preposition, or the second word of a possessive pair, marked with a kasra (ـِ).</p>
+        </div>
+        <div class="block">
+          <div class="block-label">In the Qur'an</div>
+          <div class="quran-example">
+            <div class="quran-arabic">خَلَقَ اللَّهُ الْإِنسَانَ</div>
+            <div class="quran-gloss">اللَّهُ is rafaʿ (the doer). الْإِنسَانَ is naṣb (the detail).</div>
+          </div>
+          <div class="quran-example">
+            <div class="quran-arabic">بِسْمِ اللَّهِ</div>
+            <div class="quran-gloss">Both words are jarr — one after a preposition, one as the second word of a possessive pair.</div>
+          </div>
+          <div class="quran-example">
+            <div class="quran-arabic">اللَّهُ أَحَدٌ</div>
+            <div class="quran-gloss">Both words rafaʿ — a first glimpse of a sentence built from two nouns alone.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session 3 -->
+  <div class="session" data-session="3">
+    <button class="session-toggle" aria-expanded="false">
+      <span class="session-num">03</span>
+      <span class="session-heading">
+        <span class="session-title">Definiteness &amp; Idafa</span>
+        <span class="session-outcome">Spot the construction Arabic uses to say "X of Y" without extra words.</span>
+      </span>
+      <span class="session-chevron">&#9662;</span>
+    </button>
+    <div class="session-panel">
+      <div class="session-panel-inner">
+        <div class="tag-row"><span class="pill science">Mostly Science</span></div>
+        <div class="block">
+          <div class="block-label">Why This Tool</div>
+          <p>A single letter can carry theological weight. "A mercy" (رحمة) and "the Mercy" (الرحمة) are one al- apart — and a real ayah can turn on exactly that difference in a way translation has to flatten into a single choice.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">Guardrail</div>
+          <p>A little Arabic doesn't make you a mufassir. Noticing a feature is a reason to go look at what scholars have already said about it — not a reason to skip past them.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">The Tool</div>
+          <p>Definite vs. indefinite, and <strong>idafa</strong> — two nouns sitting side by side to mean "X of Y." The second word of an idafa is always jarr, which is exactly why last session's tool mattered.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">In the Qur'an</div>
+          <div class="quran-example">
+            <div class="quran-arabic">رَبِّ الْعَالَمِينَ</div>
+            <div class="quran-gloss">"Lord of all the worlds" — رَبِّ + الْعَالَمِينَ, one idafa, no extra word for "of" needed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session 4 -->
+  <div class="session" data-session="4">
+    <button class="session-toggle" aria-expanded="false">
+      <span class="session-num">04</span>
+      <span class="session-heading">
+        <span class="session-title">Attached Pronouns</span>
+        <span class="session-outcome">See how one letter carries "his," "her," "your," or "my."</span>
+      </span>
+      <span class="session-chevron">&#9662;</span>
+    </button>
+    <div class="session-panel">
+      <div class="session-panel-inner">
+        <div class="tag-row"><span class="pill science">Science</span></div>
+        <div class="block">
+          <div class="block-label">Why This Tool</div>
+          <p>One letter suffix (ه، ها، ك، ي) carries what English needs a whole separate word for. That compactness creates a density and rhythm in the Qur'an that any translation has to expand — and in expanding, flatten.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">Guardrail</div>
+          <p>Isn't self-study risky without a teacher? A narrow tool, used for its actual job, is safe. The risk is in stretching a tool past what it's for — not in having the tool at all.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">The Tool</div>
+          <p>Attached possessive and object pronouns, added directly onto nouns and verbs.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">In the Qur'an</div>
+          <div class="quran-example">
+            <div class="quran-arabic">بَيْتِهِ</div>
+            <div class="quran-gloss">"His house," from Session 1 — the ه on the end is doing this session's work.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session 5 -->
+  <div class="session" data-session="5">
+    <button class="session-toggle" aria-expanded="false">
+      <span class="session-num">05</span>
+      <span class="session-heading">
+        <span class="session-title">Gender &amp; Number Agreement</span>
+        <span class="session-outcome">Notice the pattern — and the first hint of where it gets broken on purpose.</span>
+      </span>
+      <span class="session-chevron">&#9662;</span>
+    </button>
+    <div class="session-panel">
+      <div class="session-panel-inner">
+        <div class="tag-row"><span class="pill science">Science *</span></div>
+        <div class="block">
+          <div class="block-label">Why This Tool</div>
+          <p>Agreement isn't just bookkeeping — it's a signal. The Qur'an occasionally breaks expected agreement deliberately, for emphasis. This session plants that seed; next session is where it blooms.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">Guardrail</div>
+          <p>Your tools don't threaten preservation. This toolkit sits on top of 1,400 years of textual preservation and cross-checking — learning to see structure stands on that work, it doesn't call it into question.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">The Tool</div>
+          <p>Masculine/feminine and singular/dual/plural markers, and how nouns, verbs, and adjectives agree with one another.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session 6 -->
+  <div class="session" data-session="6">
+    <button class="session-toggle" aria-expanded="false">
+      <span class="session-num">06</span>
+      <span class="session-heading">
+        <span class="session-title">Jumla Ismiyya vs. Jumla Fiʿliyya</span>
+        <span class="session-outcome">Tell a noun-first sentence from a verb-first one — and see why it matters.</span>
+      </span>
+      <span class="session-chevron">&#9662;</span>
+    </button>
+    <div class="session-panel">
+      <div class="session-panel-inner">
+        <div class="tag-row"><span class="pill art">Art</span></div>
+        <div class="block">
+          <div class="block-label">Why This Tool</div>
+          <p>This is the payoff. A noun-first sentence (jumla ismiyya) implies something constant or permanent; a verb-first sentence (jumla fiʿliyya) implies something happening or renewing. And it's only possible because of a tool from three sessions back — word order is free to move because status markers, not position, carry the meaning.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">Guardrail</div>
+          <p>Structure tells you how something is said. Full context — asbāb al-nuzūl, the wider tafsīr — tells you the fuller why and when. The tools work alongside that scholarship, not instead of it.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">The Tool</div>
+          <p>Nominal sentences (mubtada / khabar) vs. verbal sentences, and what the choice between them signals about permanence versus occurrence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session 7 -->
+  <div class="session" data-session="7">
+    <button class="session-toggle" aria-expanded="false">
+      <span class="session-num">07</span>
+      <span class="session-heading">
+        <span class="session-title">Synthesis &amp; Review</span>
+        <span class="session-outcome">Read one full ayah using every tool from the course, together.</span>
+      </span>
+      <span class="session-chevron">&#9662;</span>
+    </button>
+    <div class="session-panel">
+      <div class="session-panel-inner">
+        <div class="tag-row"><span class="pill science">Science</span><span class="pill art">&amp; Art</span></div>
+        <div class="block">
+          <div class="block-label">Why This Tool</div>
+          <p>No new argument this time — just proof. Look at what six sessions' worth of tools reveal in a single ayah, side by side with where this course started.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">Guardrail</div>
+          <p>A recap, in one line each, of everything this course has protected against — and one closing idea: this is a lifelong toolkit, not a finish line.</p>
+        </div>
+        <div class="block">
+          <div class="block-label">The Tool</div>
+          <p>No new grammar. A full worked ayah using every tool from Sessions 1–6 together, and the on-ramp into Course 2.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <strong>LQ</strong><br>
+  Learning, Loving, Living the Qur'an
+</footer>
+
+<script>
+(function() {
+  var collected = new Set();
+  var countEl = document.getElementById('collected-count');
+  var sessions = document.querySelectorAll('.session');
+
+  function updateCount() {
+    countEl.textContent = collected.size;
+  }
+
+  function markCollected(num) {
+    if (collected.has(num)) return;
+    collected.add(num);
+    var slot = document.querySelector('.tool-slot[data-slot="' + num + '"]');
+    if (slot) slot.classList.add('filled');
+    updateCount();
+  }
+
+  sessions.forEach(function(session) {
+    var toggle = session.querySelector('.session-toggle');
+    var num = session.getAttribute('data-session');
+
+    toggle.addEventListener('click', function() {
+      var isOpen = session.classList.contains('is-open');
+      session.classList.toggle('is-open', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      if (!isOpen) markCollected(num);
+    });
+  });
+
+  // Session 1 starts open
+  markCollected('1');
+})();
+</script>
+
+</body>
+</html>
