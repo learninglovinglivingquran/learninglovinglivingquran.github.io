@@ -453,154 +453,6 @@
       opacity: 0.6;
     }
 
-    /* ── Essay preview ── */
-    .essay-preview {
-      background: var(--cream-dark);
-    }
-
-    .essays-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .essay-card {
-      background: var(--cream);
-      border: 1px solid rgba(196,149,74,0.2);
-      padding: 3rem;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .essay-card-question {
-      font-family: var(--serif-display);
-      font-size: 1rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--ink-faint);
-      margin-bottom: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(196,149,74,0.15);
-      line-height: 1.5;
-    }
-
-    .essay-label {
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-
-    .essay-title {
-      font-family: var(--serif-display);
-      font-size: 2rem;
-      font-weight: 500;
-      color: var(--green-deep);
-      line-height: 1.15;
-      margin-bottom: 0.5rem;
-    }
-
-    .essay-subtitle {
-      font-family: var(--serif-display);
-      font-size: 1rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--ink-faint);
-      margin-bottom: 1.75rem;
-    }
-
-    .essay-excerpt {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--ink-soft);
-      line-height: 1.85;
-      margin-bottom: 2rem;
-      border-left: 2px solid var(--gold);
-      padding-left: 1.25rem;
-      flex: 1;
-    }
-
-    .essay-meta {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      font-size: 0.82rem;
-      color: var(--ink-faint);
-      letter-spacing: 0.04em;
-    }
-
-    .essay-meta span { display: flex; align-items: center; gap: 0.4rem; }
-
-    /* ── Newsletter section ── */
-    .newsletter-section {
-      text-align: center;
-    }
-
-    .newsletter-inner {
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .newsletter-ornament {
-      font-size: 2rem;
-      color: var(--gold);
-      opacity: 0.5;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.5rem;
-    }
-
-    .newsletter-form {
-      display: flex;
-      gap: 0;
-      margin-top: 2rem;
-      border: 1px solid rgba(28,53,40,0.2);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .newsletter-input {
-      flex: 1;
-      padding: 0.9rem 1.25rem;
-      font-family: var(--serif-body);
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--ink);
-      background: var(--cream);
-      border: none;
-      outline: none;
-    }
-
-    .newsletter-input::placeholder { color: var(--ink-faint); }
-
-    .newsletter-submit {
-      background: var(--green-deep);
-      color: var(--cream);
-      font-family: var(--serif-body);
-      font-size: 0.9rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.9rem 1.75rem;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-      white-space: nowrap;
-    }
-
-    .newsletter-submit:hover { background: var(--green-mid); }
-
-    .newsletter-note {
-      font-size: 0.8rem;
-      color: var(--ink-faint);
-      margin-top: 0.75rem;
-      letter-spacing: 0.02em;
-    }
-
     /* ── About strip ── */
     .about-begin-strip {
       background: var(--green-deep);
@@ -620,7 +472,6 @@
       font-family: var(--serif-display);
       font-size: 2.5rem;
       font-weight: 300;
-      /* color: var(--green-deep); */
       color: var(--cream);
       line-height: 1.2;
     }
@@ -628,7 +479,6 @@
     .about-begin-strip-text {
       font-size: 1.05rem;
       font-weight: 300;
-      /* color: var(--ink-soft); */
       color: rgba(247,242,232,0.7);
       line-height: 1.85;
     }
@@ -773,7 +623,6 @@
       .hero-medallion { width: 260px; height: 260px; }
       .medallion-lq { font-size: 2.5rem; }
       .framework-steps { grid-template-columns: 1fr; gap: 2px; }
-      .essays-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .about-strip-inner { grid-template-columns: 1fr; gap: 2rem; }
       .about-begin-strip-inner { grid-template-columns: 1fr; gap: 2rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
@@ -852,10 +701,9 @@
         <span class="nav-logo-arabic">ل ق</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#start">Essays</a></li>
-        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="./blog/blog.html">Blog</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#start" class="nav-cta">Start Here</a></li>
+        <li><a href="./blog/blog.html" class="nav-cta">Start Here</a></li>
       </ul>
       <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
         <span></span>
@@ -883,7 +731,7 @@
           LQ exists to change that.
         </p>
         <div class="hero-actions">
-          <a href="#start" class="btn-primary">Start Here →</a>
+          <a href="./blog/blog.html" class="btn-primary">Start Here →</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -980,14 +828,14 @@
   </section>
 
   <!-- About strip -->
-  <section class="about-strip" id="about">
+  <section class="about-strip" id="start">
     <div class="about-strip-inner">
       <div>
         <h2 class="about-strip-label">Here's to your journey</h2>
       </div>
       <div class="about-strip-text">
         <div class="hero-actions">
-          <a href="#start" class="btn-primary">Welcome to the path →</a>
+          <a href="./blog/blog.html" class="btn-primary">Welcome to the path →</a>
         </div>
       </div>
     </div>
@@ -1001,8 +849,7 @@
         <span>Learning, Loving, Living the Quran</span>
       </div>
       <ul class="footer-links">
-        <li><a href="#start">Essays</a></li>
-        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="./blog/blog.html">Blog</a></li>
         <li><a href="#about">About</a></li>
       </ul>
       <p class="footer-copy">© 2026 LQ. All rights reserved.</p>
