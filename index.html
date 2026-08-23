@@ -179,6 +179,15 @@
       color: var(--green-soft);
     }
 
+    .hero-subtitle-main {
+      font-size: 2.0rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 42ch;
+    }
+
     .hero-subtitle {
       font-size: 1.15rem;
       font-weight: 300;
@@ -593,6 +602,41 @@
     }
 
     /* ── About strip ── */
+    .about-begin-strip {
+      background: var(--green-deep);
+      padding: 4rem 2rem;
+    }
+
+    .about-begin-strip-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-begin-strip-label {
+      font-family: var(--serif-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      /* color: var(--green-deep); */
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .about-begin-strip-text {
+      font-size: 1.05rem;
+      font-weight: 300;
+      /* color: var(--ink-soft); */
+      color: rgba(247,242,232,0.7);
+      line-height: 1.85;
+    }
+
+    .about-begin-strip-text p + p { margin-top: 1rem; }
+
+
+    /* ── About strip ── */
     .about-strip {
       background: var(--cream-dark);
       padding: 4rem 2rem;
@@ -723,6 +767,7 @@
         text-align: center;
       }
       .hero-subtitle { max-width: 100%; }
+      .hero-subtitle-main { max-width: 100%; }
       .hero-actions { justify-content: center; }
       .hero-visual { order: -1; }
       .hero-medallion { width: 260px; height: 260px; }
@@ -730,6 +775,7 @@
       .framework-steps { grid-template-columns: 1fr; gap: 2px; }
       .essays-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .about-strip-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about-begin-strip-inner { grid-template-columns: 1fr; gap: 2rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
       .nav-burger { display: flex; }
       .nav-links {
@@ -789,6 +835,7 @@
 
     .hero-eyebrow  { animation: fadeUp 0.6s ease both; }
     .hero-title    { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-subtitle-main { animation: fadeUp 0.6s 0.2s ease both; }
     .hero-subtitle { animation: fadeUp 0.6s 0.2s ease both; }
     .hero-actions  { animation: fadeUp 0.6s 0.3s ease both; }
     .hero-visual   { animation: fadeUp 0.8s 0.2s ease both; }
@@ -826,12 +873,17 @@
         <h1 class="hero-title">
           A pathway to the <em>Quran</em>
         </h1>
+        <h2 class="hero-subtitle-main">
+          Built for the modern mind.
+        </h2>
         <p class="hero-subtitle">
-          Most people never develop a real relationship with the Quran. Not because it isn't worth one, but because nobody showed them the way. LQ exists to change that.
+          In our day and age, most people never develop a real relationship with the Quran. Not because it isn't worth one, but because nobody showed them the way.
+        </p>
+        <p class="hero-subtitle">
+          LQ exists to change that.
         </p>
         <div class="hero-actions">
           <a href="#start" class="btn-primary">Start Here →</a>
-          <a href="#newsletter" class="btn-secondary">Join the Newsletter</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -845,6 +897,51 @@
             <span class="medallion-tagline">A Pathway to the Quran</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+    <!-- About strip -->
+  <section class="about-begin-strip" id="about-begin">
+    <div class="about-begin-strip-inner">
+      <div>
+        <h2 class="about-begin-strip-label">What is LQ?</h2>
+      </div>
+      <div class="about-begin-strip-text">
+        <p>
+          LQ, Learning, Loving, Living the Quran, is a resource network for people who want more than a surface-level relationship with the Quran. Not a dawah channel. Not a tafsir archive. A deliberately sequenced pathway.
+        </p>
+        <p>
+          The modern mind is overwhelmed by the world around us, the physics and the biology and the chemistry of it all. So, the LQ path meets the modern mind where it is, with looking at and reading the world around us. A world that, as it turns out, is surprisingly legible. LQ starts there, and follows the evidence wherever it leads.
+        </p>
+        <p>
+          The destination is a living relationship with the Quran, one that speaks to your specific life, in your specific circumstances, with a precision that fourteen centuries of readers across every culture have consistently found impossible to explain away.
+        </p>
+      </div>
+    </div>
+  </section>
+
+      <!-- About strip -->
+  <section class="about-strip" id="about">
+    <div class="about-strip-inner">
+      <div>
+        <h2 class="about-strip-label">Why is LQ needed?</h2>
+      </div>
+      <div class="about-strip-text">
+        <p>
+          A unique challenge of our time is that for the vast majority of us, the Quran is widely available, but rarely understood. In our day and age, the depth and richness of the material world occupy our attention, and we are heavily focused on the physical sciences, what we can see, touch, taste, smell and hear, and what we can reason about, or measure.
+        </p>
+        <p>
+          Unfortunately, the approaches to understanding the Quran that have been passed down to us are often not well-suited to this mindset. They were developed in a different time, for a different culture, and they assume a level of spirituality that most people today simply don't have.
+        </p>
+        <p>
+          Most previous approaches begin with the assumption of faith, and then work to explain why the Quran should be the basis for that faith. But for most people today, faith is not a given. It is something that must be earned.
+        </p>
+        <p>
+          LQ attempts to first, lay the intellectual foundation for faith, and then, to build a relationship with the Quran that is based on understanding, love, and ultimately, living it.
+        </p>
       </div>
     </div>
   </section>
@@ -882,90 +979,16 @@
     </div>
   </section>
 
-  <!-- Essay Preview -->
-  <section class="essay-preview" id="start">
-    <div class="section-inner">
-      <p class="section-label">Start Here</p>
-      <h2 class="section-title">Begin Where You Are</h2>
-      <p class="section-body">
-        Two essays. The same pathway. Begin with whichever question is yours.
-      </p>
-      <div class="essays-grid">
-
-        <!-- Essay 1 -->
-        <div class="essay-card">
-          <p class="essay-card-question">Is the Quran actually worth taking seriously?</p>
-          <p class="essay-label">Essay One &middot; Learn Stage</p>
-          <h3 class="essay-title">Which Leap Are You Taking?</h3>
-          <p class="essay-subtitle">An honest conversation about faith, reason, and the Quran</p>
-          <div class="essay-meta">
-            <span>&#128336; 25 min read</span>
-            <span>&#9679; Learn Stage</span>
-          </div>
-          <p class="essay-excerpt">
-            Neither belief nor disbelief is neutral ground. Both make extraordinary claims about reality. This essay follows that question honestly, and sees where it leads.
-          </p>
-          <a href="essay.html" class="btn-primary">Read the Essay &rarr;</a>
-        </div>
-
-        <!-- Essay 2 -->
-        <div class="essay-card">
-          <p class="essay-card-question">Why does the Quran feel distant, and how does that end?</p>
-          <p class="essay-label">Essay Two &middot; Learn Stage</p>
-          <h3 class="essay-title">The Thread</h3>
-          <p class="essay-subtitle">On the distance most Muslims feel from the Quran</p>
-          <div class="essay-meta">
-            <span>&#128336; 30 min read</span>
-            <span>&#9679; Learn Stage</span>
-          </div>
-          <p class="essay-excerpt">
-            The distance most Muslims feel from the Quran is not personal failure. It has a name, a cause, and neither of them is you.
-          </p>
-          <a href="the-thread.html" class="btn-primary">Read the Essay &rarr;</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="newsletter-section" id="newsletter">
-    <div class="newsletter-inner">
-      <div class="newsletter-ornament">&#10022; &#10022; &#10022;</div>
-      <p class="section-label" style="text-align:center;">The Newsletter</p>
-      <h2 class="section-title" style="text-align:center; max-width: 100%;">Essays delivered. No noise.</h2>
-      <p class="section-body" style="margin: 1rem auto 0; text-align: center; max-width: 48ch;">
-        New essays follow the Learn → Love → Live arc. Bi-weekly. Honest. Written for people who take the questions seriously.
-      </p>
-      <form class="newsletter-form" onsubmit="return false;">
-        <input
-          type="email"
-          class="newsletter-input"
-          placeholder="Your email address"
-          aria-label="Email address"
-        >
-        <button type="submit" class="newsletter-submit">Subscribe</button>
-      </form>
-      <p class="newsletter-note">No spam. Unsubscribe at any time.</p>
-    </div>
-  </section>
-
   <!-- About strip -->
   <section class="about-strip" id="about">
     <div class="about-strip-inner">
       <div>
-        <h2 class="about-strip-label">What is LQ?</h2>
+        <h2 class="about-strip-label">Here's to your journey</h2>
       </div>
       <div class="about-strip-text">
-        <p>
-          LQ, Learning, Loving, Living the Quran, is a resource network for people who want more than a surface-level relationship with the Quran. Not a dawah channel. Not a tafsir archive. A deliberately sequenced pathway.
-        </p>
-        <p>
-          The approach is honest: neither belief nor disbelief is neutral ground. Both make extraordinary claims about reality. The questions at the foundation of human experience, why anything exists, where moral truth comes from, whether life has genuine meaning, deserve serious examination. LQ starts there, and follows the evidence wherever it leads.
-        </p>
-        <p>
-          The destination is a living relationship with the Quran, one that speaks to your specific life, in your specific circumstances, with a precision that fourteen centuries of readers across every culture have consistently found impossible to explain away.
-        </p>
+        <div class="hero-actions">
+          <a href="#start" class="btn-primary">Welcome to the path →</a>
+        </div>
       </div>
     </div>
   </section>
