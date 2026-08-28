@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 1: Where We Start | The Arabic Toolkit — LQ</title>
+<meta name="description" content="Session 1 of the LQ Arabic Toolkit: why this isn't a language course, and the first real tool — telling a noun, a verb, and a connector apart in the Qur'an.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep:  #1c3528;
+    --green-mid:   #2d5040;
+    --green-soft:  #3d6b55;
+    --gold:        #c4954a;
+    --gold-light:  #d4aa6a;
+    --cream:       #f7f2e8;
+    --cream-dark:  #ede6d5;
+    --ink:         #1a1a16;
+    --ink-soft:    #3a3a30;
+    --ink-faint:   #6a6a58;
+    --good:        #3d6b55;
+    --bad:         #a8543f;
+    --serif-display: 'Cormorant Garamond', Georgia, serif;
+    --serif-body:    'Crimson Pro', Georgia, serif;
+  }
+
+  html { font-size: 18px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif-body);
+    font-weight: 300;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(196,149,74,0.04) 40px, rgba(196,149,74,0.04) 41px),
+      repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(196,149,74,0.04) 40px, rgba(196,149,74,0.04) 41px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  svg.icon { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,242,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,149,74,0.2);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 760px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { display: flex; align-items: baseline; gap: 0.75rem; text-decoration: none; }
+  .nav-logo-mark { font-family: var(--serif-display); font-size: 1.5rem; font-weight: 600; color: var(--green-deep); letter-spacing: 0.05em; }
+  .nav-logo-arabic { font-size: 1.1rem; color: var(--gold); opacity: 0.8; }
+  .nav-tag { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+
+  .wrap { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 0 2rem; }
+
+  .hero { padding: 150px 0 30px; text-align: center; }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+  .hero-title { font-family: var(--serif-display); font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 400; color: var(--green-deep); line-height: 1.1; margin-bottom: 0.9rem; }
+  .hero-outcome { font-family: var(--serif-display); font-size: 1.15rem; font-style: italic; color: var(--ink-faint); max-width: 520px; margin: 0 auto; line-height: 1.5; }
+
+  /* ── Journey stepper (signature element) ── */
+  .stepper-wrap {
+    position: sticky; top: 64px; z-index: 90;
+    background: rgba(247,242,232,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(196,149,74,0.2);
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .stepper {
+    max-width: 700px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .stepper::-webkit-scrollbar { display: none; }
+  .step-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+    background: none; border: none; cursor: pointer; padding: 0.3rem 0.5rem;
+    color: var(--ink-faint); flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .step-btn .icon { color: rgba(28,53,40,0.35); transition: color 0.2s; }
+  .step-btn span { font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+  .step-btn.active { color: var(--green-deep); }
+  .step-btn.active .icon { color: var(--gold); }
+  .step-btn:hover .icon { color: var(--gold); }
+
+  section { padding: 2.75rem 0; border-top: 1px solid rgba(196,149,74,0.2); scroll-margin-top: 130px; }
+  section:first-of-type { border-top: none; }
+
+  .section-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.1rem; }
+  .section-head .icon { color: var(--gold); width: 30px; height: 30px; }
+  .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  h2 { font-family: var(--serif-display); font-size: 1.85rem; font-weight: 400; color: var(--green-deep); line-height: 1.15; }
+  h3 { font-family: var(--serif-display); font-size: 1.35rem; font-weight: 400; color: var(--green-deep); margin: 1.75rem 0 1rem; }
+
+  .love-card { background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.25); border-left: 3px solid var(--gold); padding: 1.5rem 1.75rem; margin: 1.25rem 0; }
+  .love-input-row { margin-bottom: 1rem; }
+  .love-input { width: 100%; padding: 0.75rem 1rem; font-family: var(--serif-body); font-size: 1rem; font-weight: 300; background: var(--cream); border: 1px solid rgba(28,53,40,0.25); border-radius: 2px; color: var(--ink); outline: none; }
+  .love-input:focus { border-color: var(--gold); }
+  p { color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--ink); }
+
+  /* Non-goal chips */
+  .chip-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.25rem 0; }
+  .chip {
+    display: flex; align-items: center; gap: 0.4rem;
+    background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.25);
+    padding: 0.45rem 0.9rem; border-radius: 20px;
+    font-size: 0.85rem; color: var(--ink-faint);
+  }
+  .chip .icon { width: 15px; height: 15px; color: var(--bad); }
+
+  /* 3-step knowledge diagram */
+  .knowledge-path { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; }
+  .k-step { display: flex; gap: 1rem; padding: 1rem 0; position: relative; }
+  .k-step:not(:last-child)::after {
+    content: ''; position: absolute; left: 22px; top: 52px; bottom: -6px;
+    width: 1px; background: rgba(196,149,74,0.35);
+  }
+  .k-icon {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+    background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); z-index: 1;
+  }
+  .k-step.highlight .k-icon { background: var(--green-deep); border-color: var(--green-deep); color: var(--gold-light); }
+  .k-text .k-title { font-family: var(--serif-display); font-size: 1.15rem; color: var(--green-deep); margin-bottom: 0.25rem; }
+  .k-text p { font-size: 0.95rem; margin-bottom: 0; }
+
+  /* Reveal card */
+  .reveal-card {
+    background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.25); border-left: 3px solid var(--gold);
+    padding: 1.6rem 1.75rem; margin: 1.5rem 0; text-align: center;
+  }
+  .reveal-word { font-family: var(--serif-display); font-size: 2.1rem; color: var(--green-deep); margin-bottom: 0.4rem; direction: rtl; }
+  .reveal-gloss { font-size: 0.92rem; color: var(--ink-faint); margin-bottom: 1.1rem; font-style: italic; }
+  .reveal-btn {
+    background: var(--green-deep); color: var(--cream);
+    font-family: var(--serif-body); font-size: 0.88rem; letter-spacing: 0.03em;
+    border: none; padding: 0.65rem 1.4rem; border-radius: 2px; cursor: pointer; transition: background 0.2s;
+  }
+  .reveal-btn:hover { background: var(--green-mid); }
+  .reveal-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.4s ease; text-align: left; margin-top: 0; }
+  .reveal-answer.shown { max-height: 300px; margin-top: 1.1rem; }
+  .reveal-answer p { font-size: 0.95rem; text-align: left; }
+  @media (prefers-reduced-motion: reduce) { .reveal-answer { transition: none; } }
+
+  /* Guardrail concern/response */
+  .guard-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+    background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.25);
+    padding: 1.5rem; margin: 1.25rem 0;
+  }
+  .guard-col .g-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
+  .guard-col.response .g-label { color: var(--green-soft); }
+  .guard-col .icon { width: 15px; height: 15px; }
+  .guard-col p { font-size: 0.92rem; margin-bottom: 0; }
+  .guardrail-block { background: var(--green-deep); padding: 1.5rem 1.75rem; margin: 1.25rem 0; }
+  .guardrail-block p { color: rgba(247,242,232,0.85); margin-bottom: 0; font-family: var(--serif-display); font-size: 1.15rem; font-style: italic; }
+  @media (max-width: 560px) { .guard-card { grid-template-columns: 1fr; } }
+
+  /* Science & art banner */
+  .sa-banner { display: flex; align-items: center; gap: 1rem; background: rgba(196,149,74,0.1); border: 1px solid rgba(196,149,74,0.3); padding: 1.1rem 1.5rem; }
+  .sa-pill { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--green-soft); color: var(--cream); padding: 0.35rem 0.8rem; border-radius: 20px; white-space: nowrap; }
+  .sa-banner p { margin: 0; font-size: 0.95rem; }
+
+  /* Tool cards (replacing table) */
+  .tool-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin: 1.5rem 0; }
+  .tool-card { background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.25); padding: 1.25rem 1rem; text-align: center; }
+  .tool-card .icon { color: var(--gold); width: 30px; height: 30px; margin-bottom: 0.6rem; }
+  .tool-card .t-arabic { font-family: var(--serif-display); font-size: 1.5rem; color: var(--green-deep); margin-bottom: 0.15rem; }
+  .tool-card .t-translit { font-size: 0.78rem; color: var(--ink-faint); font-style: italic; margin-bottom: 0.6rem; }
+  .tool-card p { font-size: 0.85rem; margin-bottom: 0; }
+  @media (max-width: 560px) { .tool-cards { grid-template-columns: 1fr; } }
+
+  .tip-line { display: flex; align-items: center; gap: 0.6rem; background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.2); padding: 0.9rem 1.1rem; margin-top: 1.25rem; font-size: 0.92rem; }
+  .tip-line .icon { color: var(--gold); width: 18px; height: 18px; }
+
+  /* Worked example */
+  .worked-example { background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.2); padding: 1.4rem 1.6rem; margin: 1.1rem 0; }
+  .worked-arabic { font-family: var(--serif-display); font-size: 1.45rem; color: var(--green-deep); margin-bottom: 0.35rem; direction: rtl; }
+  .worked-gloss { font-size: 0.88rem; color: var(--ink-faint); font-style: italic; margin-bottom: 0.85rem; }
+  .worked-breakdown { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .word-chip { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+  .word-chip .w-ar { font-family: var(--serif-display); font-size: 1.15rem; color: var(--green-deep); direction: rtl; }
+  .word-chip .w-tag { font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 20px; }
+  .w-tag.ism  { background: rgba(61,107,85,0.18); color: var(--green-soft); }
+  .w-tag.fil  { background: rgba(196,149,74,0.2); color: var(--gold); }
+  .w-tag.harf { background: rgba(58,58,48,0.12); color: var(--ink-faint); }
+
+  /* Practice quiz */
+  .quiz-phrase { margin-bottom: 1.75rem; }
+  .quiz-phrase:last-child { margin-bottom: 0; }
+  .quiz-arabic { font-family: var(--serif-display); font-size: 1.45rem; color: var(--green-deep); margin-bottom: 0.2rem; direction: rtl; }
+  .quiz-gloss { font-size: 0.88rem; color: var(--ink-faint); font-style: italic; margin-bottom: 0.9rem; }
+  .quiz-words { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .quiz-word { background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.25); padding: 0.8rem 0.9rem; min-width: 132px; }
+  .quiz-word .qw-arabic { font-family: var(--serif-display); font-size: 1.25rem; color: var(--green-deep); text-align: center; margin-bottom: 0.55rem; direction: rtl; }
+  .qw-options { display: flex; gap: 0.35rem; justify-content: center; flex-wrap: wrap; }
+  .qw-btn { font-family: var(--serif-body); font-size: 0.76rem; background: var(--cream); border: 1px solid rgba(28,53,40,0.25); color: var(--ink-soft); padding: 0.38rem 0.55rem; border-radius: 2px; cursor: pointer; transition: all 0.15s; }
+  .qw-btn:hover:not(:disabled) { border-color: var(--green-deep); }
+  .qw-btn:disabled { cursor: default; opacity: 0.55; }
+  .qw-btn.correct { background: var(--good); color: var(--cream); border-color: var(--good); opacity: 1; }
+  .qw-btn.incorrect { background: var(--bad); color: var(--cream); border-color: var(--bad); opacity: 1; }
+
+  .score-bar { display: flex; align-items: center; justify-content: space-between; background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.25); padding: 0.9rem 1.25rem; margin-bottom: 1.75rem; font-size: 0.88rem; color: var(--ink-faint); }
+  .score-bar strong { color: var(--gold); font-family: var(--serif-display); font-size: 1.15rem; }
+  .reset-btn { background: none; border: 1px solid rgba(28,53,40,0.3); color: var(--green-deep); font-family: var(--serif-body); font-size: 0.8rem; padding: 0.45rem 0.9rem; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+  .reset-btn:hover { background: rgba(28,53,40,0.05); border-color: var(--green-deep); }
+
+  /* Confusion cards */
+  .confusion-cards { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.1rem; }
+  .confusion-card { display: flex; gap: 0.8rem; background: var(--cream-dark); border: 1px solid rgba(196,149,74,0.2); padding: 0.9rem 1.1rem; }
+  .confusion-card .icon { color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; margin-top: 0.15rem; }
+  .confusion-card p { font-size: 0.92rem; margin-bottom: 0; }
+
+  .bridge-block { text-align: center; padding: 2.25rem 0 1rem; }
+  .bridge-block p:first-child { font-family: var(--serif-display); font-size: 1.25rem; font-style: italic; color: var(--green-deep); max-width: 540px; margin: 0 auto 1.1rem; }
+  .takehome { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--ink-faint); border-top: 1px solid rgba(196,149,74,0.3); padding-top: 1rem; margin-top: 0.5rem; }
+  .takehome .icon { width: 16px; height: 16px; color: var(--gold); }
+
+  footer { position: relative; z-index: 1; background: var(--green-deep); color: rgba(247,242,232,0.5); padding: 2.5rem 2rem; text-align: center; font-size: 0.8rem; letter-spacing: 0.05em; }
+  footer strong { color: var(--cream); font-family: var(--serif-display); font-size: 1rem; font-weight: 400; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 1.25rem; }
+    .hero { padding: 130px 0 20px; }
+    .guardrail-block, .reveal-card, .worked-example { padding: 1.3rem 1.15rem; }
+    .quiz-word { min-width: 118px; }
+    .step-btn span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="nav-logo">
+      <span class="nav-logo-mark">LQ</span>
+      <span class="nav-logo-arabic">ل ق</span>
+    </a>
+    <span class="nav-tag">Arabic Toolkit &middot; Session 1</span>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <p class="hero-eyebrow">The Arabic Toolkit &middot; Course 1</p>
+  <h1 class="hero-title">Where We Start</h1>
+  <p class="hero-outcome">Sort any word in a simple ayah into noun, verb, or connector — the one division everything else in Arabic grammar sits on top of.</p>
+</header>
+
+<div class="stepper-wrap">
+  <div class="stepper" id="stepper">
+    <button class="step-btn" data-target="s-why">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2"/></svg>
+      <span>Why</span>
+    </button>
+    <button class="step-btn" data-target="s-toolbox">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/><path d="M3 13h18"/></svg>
+      <span>Toolbox</span>
+    </button>
+    <button class="step-btn" data-target="s-guardrails">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>
+      <span>Guardrails</span>
+    </button>
+    <button class="step-btn" data-target="s-sciart">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v13"/><path d="M4 8l4-2 4 2-4 9-4-9z"/><path d="M12 8l4-2 4 2-4 9-4-9z"/><path d="M6 21h12"/></svg>
+      <span>Science &amp; Art</span>
+    </button>
+    <button class="step-btn" data-target="s-tool">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="6" rx="1"/><rect x="9" y="14" width="6" height="6" rx="1"/><rect x="15" y="4" width="6" height="6" rx="1"/></svg>
+      <span>The Tool</span>
+    </button>
+    <button class="step-btn" data-target="s-practice">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+      <span>Practice</span>
+    </button>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- Why Arabic -->
+  <section id="s-why">
+    <div class="section-head">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2"/></svg>
+      <p class="section-label">Why Arabic</p>
+    </div>
+    <h2>Something You Already Love</h2>
+    <p>Think of someone or something you love — a person, a hobby, a place, a piece of music. Type it below if it helps to make it concrete. Nothing here is saved; it's just for you.</p>
+
+    <div class="love-card">
+      <div class="love-input-row">
+        <input type="text" id="loveInput" class="love-input" placeholder="A person, a hobby, a song, a place…">
+      </div>
+      <button class="reveal-btn" id="loveBtn">Now imagine you could interact with it directly &rarr;</button>
+      <div class="reveal-answer" id="loveAnswer">
+        <p>Not through someone else's description of <strong class="love-echo">it</strong> — not a summary, not someone else's account of it. Directly, yourself. How would that change things? Would your relationship with <strong class="love-echo">it</strong> go deeper?</p>
+        <p>That's the first reason to build this toolkit. Right now, for most of us, our relationship with the Qur'an is indirect — mediated through translation, through someone else's understanding of it. What if you could interact with it directly, yourself, the way you just imagined?</p>
+      </div>
+    </div>
+
+    <h3>Three Ways of Knowing Something Is True</h3>
+
+    <div class="knowledge-path">
+      <div class="k-step">
+        <div class="k-icon"><svg class="icon" viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M9 7a3 3 0 1 1 4.24 4.24l-4 4A3 3 0 0 1 5 11l1-1"/><path d="M15 17a3 3 0 1 0-4.24-4.24l-4 4A3 3 0 0 0 11 21l1-1"/></svg></div>
+        <div class="k-text"><div class="k-title">Testimony</div><p>So many independent reports that a lie couldn't survive intact. Secure — but second-hand.</p></div>
+      </div>
+      <div class="k-step">
+        <div class="k-icon"><svg class="icon" viewBox="0 0 24 24" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div class="k-text"><div class="k-title">Reasoning</div><p>An honest argument, followed to its conclusion. Legitimate — but still an inference.</p></div>
+      </div>
+      <div class="k-step highlight">
+        <div class="k-icon"><svg class="icon" viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="k-text"><div class="k-title">Direct Experience</div><p>Perceived yourself — the same directness you just imagined a moment ago.</p></div>
+      </div>
+    </div>
+
+    <p>Almost everything we take on faith can only be known the first two ways. The Qur'an claims something unusual: its own miracle can be examined <em>directly</em>, in the Arabic itself, by anyone equipped to look. Not a promise of a dramatic moment for everyone — a door that opens.</p>
+
+    <div class="reveal-card">
+      <div class="reveal-word">قَرَأَ</div>
+      <div class="reveal-gloss">If this means "he read" — is that everything that's there?</div>
+      <button class="reveal-btn" id="qaraaBtn">See what's underneath</button>
+      <div class="reveal-answer" id="qaraaAnswer">
+        <p>The same root gives us <em>Qurʾān</em> — not "a book," but "a recitation," meant to be gathered and read aloud. "He read" is accurate. It's also a fraction of what's there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Toolbox -->
+  <section id="s-toolbox">
+    <div class="section-head">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/><path d="M3 13h18"/></svg>
+      <p class="section-label">The Toolbox</p>
+    </div>
+    <h2>Not a Language. A Toolkit.</h2>
+    <p>We just talked about what changes when a relationship becomes direct instead of secondhand. Here's exactly what we're building to make that possible.</p>
+    <p>A mechanic doesn't relearn engineering to fix one noise in an engine — they reach for the one tool that does that job. That's the model here: a small set of tools, each one letting you look directly at the Qur'an instead of only through someone else's translation.</p>
+    <div class="chip-row">
+      <span class="chip"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Not fluency</span>
+      <span class="chip"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Not conversation</span>
+      <span class="chip"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Not translation work</span>
+    </div>
+    <p>Every session adds exactly one tool. Nothing here is provisional on finishing the rest — take one, take all seven, either way it's yours.</p>
+  </section>
+
+  <!-- Guardrails -->
+  <section id="s-guardrails">
+    <div class="section-head">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>
+      <p class="section-label">Guardrails</p>
+    </div>
+    <h2>This Is Not Tafsīr</h2>
+
+    <div class="guard-card">
+      <div class="guard-col">
+        <div class="g-label"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>The worry</div>
+        <p>Isn't a little Arabic how people end up misreading the Qur'an on their own?</p>
+      </div>
+      <div class="guard-col response">
+        <div class="g-label"><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>The answer</div>
+        <p>This builds <strong>appreciation</strong>, not authority. Classical scholars already draw on these same observations inside their tafsīr.</p>
+      </div>
+    </div>
+
+    <div class="guardrail-block">
+      <p>"Noticing a word is a noun is a reason to see what scholars already said about it — not a reason to skip past them."</p>
+    </div>
+  </section>
+
+  <!-- Science & Art -->
+  <section id="s-sciart">
+    <div class="section-head">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v13"/><path d="M4 8l4-2 4 2-4 9-4-9z"/><path d="M12 8l4-2 4 2-4 9-4-9z"/><path d="M6 21h12"/></svg>
+      <p class="section-label">Science &amp; Art</p>
+    </div>
+    <div class="sa-banner">
+      <span class="sa-pill">Today: Science</span>
+      <p>Arabic has a precise, rule-based side (nahw/sarf) and a rhetorical side (balāghah) where rules bend on purpose. Today is the first kind, cold — you can't bend a rule you don't know.</p>
+    </div>
+  </section>
+
+  <!-- The Tool -->
+  <section id="s-tool">
+    <div class="section-head">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="6" rx="1"/><rect x="9" y="14" width="6" height="6" rx="1"/><rect x="15" y="4" width="6" height="6" rx="1"/></svg>
+      <p class="section-label">The Tool</p>
+    </div>
+    <h2>Ism, Fiʿl, Ḥarf</h2>
+    <p>Every word in Arabic is exactly one of three things:</p>
+
+    <div class="tool-cards">
+      <div class="tool-card">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 6v12H5V9l7-6z"/><path d="M9 21v-6h6v6"/></svg>
+        <div class="t-arabic">اسم</div>
+        <div class="t-translit">ism &middot; noun</div>
+        <p>Names a person, thing, place, or quality.</p>
+      </div>
+      <div class="tool-card">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <div class="t-arabic">فِعْل</div>
+        <div class="t-translit">fiʿl &middot; verb</div>
+        <p>An action or state, with time built in.</p>
+      </div>
+      <div class="tool-card">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M9 12h6"/></svg>
+        <div class="t-arabic">حَرْف</div>
+        <div class="t-translit">ḥarf &middot; connector</div>
+        <p>"In," "to," "and" — never stands alone.</p>
+      </div>
+    </div>
+
+    <p><strong>Fastest test:</strong> does the word carry a sense of time? If yes, fiʿl. Ism never does.</p>
+
+    <div class="worked-example">
+      <div class="worked-arabic">خَلَقَ الْإِنسَانَ</div>
+      <div class="worked-gloss">"He created mankind"</div>
+      <div class="worked-breakdown">
+        <div class="word-chip"><span class="w-ar">خَلَقَ</span><span class="w-tag fil">fiʿl</span></div>
+        <div class="word-chip"><span class="w-ar">الْإِنسَانَ</span><span class="w-tag ism">ism</span></div>
+      </div>
+    </div>
+    <div class="worked-example">
+      <div class="worked-arabic">فِي بَيْتِهِ</div>
+      <div class="worked-gloss">"In his house"</div>
+      <div class="worked-breakdown">
+        <div class="word-chip"><span class="w-ar">فِي</span><span class="w-tag harf">ḥarf</span></div>
+        <div class="word-chip"><span class="w-ar">بَيْتِهِ</span><span class="w-tag ism">ism</span></div>
+      </div>
+    </div>
+
+    <div class="tip-line">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.3 1 2.5h6c0-1.2.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>
+      <span><strong>ال</strong> attached to a word is always a noun-signal — no exceptions.</span>
+    </div>
+  </section>
+
+  <!-- Practice -->
+  <section id="s-practice">
+    <div class="section-head">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+      <p class="section-label">Practice</p>
+    </div>
+    <h2>Try It Yourself</h2>
+    <p>Sort each word into ism, fiʿl, or ḥarf.</p>
+
+    <div class="score-bar">
+      <span>Score: <strong id="scoreDisplay">0 / 9</strong></span>
+      <button class="reset-btn" id="resetBtn">Reset</button>
+    </div>
+
+    <div id="quizContainer"></div>
+
+    <div class="confusion-cards">
+      <div class="confusion-card">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>
+        <p><span style="direction:rtl; font-family:var(--serif-display); font-size:1.05rem;">إِيَّاكَ</span> doesn't look like a typical noun, but it's still ism.</p>
+      </div>
+      <div class="confusion-card">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>
+        <p>Some verb-looking words are actually nouns built from a verb root — a later session's topic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bridge -->
+  <section class="bridge-block">
+    <p>Next session: what role is an ism playing in the sentence? That unlocks why Qur'anic word order moves in ways English never could.</p>
+    <p class="takehome"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 6v12H5V9l7-6z"/></svg>Take-home: mark every ال in a short surah before next session.</p>
+  </section>
+
+</main>
+
+<footer>
+  <strong>LQ</strong><br>
+  Learning, Loving, Living the Qur'an
+</footer>
+
+<script>
+(function() {
+  var loveBtn = document.getElementById('loveBtn');
+  var loveInput = document.getElementById('loveInput');
+  var loveAnswer = document.getElementById('loveAnswer');
+  var loveEchoes = document.querySelectorAll('.love-echo');
+  loveBtn.addEventListener('click', function() {
+    var val = loveInput.value.trim();
+    var phrase = val ? val : 'it';
+    loveEchoes.forEach(function(el) { el.textContent = phrase; });
+    var shown = loveAnswer.classList.toggle('shown');
+    loveBtn.textContent = shown ? 'Hide' : 'Now imagine you could interact with it directly \u2192';
+  });
+
+  var qaraaBtn = document.getElementById('qaraaBtn');
+  var qaraaAnswer = document.getElementById('qaraaAnswer');
+  qaraaBtn.addEventListener('click', function() {
+    var shown = qaraaAnswer.classList.toggle('shown');
+    qaraaBtn.textContent = shown ? 'Hide' : 'See what\'s underneath';
+  });
+
+  var quizData = [
+    { arabic: 'الْحَمْدُ لِلَّهِ', gloss: '"Praise be to Allah"', words: [
+        { word: 'الْحَمْدُ', answer: 'ism' },
+        { word: 'لِ', answer: 'harf' },
+        { word: 'اللَّهِ', answer: 'ism' }
+    ]},
+    { arabic: 'إِيَّاكَ نَعْبُدُ', gloss: '"You alone we worship"', words: [
+        { word: 'إِيَّاكَ', answer: 'ism' },
+        { word: 'نَعْبُدُ', answer: 'fil' }
+    ]},
+    { arabic: 'مِنَ الْجِنَّةِ وَالنَّاسِ', gloss: '"From the jinn and mankind"', words: [
+        { word: 'مِنَ', answer: 'harf' },
+        { word: 'الْجِنَّةِ', answer: 'ism' },
+        { word: 'وَ', answer: 'harf' },
+        { word: 'النَّاسِ', answer: 'ism' }
+    ]}
+  ];
+
+  var labels = { ism: 'Ism', fil: 'Fiʿl', harf: 'Ḥarf' };
+  var total = 0;
+  quizData.forEach(function(p) { total += p.words.length; });
+  var correctCount = 0;
+
+  var container = document.getElementById('quizContainer');
+  var scoreDisplay = document.getElementById('scoreDisplay');
+
+  function updateScore() { scoreDisplay.textContent = correctCount + ' / ' + total; }
+
+  function render() {
+    container.innerHTML = '';
+    correctCount = 0;
+    updateScore();
+
+    quizData.forEach(function(phrase) {
+      var phraseEl = document.createElement('div');
+      phraseEl.className = 'quiz-phrase';
+
+      var arEl = document.createElement('div');
+      arEl.className = 'quiz-arabic';
+      arEl.textContent = phrase.arabic;
+      phraseEl.appendChild(arEl);
+
+      var glossEl = document.createElement('div');
+      glossEl.className = 'quiz-gloss';
+      glossEl.textContent = phrase.gloss;
+      phraseEl.appendChild(glossEl);
+
+      var wordsEl = document.createElement('div');
+      wordsEl.className = 'quiz-words';
+
+      phrase.words.forEach(function(item) {
+        var wordEl = document.createElement('div');
+        wordEl.className = 'quiz-word';
+
+        var arWord = document.createElement('div');
+        arWord.className = 'qw-arabic';
+        arWord.textContent = item.word;
+        wordEl.appendChild(arWord);
+
+        var optsEl = document.createElement('div');
+        optsEl.className = 'qw-options';
+
+        ['ism', 'fil', 'harf'].forEach(function(key) {
+          var btn = document.createElement('button');
+          btn.className = 'qw-btn';
+          btn.textContent = labels[key];
+          btn.addEventListener('click', function() {
+            var siblings = optsEl.querySelectorAll('.qw-btn');
+            siblings.forEach(function(b) { b.disabled = true; });
+            if (key === item.answer) {
+              btn.classList.add('correct');
+              correctCount++;
+            } else {
+              btn.classList.add('incorrect');
+              siblings.forEach(function(b) { if (b.textContent === labels[item.answer]) b.classList.add('correct'); });
+            }
+            updateScore();
+          });
+          optsEl.appendChild(btn);
+        });
+
+        wordEl.appendChild(optsEl);
+        wordsEl.appendChild(wordEl);
+      });
+
+      phraseEl.appendChild(wordsEl);
+      container.appendChild(phraseEl);
+    });
+  }
+
+  document.getElementById('resetBtn').addEventListener('click', render);
+  render();
+
+  // Stepper: click to scroll, scroll-spy to highlight active section
+  var stepBtns = document.querySelectorAll('.step-btn');
+  stepBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = document.getElementById(btn.getAttribute('data-target'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  var sectionEls = Array.prototype.map.call(stepBtns, function(btn) {
+    return document.getElementById(btn.getAttribute('data-target'));
+  });
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      var idx = sectionEls.indexOf(entry.target);
+      if (idx === -1) return;
+      if (entry.isIntersecting) {
+        stepBtns.forEach(function(b) { b.classList.remove('active'); });
+        stepBtns[idx].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-140px 0px -60% 0px', threshold: 0 });
+
+  sectionEls.forEach(function(el) { if (el) observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

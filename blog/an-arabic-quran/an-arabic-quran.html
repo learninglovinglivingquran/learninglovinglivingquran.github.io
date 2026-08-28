@@ -585,28 +585,10 @@
       margin-bottom: 2rem;
     }
 
-    .cta-form {
-      display: flex;
-      border: 1px solid rgba(196,149,74,0.3);
-      overflow: hidden;
-    }
-
-    .cta-input {
-      flex: 1;
-      padding: 0.9rem 1.25rem;
-      font-family: var(--serif-body);
-      font-size: 1rem;
-      font-weight: 300;
-      background: rgba(255,255,255,0.07);
-      color: var(--cream);
-      border: none;
-      outline: none;
-      min-width: 0;
-    }
-
-    .cta-input::placeholder { color: rgba(247,242,232,0.3); }
-
-    .cta-submit {
+    .cta-social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       background: var(--gold);
       color: var(--green-deep);
       font-family: var(--serif-body);
@@ -614,14 +596,14 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 0.9rem 1.5rem;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
       border: none;
-      cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
     }
 
-    .cta-submit:hover { background: var(--gold-light); }
+    .cta-social-btn:hover { background: var(--gold-light); }
 
     /* ── Footer ── */
     footer {
@@ -703,8 +685,7 @@
       .post-card { padding: 2rem 1.5rem; }
 
       .newsletter-cta { padding: 4rem 1.5rem; }
-      .cta-form { flex-direction: column; }
-      .cta-input, .cta-submit { width: 100%; }
+      .cta-social-btn { width: 100%; justify-content: center; }
 
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     }
@@ -759,23 +740,37 @@
   <!-- Posts -->
   <main class="posts-section">
     <div class="stage-group">
-      <div class="coming-soon">
-        <p>An Arabic Quran pieces are being developed. Subscribe to our Social Media to be notified when they arrive.</p>
-      </div>
+      <a href="./session1.html" class="post-featured">
+        <div class="post-featured-content">
+          <div>
+            <p class="post-label">Featured &middot; <span class="cat-pill an-arabic-quran">An Arabic Quran</span></p>
+            <h2 class="post-title">Where We Start</h2>
+            <p class="post-subtitle">The Arabic Toolkit &mdash; Session 1</p>
+            <p class="post-excerpt">
+              Sort any word in a simple ayah into noun, verb, or connector — the one division everything else in Arabic grammar sits on top of.
+            </p>
+          </div>
+          <div class="post-meta">
+            <span>Interactive session</span>
+            <span class="post-meta-dot">&#9679;</span>
+            <span>Course 1, Session 1</span>
+          </div>
+        </div>
+        <div class="post-featured-image">
+          <span class="post-featured-ornament">02</span>
+        </div>
+      </a>
     </div>
   </main>
 
   <!-- Newsletter CTA -->
-  <!-- <section class="newsletter-cta">
+  <section class="newsletter-cta">
     <div class="newsletter-cta-inner">
       <h2>New An Arabic Quran pieces, when they're ready</h2>
-      <p>Be notified the moment new writing in this category is published. No noise.</p>
-      <form class="cta-form" onsubmit="return false;">
-        <input type="email" class="cta-input" placeholder="Your email address" aria-label="Email">
-        <button type="submit" class="cta-submit">Subscribe</button>
-      </form>
+      <p>Follow along on social media to be notified when new writing in this category is published.</p>
+      <a href="#" class="cta-social-btn">Follow LQ on Social Media &rarr;</a>
     </div>
-  </section> -->
+  </section>
 
   <!-- Footer -->
   <footer>
