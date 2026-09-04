@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>An Arabic Quran — LQ</title>
-  <meta name="description" content="Nahw and sarf are the science — the grammar that builds meaning through structure. Balagha is the art — the rhetoric that bends that structure deliberately for effect. Together they explain why the Quran sounds the way it does.">
+  <title>The Dependent Universe - LQ</title>
+  <meta name="description" content="Infinite regress, self-creation, or an independent creator — the options are few, and all of them are extraordinary.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -222,290 +222,7 @@
       letter-spacing: 0.5rem;
     }
 
-    /* ── Page header ── */
-    .page-header {
-      position: relative;
-      z-index: 1;
-      padding: 120px 2rem 60px;
-      max-width: 1100px;
-      margin: 0 auto;
-      border-bottom: 1px solid rgba(196,149,74,0.15);
-    }
-
-    .page-header-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: end;
-    }
-
-    .page-eyebrow {
-      font-family: var(--serif-body);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    .page-title {
-      font-family: var(--serif-display);
-      font-size: clamp(2.4rem, 4vw, 3.5rem);
-      font-weight: 300;
-      color: var(--green-deep);
-      line-height: 1.15;
-    }
-
-    .page-description {
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: var(--ink-soft);
-      line-height: 1.8;
-      max-width: 42ch;
-      align-self: end;
-    }
-
-    /* ── Stage filter tabs ── */
-    .filter-bar {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 2rem 0;
-      display: flex;
-      gap: 0;
-      border-bottom: 1px solid rgba(196,149,74,0.15);
-    }
-
-    .filter-tab {
-      font-family: var(--serif-body);
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      padding: 0.75rem 1.5rem;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-      background: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .filter-tab:hover { color: var(--green-deep); }
-    .filter-tab.active { color: var(--green-deep); border-bottom-color: var(--gold); }
-
-    /* ── Post grid ── */
-    .posts-section {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4rem 2rem 6rem;
-    }
-
-    .stage-group { margin-bottom: 5rem; }
-
-    .stage-group:last-child { margin-bottom: 0; }
-
-    .stage-group-header {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .stage-group-label {
-      font-family: var(--serif-body);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      white-space: nowrap;
-    }
-
-    .stage-group-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(196,149,74,0.3), transparent);
-    }
-
-    .stage-group-desc {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--ink-faint);
-      line-height: 1.75;
-      max-width: 72ch;
-      margin-bottom: 2.5rem;
-      font-style: italic;
-    }
-
-    /* ── Featured post (first in each stage) ── */
-    .post-featured {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border: 1px solid rgba(196,149,74,0.2);
-      margin-bottom: 2px;
-      background: var(--cream);
-      text-decoration: none;
-      transition: box-shadow 0.25s;
-    }
-
-    .post-featured:hover {
-      box-shadow: 0 4px 24px rgba(28,53,40,0.08);
-    }
-
-    .post-featured-content {
-      padding: 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .post-featured-image {
-      background: var(--green-deep);
-      min-height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .post-featured-ornament {
-      font-family: var(--serif-display);
-      font-size: 8rem;
-      font-weight: 300;
-      color: rgba(196,149,74,0.2);
-      line-height: 1;
-      user-select: none;
-    }
-
-    /* ── Post grid (secondary posts) ── */
-    .post-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .post-card {
-      background: var(--cream);
-      border: 1px solid rgba(196,149,74,0.2);
-      padding: 2.5rem 2rem;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.25s, background 0.2s;
-    }
-
-    .post-card:hover {
-      box-shadow: 0 4px 20px rgba(28,53,40,0.07);
-      background: var(--cream-dark);
-    }
-
-    /* ── Shared post card elements ── */
-    .post-label {
-      font-family: var(--serif-body);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.85rem;
-    }
-
-    .post-title {
-      font-family: var(--serif-display);
-      font-size: 1.55rem;
-      font-weight: 400;
-      color: var(--green-deep);
-      line-height: 1.2;
-      margin-bottom: 0.6rem;
-    }
-
-    .post-featured .post-title {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .post-subtitle {
-      font-family: var(--serif-display);
-      font-size: 1rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--ink-faint);
-      margin-bottom: 1.25rem;
-      line-height: 1.4;
-    }
-
-    .post-featured .post-subtitle { font-size: 1.1rem; }
-
-    .post-excerpt {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--ink-soft);
-      line-height: 1.75;
-      margin-bottom: 1.5rem;
-      flex: 1;
-    }
-
-    .post-meta {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-family: var(--serif-body);
-      font-size: 0.78rem;
-      color: var(--ink-faint);
-      letter-spacing: 0.04em;
-      flex-wrap: wrap;
-    }
-
-    .post-meta-dot { opacity: 0.4; }
-
-    .post-read-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--serif-body);
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--green-deep);
-      text-decoration: none;
-      margin-top: 1.5rem;
-      border-bottom: 1px solid rgba(28,53,40,0.2);
-      padding-bottom: 1px;
-      transition: border-color 0.2s, color 0.2s;
-      align-self: flex-start;
-    }
-
-    .post-read-link:hover { color: var(--green-mid); border-color: var(--green-mid); }
-
-    /* ── Category archive link (blog home) / back link (category pages) ── */
-    .category-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1.75rem;
-      font-family: var(--serif-body);
-      font-size: 0.95rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--green-deep);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(28,53,40,0.25);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .category-link:hover { color: var(--green-mid); border-color: var(--green-mid); }
-
+    /* ── Back link / category pill (shared with the-legible-world index) ── */
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -519,11 +236,12 @@
       text-decoration: none;
       margin-bottom: 1.25rem;
       transition: color 0.2s;
+      position: relative;
+      z-index: 1;
     }
 
     .back-link:hover { color: var(--green-deep); }
 
-    /* ── Category pill badges ── */
     .cat-pill {
       display: inline-block;
       font-size: 0.68rem;
@@ -535,26 +253,274 @@
       border: 1px solid currentColor;
     }
 
-    .cat-pill.legible-world          { color: var(--green-soft); }
-    .cat-pill.an-arabic-quran        { color: var(--gold); }
-    .cat-pill.arabic-dictionary      { color: var(--gold-light); }
-    .cat-pill.quran-reflection-topics { color: var(--green-mid); }
-    .cat-pill.quran-reflection       { color: var(--ink-faint); }
+    .cat-pill.legible-world { color: var(--green-soft); }
 
-    /* ── Empty state ── */
-    .coming-soon {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 4rem 2rem;
-      border: 1px dashed rgba(196,149,74,0.25);
+    /* ── Essay header ── */
+    .essay-header {
+      position: relative;
+      z-index: 1;
+      padding: 140px 2rem 60px;
+      max-width: 780px;
+      margin: 0 auto;
+      animation: fadeUp 0.6s ease both;
     }
 
-    .coming-soon p {
+    .essay-label {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .essay-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .essay-title {
       font-family: var(--serif-display);
-      font-size: 1.1rem;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 400;
+      color: var(--green-deep);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .essay-subtitle {
+      font-family: var(--serif-display);
+      font-size: 1.3rem;
+      font-weight: 300;
       font-style: italic;
       color: var(--ink-faint);
+      margin-bottom: 2.5rem;
+      line-height: 1.4;
     }
+
+    .essay-meta {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid rgba(196,149,74,0.2);
+      border-bottom: 1px solid rgba(196,149,74,0.2);
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+      flex-wrap: wrap;
+    }
+
+    .essay-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ── Reading progress bar ── */
+    #progress-bar {
+      position: fixed;
+      top: 64px; left: 0;
+      height: 2px;
+      background: var(--gold);
+      width: 0%;
+      z-index: 150;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Essay body ── */
+    .essay-body {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    .essay-body p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-soft);
+      margin-bottom: 1.6rem;
+    }
+
+    .essay-body em { font-style: italic; color: var(--ink); }
+    .essay-body strong { font-weight: 600; color: var(--ink); }
+
+    .essay-body h2 {
+      font-family: var(--serif-display);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--green-deep);
+      margin: 3.5rem 0 1.25rem;
+      line-height: 1.2;
+    }
+
+    .essay-body h3 {
+      font-family: var(--serif-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--green-deep);
+      margin: 3rem 0 1rem;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 0.5rem 0 0.5rem 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .pull-quote p {
+      font-family: var(--serif-display);
+      font-size: 1.35rem !important;
+      font-weight: 400 !important;
+      font-style: italic;
+      color: var(--green-deep) !important;
+      line-height: 1.5 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .question-block {
+      background: var(--green-deep);
+      padding: 2.5rem 3rem;
+      margin: 2.5rem 0;
+    }
+
+    .question-block h3 { color: var(--cream) !important; margin-top: 0 !important; margin-bottom: 1rem; }
+    .question-block p { color: rgba(247,242,232,0.75) !important; }
+    .question-block .answer { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(196,149,74,0.2); }
+    .question-block .answer p { color: rgba(247,242,232,0.75) !important; }
+
+    .arabic {
+      font-size: 1.3rem;
+      direction: rtl;
+      text-align: right;
+      color: var(--green-deep);
+      font-style: normal;
+      line-height: 2;
+    }
+
+    .arabic-transliteration { font-style: italic; color: var(--ink-faint); }
+
+    .surah-block {
+      background: var(--cream-dark);
+      border: 1px solid rgba(196,149,74,0.2);
+      padding: 2rem 2.5rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+
+    .surah-block .surah-name {
+      font-family: var(--serif-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .surah-block .surah-text {
+      font-family: var(--serif-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--green-deep);
+      line-height: 1.6;
+    }
+
+    .essay-separator {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .essay-separator::before,
+    .essay-separator::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,149,74,0.3));
+    }
+
+    .essay-separator::after { background: linear-gradient(90deg, rgba(196,149,74,0.3), transparent); }
+
+    .essay-separator span {
+      color: var(--gold);
+      opacity: 0.5;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── Series nav (prev/next) ── */
+    .series-nav {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      padding: 0 2rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .series-nav a {
+      flex: 1;
+      min-width: 220px;
+      text-decoration: none;
+      border: 1px solid rgba(196,149,74,0.3);
+      padding: 1.5rem 1.75rem;
+      display: block;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .series-nav a:hover { border-color: var(--gold); background: var(--cream-dark); }
+
+    .series-nav .dir {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .series-nav .stitle {
+      font-family: var(--serif-display);
+      font-size: 1.15rem;
+      color: var(--green-deep);
+      line-height: 1.3;
+    }
+
+    .series-nav .next { text-align: right; }
+
+    /* ── Series index box ── */
+    .series-box {
+      position: relative;
+      z-index: 1;
+      background: var(--cream-dark);
+      border: 1px solid rgba(196,149,74,0.25);
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      padding: 2rem 2.5rem;
+    }
+
+    .series-box .series-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .series-box p { font-size: 0.98rem; color: var(--ink-faint); line-height: 1.7; margin-bottom: 0; }
 
     /* ── Newsletter CTA ── */
     .newsletter-cta {
@@ -564,11 +530,7 @@
       padding: 5rem 2rem;
     }
 
-    .newsletter-cta-inner {
-      max-width: 560px;
-      margin: 0 auto;
-      text-align: center;
-    }
+    .newsletter-cta-inner { max-width: 560px; margin: 0 auto; text-align: center; }
 
     .newsletter-cta h2 {
       font-family: var(--serif-display);
@@ -625,12 +587,7 @@
       gap: 1.5rem;
     }
 
-    .footer-brand {
-      font-family: var(--serif-display);
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--cream);
-    }
+    .footer-brand { font-family: var(--serif-display); font-size: 1rem; font-weight: 300; color: var(--cream); }
 
     .footer-brand span {
       display: block;
@@ -654,35 +611,22 @@
 
     .footer-links a:hover { color: var(--gold-light); }
 
-    /* ── Fade in ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    .page-header { animation: fadeUp 0.6s ease both; }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .nav-links  { display: none; }
       .nav-burger { display: flex; }
 
-      .page-header { padding: 100px 1.5rem 40px; }
-      .page-header-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-      .page-description { max-width: 100%; }
-
-      .filter-bar { padding: 1.5rem 1.5rem 0; gap: 0; overflow-x: auto; }
-      .filter-tab { padding: 0.65rem 1rem; font-size: 0.78rem; white-space: nowrap; }
-
-      .posts-section { padding: 3rem 1.5rem 4rem; }
-
-      .post-featured { grid-template-columns: 1fr; }
-      .post-featured-image { display: none; }
-      .post-featured-content { padding: 2rem 1.5rem; }
-      .post-featured .post-title { font-size: 1.6rem; }
-
-      .post-grid { grid-template-columns: 1fr; }
-      .post-card { padding: 2rem 1.5rem; }
+      .essay-header { padding: 110px 1.5rem 40px; }
+      .essay-body { padding: 0 1.5rem 4rem; }
+      .question-block { padding: 2rem 1.5rem; }
+      .series-nav { padding: 0 1.5rem; }
+      .series-nav .next { text-align: left; }
+      .series-box { margin: 0 1.5rem 3rem; padding: 1.5rem; }
 
       .newsletter-cta { padding: 4rem 1.5rem; }
       .cta-social-btn { width: 100%; justify-content: center; }
@@ -690,9 +634,7 @@
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     }
 
-    @media (max-width: 400px) {
-      html { font-size: 16px; }
-    }
+    @media (max-width: 400px) { html { font-size: 16px; } }
   </style>
 </head>
 <body>
@@ -725,48 +667,71 @@
     <div class="mobile-menu-ornament">&#10022; &#10022; &#10022;</div>
   </div>
 
-  <!-- Page Header -->
-  <div class="page-header">
-    <div class="page-header-inner">
-      <div>
-        <a href="../blog.html" class="back-link">&larr; All Essays</a>
-        <p class="page-eyebrow">Learning &middot; Loving &middot; Living</p>
-        <h1 class="page-title">An Arabic Quran</h1>
-      </div>
-      <p class="page-description">Nahw and sarf are the science — the grammar that builds meaning through structure. Balagha is the art — the rhetoric that bends that structure deliberately for effect. Together they explain why the Quran sounds the way it does.</p>
+  <!-- Reading progress bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Essay Header -->
+  <header class="essay-header">
+    <a href="legibleworld.html" class="back-link">&larr; The Legible World</a>
+    <p class="essay-label">The Legible World &middot; Part 4 of 12</p>
+    <h1 class="essay-title">The Dependent Universe</h1>
+    <p class="essay-subtitle">Everything you can see depends on something else. Where does the chain end?</p>
+    <div class="essay-meta">
+      <span>&#128336; 5 min read</span>
+      <span>&#9679; <span class="cat-pill legible-world">The Legible World</span></span>
+      <span>&#9679; LQ - Learning, Loving, Living the Quran</span>
     </div>
+  </header>
+
+  <!-- Essay Body -->
+  <article class="essay-body">
+    <p style="font-style:italic; color:var(--ink-faint);">Part 4 of <em>The Legible World</em>. Last time: why is there something rather than nothing. This time: everything you can point to depends on something else for its existence — where does that chain actually end?</p>
+
+    <h2>Question Two: The Dependent Universe</h2>
+
+    <p>Everything you can see, touch, or measure shares one fundamental characteristic. It depends on something else for its existence. The chair depends on the tree. The tree on the soil. The soil on conditions that produced it. Every link in the chain is contingent. It exists, but it didn't have to.</p>
+
+    <p>Follow that chain honestly to its end. You find that there are really only a handful of possible explanations, and every one of them is extraordinary.</p>
+
+    <div class="question-block">
+      <h3>Option one: infinite regress</h3>
+      <p>The chain goes back forever, with no first cause, an endless series of dependent things. But an infinite chain of dependent things never actually <em>explains</em> existence. It only postpones the question. It is like a chain suspended in midair with no ceiling to hang from. Every link is supported. The chain as a whole hangs from nothing.</p>
+      <div class="answer">
+        <h3>Option two: self-creation</h3>
+        <p>The dependent universe created itself. But for something to create itself it would have to exist before it existed. That is not a difficult idea. It is simply incoherent. A thing cannot be the author of its own beginning.</p>
+      </div>
+      <div class="answer">
+        <h3>Option three: an independent creator</h3>
+        <p>Something exists outside the dependent chain, uncaused, independent, not contingent but necessary. Something that exists by its own nature, not by the permission of anything else. This is a breathtaking claim. But the alternatives ask just as much of you, and offer far less coherence in return.</p>
+      </div>
+    </div>
+
+    <p>Again, we are not saying that one is right and another is wrong. We are simply examining the options, and being honest about the choice we make, and its implications. And, make no mistake, the choice cannot be avoided. We all choose one of those three options, whether explicitly or implicitly.</p>
+
+    <p>We can choose to believe any of the answers. What we can't do is claim that our answer does not require faith.</p>
+
+    <p>But again, only one of those answers requires faith, and fits coherently with the rest of our observations. All the others require just as much faith in the answer, as well as faith in the incoherence of the answer.</p>
+
+    <div class="essay-separator"><span>&#10022;</span></div>
+
+    <p>Next: a claim that isn't religious at all — it's a number physicists themselves keep calling too precise to be an accident.</p>
+
+  </article>
+
+  <div class="series-box">
+    <span class="series-label">&#10022; Part of: The Legible World</span>
+    <p>This piece is part of "The Legible World" — rational and empirical signs pointing toward a Creator. Neither belief nor disbelief is neutral ground; both require faith. These pieces follow the questions honestly and see where they lead.</p>
   </div>
 
-  <!-- Posts -->
-  <main class="posts-section">
-    <div class="stage-group">
-      <a href="./session1.html" class="post-featured">
-        <div class="post-featured-content">
-          <div>
-            <p class="post-label">Featured &middot; <span class="cat-pill an-arabic-quran">An Arabic Quran</span></p>
-            <h2 class="post-title">Where We Start</h2>
-            <p class="post-subtitle">The Arabic Toolkit &mdash; Session 1</p>
-            <p class="post-excerpt">
-              Sort any word in a simple ayah into noun, verb, or connector — the one division everything else in Arabic grammar sits on top of.
-            </p>
-          </div>
-          <div class="post-meta">
-            <span>Interactive session</span>
-            <span class="post-meta-dot">&#9679;</span>
-            <span>Course 1, Session 1</span>
-          </div>
-        </div>
-        <div class="post-featured-image">
-          <span class="post-featured-ornament">01</span>
-        </div>
-      </a>
-    </div>
-  </main>
+  <nav class="series-nav">
+    <a class="prev" href="something-rather-than-nothing.html"><span class="dir">Previous</span><span class="stitle">Why Is There Something Rather Than Nothing?</span></a>
+    <a class="next" href="the-universe-that-shouldnt-exist.html"><span class="dir">Next</span><span class="stitle">The Universe That Shouldn't Exist</span></a>
+  </nav>
 
   <!-- Newsletter CTA -->
   <section class="newsletter-cta">
     <div class="newsletter-cta-inner">
-      <h2>New An Arabic Quran pieces, when they're ready</h2>
+      <h2>New The Legible World pieces, when they're ready</h2>
       <p>Follow along on social media to be notified when new writing in this category is published.</p>
       <a href="#" class="cta-social-btn">Follow LQ on Social Media &rarr;</a>
     </div>
@@ -784,12 +749,23 @@
         <li><a href="../blog.html">Essays</a></li>
         <li><a href="../../index.html#about">About</a></li>
       </ul>
-      <p style="font-size:0.8rem; color:rgba(247,242,232,0.3);">© 2026 LQ. All rights reserved.</p>
+      <p style="font-size: 0.8rem; color: rgba(247,242,232,0.3);">© 2026 LQ. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Reading progress script -->
   <script>
-    // Burger menu
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+    });
+  </script>
+
+  <!-- Nav burger / mobile menu script -->
+  <script>
     const burger = document.getElementById('navBurger');
     const menu   = document.getElementById('mobileMenu');
 

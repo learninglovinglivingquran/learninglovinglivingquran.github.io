@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>If a Creator Exists, Would He Speak? - LQ</title>
+  <meta name="description" content="A universe built to reward honest inquiry, then silence? The seven markers any genuine communication from this Creator should meet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:    #1c3528;
+      --green-mid:     #2d5040;
+      --green-soft:    #3d6b55;
+      --gold:          #c4954a;
+      --gold-light:    #d4aa6a;
+      --cream:         #f7f2e8;
+      --cream-dark:    #ede6d5;
+      --ink:           #1a1a16;
+      --ink-soft:      #3a3a30;
+      --ink-faint:     #6a6a58;
+      --serif-display: 'Cormorant Garamond', Georgia, serif;
+      --serif-body:    'Crimson Pro', Georgia, serif;
+    }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif-body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open { overflow: hidden; }
+
+    /* ── Geometric background pattern ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(196,149,74,0.04) 40px, rgba(196,149,74,0.04) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(196,149,74,0.04) 40px, rgba(196,149,74,0.04) 41px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(247,242,232,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,149,74,0.2);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      text-decoration: none;
+      position: relative;
+      z-index: 201;
+    }
+
+    .nav-logo-mark {
+      font-family: var(--serif-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo-arabic {
+      font-size: 1.1rem;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--serif-body);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green-deep); }
+
+    .nav-links a.active { color: var(--green-deep); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+    .nav-cta {
+      background: var(--green-deep);
+      color: var(--cream) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+      border-bottom: none !important;
+    }
+
+    .nav-cta:hover { background: var(--green-mid) !important; }
+
+    /* ── Burger ── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      z-index: 201;
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--green-deep);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+
+    .nav-burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Mobile menu ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      z-index: 199;
+      background: rgba(247,242,232,0.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      padding: 2rem;
+      overflow-y: auto;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-menu.open { display: flex; opacity: 1; transform: translateY(0); }
+
+    .mobile-menu-links { list-style: none; display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }
+    .mobile-menu-links li { border-bottom: 1px solid rgba(196,149,74,0.15); }
+
+    .mobile-menu-links a {
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 0;
+      font-family: var(--serif-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--green-deep);
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .mobile-menu-links a:hover { color: var(--gold); padding-left: 0.5rem; }
+
+    .mobile-menu-cta { margin-top: 2rem; }
+
+    .mobile-menu-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--green-deep);
+      color: var(--cream);
+      font-family: var(--serif-body);
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 2px;
+      width: 100%;
+    }
+
+    .mobile-menu-ornament {
+      margin-top: auto;
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--gold);
+      opacity: 0.3;
+      letter-spacing: 0.5rem;
+    }
+
+    /* ── Back link / category pill (shared with the-legible-world index) ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--serif-body);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      text-decoration: none;
+      margin-bottom: 1.25rem;
+      transition: color 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-link:hover { color: var(--green-deep); }
+
+    .cat-pill {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      border: 1px solid currentColor;
+    }
+
+    .cat-pill.legible-world { color: var(--green-soft); }
+
+    /* ── Essay header ── */
+    .essay-header {
+      position: relative;
+      z-index: 1;
+      padding: 140px 2rem 60px;
+      max-width: 780px;
+      margin: 0 auto;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .essay-label {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .essay-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .essay-title {
+      font-family: var(--serif-display);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 400;
+      color: var(--green-deep);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .essay-subtitle {
+      font-family: var(--serif-display);
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-faint);
+      margin-bottom: 2.5rem;
+      line-height: 1.4;
+    }
+
+    .essay-meta {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid rgba(196,149,74,0.2);
+      border-bottom: 1px solid rgba(196,149,74,0.2);
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+      flex-wrap: wrap;
+    }
+
+    .essay-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ── Reading progress bar ── */
+    #progress-bar {
+      position: fixed;
+      top: 64px; left: 0;
+      height: 2px;
+      background: var(--gold);
+      width: 0%;
+      z-index: 150;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Essay body ── */
+    .essay-body {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    .essay-body p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-soft);
+      margin-bottom: 1.6rem;
+    }
+
+    .essay-body em { font-style: italic; color: var(--ink); }
+    .essay-body strong { font-weight: 600; color: var(--ink); }
+
+    .essay-body h2 {
+      font-family: var(--serif-display);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--green-deep);
+      margin: 3.5rem 0 1.25rem;
+      line-height: 1.2;
+    }
+
+    .essay-body h3 {
+      font-family: var(--serif-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--green-deep);
+      margin: 3rem 0 1rem;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 0.5rem 0 0.5rem 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .pull-quote p {
+      font-family: var(--serif-display);
+      font-size: 1.35rem !important;
+      font-weight: 400 !important;
+      font-style: italic;
+      color: var(--green-deep) !important;
+      line-height: 1.5 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .question-block {
+      background: var(--green-deep);
+      padding: 2.5rem 3rem;
+      margin: 2.5rem 0;
+    }
+
+    .question-block h3 { color: var(--cream) !important; margin-top: 0 !important; margin-bottom: 1rem; }
+    .question-block p { color: rgba(247,242,232,0.75) !important; }
+    .question-block .answer { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(196,149,74,0.2); }
+    .question-block .answer p { color: rgba(247,242,232,0.75) !important; }
+
+    .arabic {
+      font-size: 1.3rem;
+      direction: rtl;
+      text-align: right;
+      color: var(--green-deep);
+      font-style: normal;
+      line-height: 2;
+    }
+
+    .arabic-transliteration { font-style: italic; color: var(--ink-faint); }
+
+    .surah-block {
+      background: var(--cream-dark);
+      border: 1px solid rgba(196,149,74,0.2);
+      padding: 2rem 2.5rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+
+    .surah-block .surah-name {
+      font-family: var(--serif-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .surah-block .surah-text {
+      font-family: var(--serif-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--green-deep);
+      line-height: 1.6;
+    }
+
+    .essay-separator {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .essay-separator::before,
+    .essay-separator::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,149,74,0.3));
+    }
+
+    .essay-separator::after { background: linear-gradient(90deg, rgba(196,149,74,0.3), transparent); }
+
+    .essay-separator span {
+      color: var(--gold);
+      opacity: 0.5;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── Series nav (prev/next) ── */
+    .series-nav {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      padding: 0 2rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .series-nav a {
+      flex: 1;
+      min-width: 220px;
+      text-decoration: none;
+      border: 1px solid rgba(196,149,74,0.3);
+      padding: 1.5rem 1.75rem;
+      display: block;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .series-nav a:hover { border-color: var(--gold); background: var(--cream-dark); }
+
+    .series-nav .dir {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .series-nav .stitle {
+      font-family: var(--serif-display);
+      font-size: 1.15rem;
+      color: var(--green-deep);
+      line-height: 1.3;
+    }
+
+    .series-nav .next { text-align: right; }
+
+    /* ── Series index box ── */
+    .series-box {
+      position: relative;
+      z-index: 1;
+      background: var(--cream-dark);
+      border: 1px solid rgba(196,149,74,0.25);
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      padding: 2rem 2.5rem;
+    }
+
+    .series-box .series-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .series-box p { font-size: 0.98rem; color: var(--ink-faint); line-height: 1.7; margin-bottom: 0; }
+
+    /* ── Newsletter CTA ── */
+    .newsletter-cta {
+      position: relative;
+      z-index: 1;
+      background: var(--green-deep);
+      padding: 5rem 2rem;
+    }
+
+    .newsletter-cta-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+
+    .newsletter-cta h2 {
+      font-family: var(--serif-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-cta p {
+      font-size: 1rem;
+      color: rgba(247,242,232,0.65);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .cta-social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: var(--green-deep);
+      font-family: var(--serif-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      border: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .cta-social-btn:hover { background: var(--gold-light); }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--green-deep);
+      color: rgba(247,242,232,0.5);
+      padding: 2.5rem 2rem;
+      border-top: 1px solid rgba(196,149,74,0.1);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-brand { font-family: var(--serif-display); font-size: 1rem; font-weight: 300; color: var(--cream); }
+
+    .footer-brand span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(247,242,232,0.35);
+      margin-top: 0.2rem;
+    }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,242,232,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links  { display: none; }
+      .nav-burger { display: flex; }
+
+      .essay-header { padding: 110px 1.5rem 40px; }
+      .essay-body { padding: 0 1.5rem 4rem; }
+      .question-block { padding: 2rem 1.5rem; }
+      .series-nav { padding: 0 1.5rem; }
+      .series-nav .next { text-align: left; }
+      .series-box { margin: 0 1.5rem 3rem; padding: 1.5rem; }
+
+      .newsletter-cta { padding: 4rem 1.5rem; }
+      .cta-social-btn { width: 100%; justify-content: center; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+    }
+
+    @media (max-width: 400px) { html { font-size: 16px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="../../index.html" class="nav-logo">
+        <span class="nav-logo-mark">LQ</span>
+        <span class="nav-logo-arabic">ل ق</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../blog.html" class="active">Essays</a></li>
+        <li><a href="../../index.html#about">About</a></li>
+        <li><a href="../../index.html#start" class="nav-cta">Start Here</a></li>
+      </ul>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+    <ul class="mobile-menu-links">
+      <li><a href="../blog.html">Essays</a></li>
+      <li><a href="../../index.html#about">About</a></li>
+    </ul>
+    <div class="mobile-menu-cta"><a href="../../index.html#start">Start Here &rarr;</a></div>
+    <div class="mobile-menu-ornament">&#10022; &#10022; &#10022;</div>
+  </div>
+
+  <!-- Reading progress bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Essay Header -->
+  <header class="essay-header">
+    <a href="legibleworld.html" class="back-link">&larr; The Legible World</a>
+    <p class="essay-label">The Legible World &middot; Part 9 of 12</p>
+    <h1 class="essay-title">If a Creator Exists, Would He Speak?</h1>
+    <p class="essay-subtitle">What a legible universe implies about silence</p>
+    <div class="essay-meta">
+      <span>&#128336; 6 min read</span>
+      <span>&#9679; <span class="cat-pill legible-world">The Legible World</span></span>
+      <span>&#9679; LQ - Learning, Loving, Living the Quran</span>
+    </div>
+  </header>
+
+  <!-- Essay Body -->
+  <article class="essay-body">
+    <p style="font-style:italic; color:var(--ink-faint);">Part 9 of <em>The Legible World</em>. Reason alone drew a portrait of the Creator these five questions point toward: uncaused, independent, the ground of moral truth and meaning, capable of intention, one. Now: would such a being stay silent?</p>
+
+    <h2>If a Creator Exists, Would He Speak?</h2>
+
+    <p>Consider what this Creator has already done. It designed a universe that is, at every level, rationally legible. The same laws of physics govern a falling apple and the orbit of galaxies billions of light years away. The mathematics we develop in the privacy of our minds turns out to describe physical reality with perfect precision.</p>
+
+    <p>A Creator who wanted to remain hidden could have made a universe that resists rational investigation, a world of chaos, contradictory rules, questions that lead nowhere. Instead we inhabit a universe that rewards careful thinking, structured so that honest inquiry points toward its source.</p>
+
+    <p>The creation is legible. It points. It leads somewhere. And then, silence? Silence would be the one incoherent note in an otherwise coherent symphony.</p>
+
+    <p>There is a second reason to expect communication. The Creator we have described created the most complex thing in existence, which is all of existence itself. Every physical law, every form of matter and energy and consciousness. That is not an accident. That is an act of staggering intelligence.</p>
+
+    <p>Intelligence, by its very nature, is not passive or indifferent. Between communication and silence, an intelligent being with purpose chooses communication. Silence is the signature of indifference. Intelligence with intention speaks.</p>
+
+    <p>Again, as with the questions earlier, the choice of "communication" over "silence" is not based on factual knowledge, but on coherence. Both choices, again, require faith. But one choice requires us to have faith that an Intelligent Creator imbued the cosmos with signs and meaning that ultimately pointed to nowhere. While the other choice requires us to have faith that a Creator that not only created meaning-oriented creatures in a universe full of meaning, but also chose to communicate with them.</p>
+
+    <p>Both answers require faith. One just requires the incoherence of silence, along with that faith.</p>
+
+    <div class="essay-separator"><span>&#10022;</span></div>
+
+    <p>If this Creator has communicated, what would that communication look like? We are not looking for just any religious claim. We are looking for something that carries the signature of the Creator reason described.</p>
+
+    <p><strong>It would point back to the world as evidence</strong>. Not asking you to stop thinking, but to think harder. Treating honest inquiry as a path toward it, not away from it.</p>
+
+    <p><strong>The Creator it describes would match the portrait reason drew</strong>. Uncaused, independent, one, the ground of moral truth and meaning, beyond full comprehension. It may add what reason couldn't reach. But it should not contradict what reason already found.</p>
+
+    <p><strong>It would address the deepest human questions directly.</strong></p>
+
+    <p><strong>It would be internally consistent</strong>. A unified Creator would not produce a contradictory message.</p>
+
+    <p><strong>It would carry knowledge beyond its historical context</strong>, things said that could not have been known at the time of their saying.</p>
+
+    <p><strong>It would produce genuine transformation</strong>, not just intellectual agreement, but change at a deeper level.</p>
+
+    <p><strong>It would survive serious scrutiny across centuries</strong>. False things tend to collapse under sustained examination.</p>
+
+    <p>These are not religious criteria. They are the natural expectations that follow from the portrait reason drew. Any communication claiming to be from the Creator we have described should be able to meet them.</p>
+
+    <p>And now the only honest question is whether anything in human history does.</p>
+
+    <div class="essay-separator"><span>&#10022;</span></div>
+
+    <p>That question is where this series turns a corner — from what reason alone can establish to whether an actual text meets the bar reason set. The next piece takes up the Quran on exactly those terms.</p>
+
+  </article>
+
+  <div class="series-box">
+    <span class="series-label">&#10022; Part of: The Legible World</span>
+    <p>This piece is part of "The Legible World" — rational and empirical signs pointing toward a Creator. Neither belief nor disbelief is neutral ground; both require faith. These pieces follow the questions honestly and see where they lead.</p>
+  </div>
+
+  <nav class="series-nav">
+    <a class="prev" href="the-portrait.html"><span class="dir">Previous</span><span class="stitle">The Portrait</span></a>
+    <a class="next" href="the-most-serious-candidate.html"><span class="dir">Next</span><span class="stitle">The Most Serious Candidate</span></a>
+  </nav>
+
+  <!-- Newsletter CTA -->
+  <section class="newsletter-cta">
+    <div class="newsletter-cta-inner">
+      <h2>New The Legible World pieces, when they're ready</h2>
+      <p>Follow along on social media to be notified when new writing in this category is published.</p>
+      <a href="#" class="cta-social-btn">Follow LQ on Social Media &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        LQ
+        <span>Learning, Loving, Living the Quran</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../blog.html">Essays</a></li>
+        <li><a href="../../index.html#about">About</a></li>
+      </ul>
+      <p style="font-size: 0.8rem; color: rgba(247,242,232,0.3);">© 2026 LQ. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Reading progress script -->
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+    });
+  </script>
+
+  <!-- Nav burger / mobile menu script -->
+  <script>
+    const burger = document.getElementById('navBurger');
+    const menu   = document.getElementById('mobileMenu');
+
+    function openMenu() {
+      burger.classList.add('active');
+      menu.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
+    }
+    function closeMenu() {
+      burger.classList.remove('active');
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+
+    burger.addEventListener('click', () => burger.classList.contains('active') ? closeMenu() : openMenu());
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  </script>
+
+</body>
+</html>
