@@ -101,10 +101,11 @@ This is the conceptual backbone of **The Legible World** content category.
 **Current live structure (verified September 2026):**
 - **Homepage** (`lqpathway.com`) — hero, "What is LQ?" strip, "Why is LQ needed?" strip, the Learn→Love→Live framework section, footer. Two CTAs: "Welcome" (`#about-begin`) and "Welcome to the path →" (into the blog hub). Already consistent with the single-audience, no-doors, no-identity-dimension framing — no essay, door, identity-recovery, or newsletter language appears on the homepage.
 - **Blog hub** (`blog/blog.html`) — lists all five categories with descriptions and featured posts (or "in development" placeholders); bottom CTA points to "Follow LQ on Social Media" (not yet linked to the real handles).
-- **The Legible World** (`blog/legible-world/`) — now a 12-part serialized piece rather than a single essay. Featured/first entry: *"Is This It?"* (Part 1 of 12), followed by *"The Flat Playing Field Myth"* (Part 2) and onward through the same argument the original essay outlined (the neutrality myth, the five rational questions, fine-tuning, objective morality, meaning, the portrait of the Creator, divine communication, the Quran as candidate, and an invitation). Each part is written to stand alone while building one cumulative argument.
+- **The Legible World** (`blog/legible-world/`) — now a 12-part serialized piece rather than a single essay, organized under three sub-tracks: **The Argument** (the closed 12-part series itself, *"Is This It?"* onward, through the neutrality myth, the five rational questions, fine-tuning, objective morality, meaning, the portrait of the Creator, divine communication, the Quran as candidate, and an invitation), **The Signs** (open-ended reflections on signs noticed in lived experience), and **The Reflections** (open-ended, further rational questions that extend the core case). Only The Argument carries posts so far; The Signs and The Reflections show "coming soon" placeholders. Each Argument part is written to stand alone while building one cumulative argument.
 - **An Arabic Quran** (`blog/an-arabic-quran/`) — featured post: *Where We Start*, Session 1 of the Arabic Toolkit.
 - **Arabic Dictionary** (`blog/arabic-dictionary/`) — featured post: *Mubashir & Nadhīr*, a root study (ب ش ر / ن ذ ر).
-- **Quran Reflection — Topics** and **Quran Reflection** (`blog/quran-reflection-topics/`, `blog/quran-reflection/`) — both still show "being developed" placeholders; no posts yet.
+- **Quran Reflection — Topics** (`blog/quran-reflection-topics/`) — its first sub-category, **The Business World** (ayahs on trade, wealth, and honest dealing), is now live with a filter tab and a "coming soon" placeholder; no posts written yet.
+- **Quran Reflection** (`blog/quran-reflection/`) — its first sub-category, **Al-Fatiha** (sequential reflection on the opening surah), is now live with a filter tab and a "coming soon" placeholder; no posts written yet.
 - **`essay.html`** (the original *Which Leap Are You Taking?* essay) and **`the-thread.html`** (*The Thread*) — both still live at the site root but are now orphaned: neither is linked from current navigation or the blog hub. Since essays are being retired as a format, these should be formally retired or redirected rather than left live and unlinked.
 
 **Not yet done:**
@@ -113,6 +114,11 @@ This is the conceptual backbone of **The Legible World** content category.
 - Formal retirement/redirect of `essay.html` and `the-thread.html`.
 - `/learn/miracles` beginner linguistic-miracles guide — still planned, not yet built.
 - `/about` page — still planned, not yet built.
+- Standardize the CSS/JS path convention (see below) — root-relative and relative paths currently coexist across the site.
+
+**Front-end architecture:**
+- All page-specific CSS/JS has been consolidated into two shared files: `/css/main.css` and `/js/main.js`, replacing the per-page inline `<style>`/`<script>` blocks that previously duplicated the same rules on every page.
+- Path convention currently mixed: `index.html`, `blog.html`, `legible-world.html`, and `is-this-it.html` reference the shared files with root-relative paths (`/css/main.css`); the Legible World post pages and the two Quran Reflection category pages use relative paths (`../../css/main.css`) instead. Both work at the site's current folder depth, but this should be standardized before the Jekyll migration.
 
 **Shared across the site's pages:**
 - Fully mobile-optimized layout with burger menu
@@ -126,17 +132,17 @@ This is the conceptual backbone of **The Legible World** content category.
 
 The blog is LQ's primary content home: a hub page, and five category home pages.
 
-**`blog/blog.html` — the hub.** Lists all five categories in a fixed order, each with its label, a one-line description, a filter tab for jumping to it in place, its featured post (or a "being developed" placeholder if the category has no post yet), and a "Browse all [Category] essays →" link through to that category's own page.
+**`blog/blog.html` — the hub.** Lists all five categories in a fixed order, each with its label (now a larger `.category-title` heading rather than a small tracked label, with a divider between categories), a one-line description, its featured post (or a "being developed" placeholder if the category has no post yet), and a "Browse all [Category] essays →" link through to that category's own page. The hub's top-level category filter tabs are currently disabled (commented out in the markup, not deleted) since there are still too few posts per category for filtering to add value; larger titles and dividers do the job of separating categories for now. Categories with named sub-categories (Legible World, Quran Reflection — Topics, Quran Reflection) also show an inline sub-category nav linking straight to each track on the category page.
 
 **The five categories:**
 
-1. **The Legible World** (`blog/legible-world/`) — Rational and empirical signs pointing toward a Creator. Now a 12-part serialized piece (*"Is This It?"* onward), replacing the earlier single-essay model.
+1. **The Legible World** (`blog/legible-world/`) — Rational and empirical signs pointing toward a Creator. Organized into three sub-tracks: **The Argument** (the closed 12-part serialized piece, *"Is This It?"* onward), **The Signs** (open-ended reflections on signs noticed in lived experience), and **The Reflections** (open-ended, further rational questions that extend the core case). Only The Argument has posts so far.
 2. **An Arabic Quran** (`blog/an-arabic-quran/`) — Nahw/sarf (grammar, the science) and balagha (rhetoric, the art) — why the Qur'an sounds the way it does. Featured post: *Where We Start*, Session 1 of the Arabic Toolkit course.
 3. **Arabic Dictionary** (`blog/arabic-dictionary/`) — deep word studies synthesized from classical sources. Featured post: *Mubashir & Nadhīr*.
-4. **Quran Reflection — Topics** (`blog/quran-reflection-topics/`) — thematic reflection; ayat gathered across surahs by topic (patience, trust, justice, grief, gratitude, etc.). No posts yet.
-5. **Quran Reflection** (`blog/quran-reflection/`) — sequential reflection following mushaf order, surah by surah. No posts yet.
+4. **Quran Reflection — Topics** (`blog/quran-reflection-topics/`) — thematic reflection; ayat gathered across surahs by topic. First named sub-category: **The Business World**. No posts yet.
+5. **Quran Reflection** (`blog/quran-reflection/`) — sequential reflection following mushaf order, surah by surah. First named sub-category: **Al-Fatiha**. No posts yet.
 
-Three of the five categories now carry real, live content (The Legible World, An Arabic Quran, Arabic Dictionary); the remaining two (both Quran Reflection variants) still show an honest "being developed" placeholder.
+Three of the five categories now carry real, live content (The Legible World, An Arabic Quran, Arabic Dictionary); the remaining two (both Quran Reflection variants) still show an honest "being developed" placeholder within their one named sub-category.
 
 ---
 
@@ -179,15 +185,21 @@ A full theme reference document exists in the project files: `LQ_Theme_Reference
 - Newsletter/email capture remains fully removed sitewide
 - Design system documented and unchanged
 - A dedicated planning system stood up: this document (vision + roadmap) plus the companion **LQ Workstream Tracker** (live operational status) and **LQ Decision Log** (append-only decision record)
+- Site-wide CSS and JS consolidated into shared `/css/main.css` and `/js/main.js` files, replacing per-page inline styles/scripts (path convention not yet standardized — see Front-end architecture, above)
+- Homepage mobile nav unified with the rest of the site's slide-down panel pattern
+- The Legible World given three sub-tracks — The Argument (closed, 12 parts), The Signs, and The Reflections — with filter tabs, per-track descriptions, and a sub-category tag on each post card; only The Argument has posts so far
+- Quran Reflection — Topics given its first named sub-category, The Business World; Quran Reflection given its first named sub-category, Al-Fatiha — both still awaiting their first posts
+- Blog hub's top-level category filter bar disabled (commented out, not deleted) in favor of larger category titles and dividers, since there are still too few posts per category to justify filtering
 
 **Immediate next steps (in order):**
 1. Wire the four social handles into the sitewide "Follow LQ on Social Media" CTA
 2. Decide the disposition of the now-orphaned `essay.html` and `the-thread.html` pages (formal retirement or redirect)
-3. Continue the Legible World 12-part series and begin seeding Quran Reflection — Topics and Quran Reflection
+3. Write and publish the first posts in Legible World's new tracks (The Signs, The Reflections) and each Quran Reflection category's first named sub-category (The Business World; Al-Fatiha)
 4. Plan and write Arabic Toolkit Session 2 onward, and additional Arabic Dictionary entries
 5. Decide the Al-Safar YouTube migration path (rebrand vs. new channel + sunset)
 6. Complete the Jekyll + GitHub Pages migration and basic SEO setup
 7. Build the `/learn/miracles` and `/about` pages
+8. Standardize the CSS/JS path convention (root-relative vs. relative) across all pages
 
 **Blocked on:** none currently — the domain and social-platform decisions that were previously blocking were both resolved this month.
 
@@ -216,6 +228,11 @@ A full theme reference document exists in the project files: `LQ_Theme_Reference
 | YouTube channel | New LQ channel (@LQPathway) supersedes Al-Safar; covers all LQ content, not Arabic-only |
 | App concept | New LQ app supersedes the Tadabbur concept and name |
 | Planning system | Two-tier structure: this document (vision + roadmap) plus LQ Workstream Tracker (operational status) and LQ Decision Log (decision record) |
+| Front-end architecture | Site-wide CSS/JS consolidated into shared `/css/main.css` and `/js/main.js`; path convention (root-relative vs. relative) not yet standardized |
+| Legible World sub-categories | Three tracks: The Argument (closed, 12 parts), The Signs, The Reflections — only The Argument has posts so far |
+| Quran Reflection — Topics sub-categories | First named sub-category: The Business World — no posts yet |
+| Quran Reflection sub-categories | First named sub-category: Al-Fatiha — no posts yet |
+| Blog hub filtering | Top-level category filter bar disabled (commented out) in favor of larger category titles and dividers, given the low post count per category |
 
 ---
 
@@ -270,6 +287,7 @@ Like a knowledgeable friend who has walked the path themselves and wants to help
 
 ---
 
-*Overview & Plan v5.0 — September 2026*
+*Overview & Plan v5.1 — September 2026*
 *Merged the standalone LQ Master Plan into this document (they had become largely redundant): vision, current state, and the workstream/phasing roadmap now live together in one narrative reference. The LQ Workstream Tracker and LQ Decision Log remain separate, since they update on a different rhythm (overwritten weekly vs. append-only) that doesn't suit a narrative document. This version also corrects the Website/Content Strategy sections against the live site: The Legible World is already a 12-part serialized piece (not a single pending-migration essay), and Arabic Dictionary already has its first entry live.*
+*v5.1 update: reflects a website-architecture and content-structure working session — CSS/JS consolidated into shared `/css/main.css`/`/js/main.js`; Legible World split into three sub-tracks (The Argument, The Signs, The Reflections); Quran Reflection — Topics and Quran Reflection each given their first named sub-category (The Business World; Al-Fatiha); and the blog hub's category filter bar disabled in favor of larger category titles. See LQ Decision Log for the full detail on each.*
 *Use this document as context when starting any new chat about LQ. For live day-to-day status, see LQ Workstream Tracker; for decision history, see LQ Decision Log.*

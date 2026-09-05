@@ -43,6 +43,26 @@
 
 ---
 
+**September 2026 (website architecture & content-structure session):**
+
+- **Site-wide CSS/JS extracted into shared files.** Every page's own copy of the same `<style>`/`<script>` blocks was replaced with links to `/css/main.css` and `/js/main.js`. `index.html`, `blog.html`, `legible-world.html`, and `is-this-it.html` use root-relative paths (`/css/main.css`); the individual Legible World posts and the two Quran Reflection category pages use relative paths (`../../css/main.css`, `../../js/main.js`), per direct instruction. *Why:* over a dozen pages were each carrying an identical, independently-editable copy of the same CSS/JS, making any sitewide styling or behavior change require editing every file by hand. *Follow-up:* the site now has two path conventions for the same two files (root-relative vs. relative) — worth standardizing on one before the Jekyll migration, so future pages don't have to guess which pattern to follow.
+
+- **Homepage mobile nav unified with the rest of the site.** `index.html` previously used a different mobile-menu pattern (an inline `.nav-links` dropdown) than the other pages (a dedicated slide-down `#mobileMenu` panel). Updated to the shared panel pattern so one JS file (`main.js`) could drive navigation on every page. *Why:* a single shared JS file can't support two different markup patterns for the same component. *Follow-up:* none — homepage mobile nav now looks and behaves like the rest of the site.
+
+- **Legible World given three sub-tracks: The Argument, The Signs, The Reflections.** *The Argument* is the existing, closed 12-part sequential series (unchanged, not open to new entries). *The Signs* and *The Reflections* are new, open-ended tracks for content beyond the fixed 12 parts — *The Signs* for reflections on signs noticed in lived experience, *The Reflections* for further rational questions that extend the core case. Both are live on the category page with filter tabs and "coming soon" placeholders; no posts written yet. *Alternatives considered:* "The Case" / "The Encounter" as track names, later simplified to "The Signs" / "The Reflections." *Why:* the 12-part Argument series has a deliberate beginning and ending (culminating in "The Invitation") and isn't meant to keep growing; new material needed a home that didn't disturb that arc. *Follow-up:* write and publish the first posts in The Signs and The Reflections.
+
+- **Legible World's category description rewritten** to name all three tracks and explicitly invite undecided readers to start there ("If you're not sure where to start... start here"). Updated in four places: the category page's on-page description, its meta description, the blog hub's category description, and the series-box blurb on each of the 12 Argument posts.
+
+- **Quran Reflection — Topics given its first sub-category: "The Business World"** (ayahs on trade, wealth, and honest dealing). Filter tab and sub-category structure added to the category page and linked from the blog hub; no posts written yet.
+
+- **Quran Reflection given its first sub-category: "Al-Fatiha"** (sequential reflection on the opening surah). Filter tab and sub-category structure added to the category page and linked from the blog hub; no posts written yet.
+
+- **Blog hub's top-level category filter bar disabled (commented out, not deleted).** *Why (stated by Shaheer):* with only a few articles per category right now, filtering adds no value; categories are separated instead with larger titles (`.category-title`) and a visual divider between blocks (`.hub-category`). *Follow-up:* filter bar markup is preserved in an HTML comment so it can be re-enabled once there are enough posts per category to justify it.
+
+- **Sub-category tag added to Legible World post cards.** Each post entry (featured and grid) now shows which track it belongs to (e.g. "The Argument") alongside the existing category pill, so a mixed listing stays legible once The Signs and The Reflections have posts too.
+
+---
+
 *Template for new entries:*
 
 > **[Decision made]** — one line stating what was decided. *Alternatives considered:* what else was on the table. *Why:* the actual reasoning. *Follow-up:* anything this now unblocks or requires.
