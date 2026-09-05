@@ -737,9 +737,22 @@
     </div>
   </div>
 
+  <!-- Sub-category filter bar -->
+  <div class="filter-bar">
+    <a href="#all"          class="filter-tab active" data-filter="all">All</a>
+    <a href="#the-argument" class="filter-tab" data-filter="the-argument">The Argument</a>
+    <a href="#the-signs"    class="filter-tab" data-filter="the-signs">The Signs</a>
+  </div>
+
   <!-- Posts -->
   <main class="posts-section">
-    <div class="stage-group">
+    <div class="stage-group" data-stage="the-argument">
+      <div class="stage-group-header">
+        <span class="stage-group-label">&#9679; The Argument</span>
+        <div class="stage-group-line"></div>
+      </div>
+      <p class="stage-group-desc">The core case, from the first honest question to the invitation at the end. Twelve parts, meant to be read in order.</p>
+
       <a href="./is-this-it.html" class="post-featured">
         <div class="post-featured-content">
           <div>
@@ -897,6 +910,18 @@
 
       </div>
     </div>
+
+    <div class="stage-group" data-stage="the-signs">
+      <div class="stage-group-header">
+        <span class="stage-group-label">&#9679; The Signs</span>
+        <div class="stage-group-line"></div>
+      </div>
+      <p class="stage-group-desc">Reflections on specific signs in the world — noticed, not argued. Read in any order.</p>
+
+      <div class="coming-soon">
+        <p>New reflections in this track are being written. Follow along on social media to be notified when they arrive.</p>
+      </div>
+    </div>
   </main>
 
   <!-- Newsletter CTA -->
@@ -945,6 +970,31 @@
     burger.addEventListener('click', () => burger.classList.contains('active') ? closeMenu() : openMenu());
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    // Sub-category filter tabs (The Argument / The Signs)
+    const subTabs   = document.querySelectorAll('.filter-tab');
+    const subGroups = document.querySelectorAll('.stage-group');
+
+    function applySubFilter(filter) {
+      subTabs.forEach(t => t.classList.toggle('active', t.dataset.filter === filter));
+      subGroups.forEach(group => {
+        group.style.display = (filter === 'all' || group.dataset.stage === filter) ? '' : 'none';
+      });
+    }
+
+    subTabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        applySubFilter(tab.dataset.filter);
+        history.replaceState(null, '', '#' + tab.dataset.filter);
+      });
+    });
+
+    // Land on the right track if arriving from a link like legible-world.html#the-signs
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash === 'the-argument' || initialHash === 'the-signs') {
+      applySubFilter(initialHash);
+    }
   </script>
 
 </body>

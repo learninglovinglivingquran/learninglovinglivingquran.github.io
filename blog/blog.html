@@ -506,6 +506,32 @@
 
     .category-link:hover { color: var(--green-mid); border-color: var(--green-mid); }
 
+    /* ── Sub-category nav (used within Legible World, which has two tracks) ── */
+    .subcat-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .subcat-nav a {
+      font-family: var(--serif-body);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .subcat-nav a:hover { color: var(--green-deep); border-color: var(--gold); }
+
+    .subcat-nav-sep { color: var(--gold); opacity: 0.5; font-size: 0.7rem; }
+
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -757,20 +783,26 @@
       </div>
       <p class="stage-group-desc">Rational and empirical signs pointing toward a Creator. Neither belief nor disbelief is neutral ground — both require faith. These pieces follow the questions honestly and see where they lead.</p>
 
-      <a href="./legible-world/blog-post-template.html" class="post-featured">
+      <div class="subcat-nav">
+        <a href="./legible-world/legible-world.html#the-argument">The Argument</a>
+        <span class="subcat-nav-sep">&middot;</span>
+        <a href="./legible-world/legible-world.html#the-signs">The Signs</a>
+      </div>
+
+      <a href="./legible-world/is-this-it.html" class="post-featured">
         <div class="post-featured-content">
           <div>
             <p class="post-label">Featured &middot; <span class="cat-pill legible-world">The Legible World</span></p>
-            <h2 class="post-title">Which Leap Are You Taking?</h2>
-            <p class="post-subtitle">An honest conversation about faith, reason, and the Quran</p>
+            <h2 class="post-title">Is This It?</h2>
+            <p class="post-subtitle">The question underneath everything, and why neither answer to it is neutral</p>
             <p class="post-excerpt">
-              Neither belief nor disbelief is neutral ground. Both answers to the fundamental questions of reality require faith. The question was never faith or no faith — it was always: faith in what, and have you looked at it honestly?
+              Most of us feel it at least once: is this it? Whatever answer we land on, without realizing it, we've already made an act of faith.
             </p>
           </div>
           <div class="post-meta">
-            <span>25 min read</span>
+            <span>6 min read</span>
             <span class="post-meta-dot">&#9679;</span>
-            <span>May 2026</span>
+            <span>Part 1 of 12</span>
           </div>
         </div>
         <div class="post-featured-image">
