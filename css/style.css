@@ -1,0 +1,403 @@
+/* ==========================================================
+   LQ Pathway — minimalist blog theme
+   One stylesheet for every page. Edit the tokens in :root
+   to change colors, fonts, and widths across the whole site.
+   Mobile first: type and spacing scale fluidly with clamp().
+   ========================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* Colors */
+  --bg: #fbfaf7;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+  --line: #e6e3dc;
+  --accent: #2f6b5e;          /* deep green */
+  --accent-soft: #eef4f1;
+  --code-bg: #f2f0eb;
+
+  /* Category colors */
+  --cat-reflection: #8a6d3b;
+  --cat-grammar: #2f6b5e;
+  --cat-ayah: #4a5a8a;
+
+  /* Type */
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-arabic: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
+
+  /* Layout */
+  --measure: 680px;           /* reading width */
+  --gutter: clamp(16px, 5vw, 24px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161616;
+    --text: #e8e6e1;
+    --muted: #9a978f;
+    --line: #2c2b29;
+    --accent: #7fbfae;
+    --accent-soft: #1f2a27;
+    --code-bg: #222120;
+    --cat-reflection: #d1b07a;
+    --cat-grammar: #7fbfae;
+    --cat-ayah: #9fb0e0;
+  }
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.125rem);
+  line-height: 1.7;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+img, svg, video { max-width: 100%; height: auto; }
+
+[id] { scroll-margin-top: 16px; }
+
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+
+/* ---------- Header and footer ---------- */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-ui);
+}
+
+.site-header .container {
+  display: flex;
+  flex-wrap: wrap;            /* wraps instead of overflowing on narrow phones */
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 20px;
+  min-height: 64px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  padding: 12px 0;
+  white-space: nowrap;
+}
+.logo:hover { text-decoration: none; }
+
+.nav { display: flex; gap: 0 20px; }
+.nav a {
+  display: inline-block;
+  padding: 12px 0;            /* tap target of about 48px tall */
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.nav a:hover,
+.nav a[aria-current="page"] { color: var(--text); text-decoration: none; }
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: clamp(56px, 12vw, 80px);
+  padding: 32px 0 calc(32px + env(safe-area-inset-bottom));
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* ---------- Headings ---------- */
+h1, h2, h3 {
+  font-family: var(--font-ui);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem); margin: 0 0 12px; }
+h2 { font-size: clamp(1.3rem, 1.15rem + 0.7vw, 1.5rem); margin: 2em 0 0.5em; }
+h3 { font-size: 1.15rem; margin: 32px 0 8px; }
+
+/* ---------- Home page ---------- */
+.hero { padding: clamp(40px, 10vw, 72px) 0 clamp(24px, 6vw, 40px); }
+.hero h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 2.75rem); }
+.hero p { color: var(--muted); font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem); margin: 0; }
+.hero .arabic-tagline {
+  font-family: var(--font-arabic);
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.6rem);
+  line-height: 1.8;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-label {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: clamp(40px, 8vw, 56px) 0 16px;
+}
+
+.categories {
+  display: grid;
+  gap: 16px;
+}
+.category-card {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  color: var(--text);
+}
+.category-card:hover,
+.category-card:active { border-color: var(--accent); text-decoration: none; }
+.category-card h3 { margin: 0 0 4px; }
+.category-card p { margin: 0; color: var(--muted); font-size: 1rem; }
+
+/* ---------- Post list ---------- */
+.page-intro { padding: clamp(32px, 8vw, 56px) 0 8px; }
+.page-intro p { color: var(--muted); margin: 0; }
+
+.filters {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 8px;
+}
+.filters a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;           /* comfortable tap target */
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 16px;
+  color: var(--muted);
+}
+.filters a:hover,
+.filters a:active,
+.filters a.active { color: var(--text); border-color: var(--text); text-decoration: none; }
+
+/* "All posts" button under a category's newest post */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.btn:hover,
+.btn:active { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.section-actions { margin: 20px 0 0; }
+
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-list li {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 0;
+}
+.post-list h2 { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.3rem); margin: 6px 0; }
+.post-list h2 a { color: var(--text); }
+.post-list p { margin: 0; color: var(--muted); font-size: 1rem; }
+
+/* ---------- Meta and tags ---------- */
+.meta {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.meta span + span::before { content: "·"; margin: 0 8px; }
+
+.tag {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.tag.reflection { color: var(--cat-reflection); }
+.tag.grammar { color: var(--cat-grammar); }
+.tag.ayah { color: var(--cat-ayah); }
+
+/* ---------- Post ---------- */
+.post-header {
+  padding: clamp(32px, 8vw, 56px) 0 24px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+.post-header .lede {
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  margin: 12px 0 16px;
+}
+
+.post-body p { margin: 0 0 1.25em; }
+.post-body ul, .post-body ol { padding-left: 1.25em; }
+.post-body li { margin-bottom: 0.4em; }
+
+.post-body blockquote {
+  margin: 24px 0;
+  padding-left: 20px;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.post-body code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+/* Arabic inline: <span class="ar" lang="ar">كَلِمَة</span> */
+.ar {
+  font-family: var(--font-arabic);
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+/* Ayah block: <figure class="ayah-block">
+   (named ayah-block so it never clashes with the .tag.ayah category label) */
+.ayah-block {
+  margin: 32px 0;
+  padding: clamp(18px, 5vw, 24px);
+  background: var(--accent-soft);
+  border-radius: 8px;
+}
+.ayah-block .arabic {
+  font-family: var(--font-arabic);
+  font-size: clamp(1.55rem, 1.2rem + 1.8vw, 1.9rem);
+  line-height: 2.1;
+  text-align: right;
+  margin: 0 0 12px;
+}
+.ayah-block .transliteration {
+  font-style: italic;
+  color: var(--muted);
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+.ayah-block .translation { margin: 0 0 8px; }
+.ayah-block .ref {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Word-by-word breakdown table: scrolls sideways on phones instead of squishing */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 24px 0;
+}
+.breakdown {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.breakdown th,
+.breakdown td {
+  border-bottom: 1px solid var(--line);
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.breakdown th {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-weight: 600;
+}
+.breakdown td.ar-cell {
+  font-family: var(--font-arabic);
+  font-size: 1.4rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Callouts: key takeaway, source credit */
+.note {
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 28px 0;
+  font-size: 1rem;
+}
+.note strong {
+  font-family: var(--font-ui);
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.credit {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+  padding-top: 16px;
+}
+
+/* Previous / next */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 40px;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+}
+.post-nav a { max-width: 48%; padding: 8px 0; }
+.post-nav .next { text-align: right; margin-left: auto; }
+.post-nav small { display: block; color: var(--muted); }
+
+/* ---------- Small phones ---------- */
+@media (max-width: 480px) {
+  .post-nav { flex-direction: column; gap: 4px; }
+  .post-nav a { max-width: none; }
+  .post-nav .next { text-align: left; margin-left: 0; }
+}
+
+@media (max-width: 380px) {
+  .logo { font-size: 1.15rem; }
+  .nav { gap: 0 14px; }
+  .category-card { padding: 16px; }
+}

@@ -1,191 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LQ: Learning, Loving, Living the Quran</title>
-  <meta name="description" content="A pathway to a living, transformative relationship with the Quran. Grounded in reason. Built for the modern mind.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161616" media="(prefers-color-scheme: dark)">
+  <title>LQ Pathway — Learn it, love it, live it</title>
+  <meta name="description" content="A pathway to the Quran: learn it, love it, live it. Reflections, Arabic grammar, and in-depth ayah reviews.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/homepage.css">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <span class="nav-logo-mark">LQ</span>
-        <span class="nav-logo-arabic">ل ق</span>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">LQ Pathway</a>
+      <nav class="nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <p class="arabic-tagline" lang="ar" dir="rtl">اقْرَأْ بِاسْمِ رَبِّكَ</p>
+      <h1>Learn the Quran. Love it. Live it.</h1>
+      <p>LQ Pathway is a way into the Quran for anyone, built on three steps: learning it, loving it, and living it. <a href="about.html#pathway">Read the idea →</a></p>
+    </section>
+
+    <p class="section-label">The pathway</p>
+    <div class="categories">
+      <a class="category-card" href="about.html#pathway">
+        <h3>1. Learn</h3>
+        <p>It starts with learning about the Quran.</p>
       </a>
-      <ul class="nav-links">
-        <li><a href="#about-begin">About</a></li>
-        <li><a href="./blog/blog.html" class="nav-cta">Start Here</a></li>
-      </ul>
-      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <a class="category-card" href="about.html#pathway">
+        <h3>2. Love</h3>
+        <p>Learning leads to loving it.</p>
+      </a>
+      <a class="category-card" href="about.html#pathway">
+        <h3>3. Live</h3>
+        <p>Loving it leads to living the Quran.</p>
+      </a>
     </div>
-  </nav>
 
-  <!-- Mobile menu -->
-  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
-    <ul class="mobile-menu-links">
-      <li><a href="#about-begin">About</a></li>
+    <p class="section-label">What I write about</p>
+    <div class="categories">
+      <a class="category-card" href="blog/reflections.html">
+        <span class="tag reflection">Reflections</span>
+        <h3>Personal reflections</h3>
+        <p>Thoughts on faith, growth, and everyday life.</p>
+      </a>
+      <a class="category-card" href="blog/arabic-grammar.html">
+        <span class="tag grammar">Arabic</span>
+        <h3>Arabic grammar and language</h3>
+        <p>Core concepts of the language, explained with examples from the Quran.</p>
+      </a>
+      <a class="category-card" href="blog/ayah-reviews.html">
+        <span class="tag ayah">Ayah review</span>
+        <h3>Quran ayah reviews</h3>
+        <p>Slow, in-depth readings of single ayat and the Arabic beneath them.</p>
+      </a>
+    </div>
+
+    <p class="section-label">Latest posts</p>
+    <ul class="post-list">
+      <li>
+        <span class="tag grammar">Arabic</span>
+        <h2><a href="blog/posts/post-template.html">The three types of words in Arabic</a></h2>
+        <p class="meta"><span>Nov 2026</span><span>6 min read</span></p>
+      </li>
+      <li>
+        <span class="tag ayah">Ayah review</span>
+        <h2><a href="blog/posts/post-template.html">Ayah review: title goes here</a></h2>
+        <p class="meta"><span>Nov 2026</span><span>8 min read</span></p>
+      </li>
+      <li>
+        <span class="tag reflection">Reflections</span>
+        <h2><a href="blog/posts/post-template.html">The LQ pathway: learn it, love it, live it</a></h2>
+        <p class="meta"><span>Nov 2026</span><span>4 min read</span></p>
+      </li>
     </ul>
-    <div class="mobile-menu-cta"><a href="./blog/blog.html">Start Here &rarr;</a></div>
-    <div class="mobile-menu-ornament">&#10022; &#10022; &#10022;</div>
-  </div>
+    <p class="meta" style="margin-top:20px"><a href="blog/index.html">All posts →</a></p>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <p class="hero-eyebrow">Learning &middot; Loving &middot; Living</p>
-        <h1 class="hero-title">
-          A pathway to the <em>Quran</em>
-        </h1>
-        <h2 class="hero-subtitle-main">
-          Built for the modern mind.
-        </h2>
-        <p class="hero-subtitle">
-          In our day and age, most people never develop a real relationship with the Quran. Not because it isn't worth one, but because nobody showed them the way.
-        </p>
-        <p class="hero-subtitle">
-          LQ exists to change that.
-        </p>
-        <div class="hero-actions">
-          <a href="#about-begin" class="btn-primary">Welcome</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-medallion">
-          <div class="medallion-ring"></div>
-          <div class="medallion-ring"></div>
-          <div class="medallion-ring"></div>
-          <div class="medallion-dots"></div>
-          <div class="medallion-center">
-            <span class="medallion-lq">LQ</span>
-            <span class="medallion-tagline">A Pathway to the Quran</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <div class="divider"></div>
-
-    <!-- About strip -->
-  <section class="about-begin-strip" id="about-begin">
-    <div class="about-begin-strip-inner">
-      <div>
-        <h2 class="about-begin-strip-label">What is LQ?</h2>
-      </div>
-      <div class="about-begin-strip-text">
-        <p>
-          LQ, Learning, Loving, Living the Quran, is a resource network for people who want more than a surface-level relationship with the Quran. Not a dawah channel. Not a tafsir archive. A deliberately sequenced pathway.
-        </p>
-        <p>
-          The modern mind is overwhelmed by the world around us, the physics and the biology and the chemistry of it all. So, the LQ path meets the modern mind where it is, with looking at and reading the world around us. A world that, as it turns out, is surprisingly legible. LQ starts there, and follows the evidence wherever it leads.
-        </p>
-        <p>
-          The destination is a living relationship with the Quran, one that speaks to your specific life, in your specific circumstances, with a precision that fourteen centuries of readers across every culture have consistently found impossible to explain away.
-        </p>
-      </div>
-    </div>
-  </section>
-
-      <!-- About strip -->
-  <section class="about-strip" id="about">
-    <div class="about-strip-inner">
-      <div>
-        <h2 class="about-strip-label">Why is LQ needed?</h2>
-      </div>
-      <div class="about-strip-text">
-        <p>
-          A unique challenge of our time is that for the vast majority of us, the Quran is widely available, but rarely understood. In our day and age, the depth and richness of the material world occupy our attention, and we are heavily focused on the physical sciences, what we can see, touch, taste, smell and hear, and what we can reason about, or measure.
-        </p>
-        <p>
-          Unfortunately, the approaches to understanding the Quran that have been passed down to us are often not well-suited to this mindset. They were developed in a different time, for a different culture, and they assume a level of spirituality that most people today simply don't have.
-        </p>
-        <p>
-          Most previous approaches begin with the assumption of faith, and then work to explain why the Quran should be the basis for that faith. But for most people today, faith is not a given. It is something that must be earned.
-        </p>
-        <p>
-          LQ attempts to first, lay the intellectual foundation for faith, and then, to build a relationship with the Quran that is based on understanding, love, and ultimately, living it.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- Framework -->
-  <section class="framework">
-    <div class="section-inner">
-      <p class="section-label">The Pathway</p>
-      <h2 class="section-title">Learn. Love. Live.</h2>
-      <p class="framework-intro">
-        A relationship with the Quran doesn't happen by accident. It follows a sequence, and each stage unlocks the next. You cannot love what you don't understand. You cannot live what you don't love.
-      </p>
-      <div class="framework-steps">
-        <div class="framework-step">
-          <div class="step-number">01</div>
-          <h3 class="step-title">Learn</h3>
-          <p class="step-body">The intellectual foundation. Why the Quran deserves your serious attention. What it actually says, how it works, and how to begin engaging with it honestly, including the Arabic that makes it what it is.</p>
-          <span class="step-arrow">↓</span>
-        </div>
-        <div class="framework-step">
-          <div class="step-number">02</div>
-          <h3 class="step-title">Love</h3>
-          <p class="step-body">Something shifts when understanding matures. Specific ayat begin to land differently. The text starts speaking to your actual life. This is the stage where the Quran begins to feel alive, slowly, then suddenly.</p>
-          <span class="step-arrow">↓</span>
-        </div>
-        <div class="framework-step">
-          <div class="step-number">03</div>
-          <h3 class="step-title">Live</h3>
-          <p class="step-body">The Quran becomes a lens, not a book you open at scheduled times, but a companion that surfaces at precisely the moment you need it. This is <em>tadabbur</em>: reflection so deep it changes how you move through the world.</p>
-          <span class="step-arrow">↓</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About strip -->
-  <section class="about-strip" id="start">
-    <div class="about-strip-inner">
-      <div>
-        <h2 class="about-strip-label">Here's to your journey</h2>
-      </div>
-      <div class="about-strip-text">
-        <div class="hero-actions">
-          <a href="./blog/blog.html" class="btn-primary">Welcome to the path →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        LQ
-        <span>Learning, Loving, Living the Quran</span>
-      </div>
-      <ul class="footer-links">
-        <!-- <li><a href="./blog/blog.html">Blog</a></li> -->
-        <li><a href="#about">About</a></li>
-      </ul>
-      <p class="footer-copy">© 2026 LQ. All rights reserved.</p>
-    </div>
+  <footer class="site-footer">
+    <div class="container">© 2026 LQ Pathway · Written by Shaheer</div>
   </footer>
-
-
-  <script src="js/main.js"></script>
 
 </body>
 </html>
