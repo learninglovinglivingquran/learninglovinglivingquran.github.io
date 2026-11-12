@@ -21,6 +21,7 @@
   --cat-reflection: #8a6d3b;
   --cat-grammar: #2f6b5e;
   --cat-ayah: #4a5a8a;
+  --cat-prayer: #8a4a5a;
 
   /* Type */
   --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -44,6 +45,7 @@
     --cat-reflection: #d1b07a;
     --cat-grammar: #7fbfae;
     --cat-ayah: #9fb0e0;
+    --cat-prayer: #d79aab;
   }
 }
 
@@ -248,6 +250,7 @@ h3 { font-size: 1.15rem; margin: 32px 0 8px; }
 .tag.reflection { color: var(--cat-reflection); }
 .tag.grammar { color: var(--cat-grammar); }
 .tag.ayah { color: var(--cat-ayah); }
+.tag.prayer { color: var(--cat-prayer); }
 
 /* ---------- Post ---------- */
 .post-header {
@@ -348,6 +351,15 @@ h3 { font-size: 1.15rem; margin: 32px 0 8px; }
   font-size: 1.4rem;
   text-align: right;
   white-space: nowrap;
+}
+/* Transliteration under the Arabic in a key-words table: <span class="tr">al-ḥamd</span> */
+.breakdown td.ar-cell .tr {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.4;
 }
 
 /* Callouts: key takeaway, source credit */
