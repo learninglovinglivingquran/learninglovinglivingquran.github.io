@@ -11,17 +11,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="../index.html">LQ Pathway</a>
+      <a class="logo" href="../../index.html">LQ Pathway</a>
       <nav class="nav">
-        <a href="../index.html">Home</a>
-        <a href="index.html" aria-current="page">Blog</a>
-        <a href="../about.html">About</a>
+        <a href="../../index.html">Home</a>
+        <a href="../index.html" aria-current="page">Blog</a>
+        <a href="../../about.html">About</a>
       </nav>
     </div>
   </header>
@@ -29,22 +29,23 @@
   <main class="container">
 
     <section class="page-intro">
-      <p class="meta"><a href="index.html">← Blog</a></p>
+      <p class="meta"><a href="../index.html">← Blog</a></p>
       <h1>Quran in prayer</h1>
       <p>Companion pages for the weekly study circle. Each one takes a surah we recite in prayer and goes through its key Arabic words, so you can bring the meaning with you the next time you pray.</p>
     </section>
 
     <nav class="filters" aria-label="Categories">
-      <a href="index.html">All categories</a>
-      <a href="reflections.html">Reflections</a>
-      <a href="arabic-grammar.html">Arabic grammar</a>
-      <a href="ayah-reviews.html">Ayah reviews</a>
-      <a href="quran-in-prayer.html" class="active" aria-current="page">Quran in prayer</a>
+      <a href="../index.html">All categories</a>
+      <a href="../reflections/index.html">Reflections</a>
+      <a href="../arabic-grammar/index.html">Arabic grammar</a>
+      <a href="../quran-review/index.html">Quran Review</a>
+      <a href="index.html" class="active" aria-current="page">Quran in prayer</a>
     </nav>
 
     <!--
       To add a post to this category:
-      1. Copy posts/post-template.html to posts/your-post-slug.html
+      1. Copy templates/post-template.html to blog/quran-in-prayer/your-post-slug.html
+         and fix its ../ paths (see the comment at the top of the template)
          (use <span class="tag prayer">Prayer</span> as the category tag)
       2. Add a <li> at the TOP of the list below (newest first)
       3. Also replace the post shown for this category on blog/index.html
@@ -53,7 +54,7 @@
     <ul class="post-list">
       <li>
         <span class="tag prayer">Prayer</span>
-        <h2><a href="posts/al-fatiha-1-4.html">Al-Fatiha 1–4: who are we speaking to?</a></h2>
+        <h2><a href="al-fatiha-1-4.html">Al-Fatiha 1–4: who are we speaking to?</a></h2>
         <p>Session 1 companion page. Five key words from the opening four verses of Al-Fatiha, and a question to carry into your next prayer.</p>
         <p class="meta"><span>Nov 2026</span><span>5 min read</span></p>
       </li>

@@ -1,8 +1,26 @@
 <!doctype html>
+<!--
+  POST TEMPLATE. Copy this file, do not edit it in place.
+
+  Where to put the copy:
+    Reflections / Arabic grammar / Quran in prayer post:  blog/<category>/your-post-slug.html
+    Ayah review:                                         blog/quran-review/<surah>/ayah-N.html
+
+  This template sits 1 level below the site root, so its links start with ../
+  After copying, fix the links to match the new depth:
+                          category post (2 deep)     ayah review (3 deep)
+    css/style.css         ../../css/style.css        ../../../css/style.css
+    logo and Home         ../../index.html           ../../../index.html
+    Blog                  ../index.html              ../../index.html
+    About                 ../../about.html           ../../../about.html
+
+  Also delete the <meta name="robots" content="noindex"> line from the copy.
+-->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#161616" media="(prefers-color-scheme: dark)">
@@ -13,17 +31,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="../../index.html">LQ Pathway</a>
+      <a class="logo" href="../index.html">LQ Pathway</a>
       <nav class="nav">
-        <a href="../../index.html">Home</a>
-        <a href="../index.html" aria-current="page">Blog</a>
-        <a href="../../about.html">About</a>
+        <a href="../index.html">Home</a>
+        <a href="../blog/index.html" aria-current="page">Blog</a>
+        <a href="../about.html">About</a>
       </nav>
     </div>
   </header>
@@ -35,7 +53,7 @@
         <!-- EDIT: category tag. Use one of:
              <span class="tag reflection">Reflections</span>
              <span class="tag grammar">Arabic</span>
-             <span class="tag ayah">Ayah review</span>
+             <span class="tag ayah">Quran review</span>
              <span class="tag prayer">Prayer</span> -->
         <span class="tag grammar">Arabic</span>
         <h1>Post title goes here</h1>
@@ -63,7 +81,7 @@
 
         <!-- Word-by-word table. Add or remove rows as needed.
              For Quran in prayer posts, use the Arabic / Root / Common translation / Deeper meaning
-             columns instead (see posts/al-fatiha-1-4.html). -->
+             columns instead (see blog/quran-in-prayer/al-fatiha-1-4.html). -->
         <div class="table-wrap" role="region" aria-label="Word-by-word breakdown" tabindex="0">
           <table class="breakdown">
             <thead>
