@@ -8,6 +8,9 @@ css/style.css                   One stylesheet for every page
 reflections/
   index.html                    Category home
   posts/                        Posts for this category
+    islam-in-the-parts-that-suit-me/
+      index.html                A post that has its own folder (3 levels deep)
+      references/               Source files for the post (git-ignored, not published)
 arabic-grammar/
   index.html
   posts/
@@ -52,11 +55,13 @@ Count how many folders deep the file is. Each level adds one `../`.
 | `index.html`, `about.html`, `post-template.html` | 0 | `css/` | `index.html` | `about.html` |
 | `<category>/index.html` | 1 | `../css/` | `../index.html` | `../about.html` |
 | `<category>/posts/*.html` | 2 | `../../css/` | `../../index.html` | `../../about.html` |
+| `<category>/posts/<post>/index.html` (post with its own folder) | 3 | `../../../css/` | `../../../index.html` | `../../../about.html` |
 | `quran-review/posts/<surah>/*.html` | 3 | `../../../css/` | `../../../index.html` | `../../../about.html` |
 
 ## Notes
 
 - Every category page, surah page and post has a breadcrumb at the top (Home › category › post). The last item is the current page and is not a link.
+- A post that needs source files (a transcript, a PDF) can get its own folder: `<category>/posts/<post-slug>/index.html` plus a `references/` subfolder. `arabic-grammar/references/` and `reflections/posts/*/references/` are in `.gitignore`, so those files stay on your computer and are never published.
 - Every page links to `index.html` explicitly (for example `reflections/index.html`), so the site also works when opened from a folder on your computer.
 - Posts still marked "title goes here" or pointing at `post-template.html` are placeholders.
 - Pages for the study circle carry a "Draft" credit line until the Arabic has been checked and a scholar has reviewed them. Delete the line once approved.

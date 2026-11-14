@@ -2,3 +2,6 @@
 
 # Local reference material (copyrighted textbook PDFs), not published
 arabic-grammar/references/
+
+# Local source material for posts (transcripts etc.), not published
+reflections/posts/*/references/
