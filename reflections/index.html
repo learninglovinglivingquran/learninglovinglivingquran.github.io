@@ -6,55 +6,59 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#161616" media="(prefers-color-scheme: dark)">
-  <title>Arabic grammar and language — LQ Pathway</title>
-  <meta name="description" content="Core concepts of the language, explained with examples from the Quran.">
+  <title>Personal reflections — LQ Pathway</title>
+  <meta name="description" content="Thoughts on faith, growth, and everyday life. Not limited to Arabic or the Quran.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="../../index.html">LQ Pathway</a>
+      <a class="logo" href="../index.html">LQ Pathway</a>
       <nav class="nav">
-        <a href="../../index.html">Home</a>
-        <a href="../index.html" aria-current="page">Blog</a>
-        <a href="../../about.html">About</a>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
 
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li aria-current="page">Reflections</li>
+      </ol>
+    </nav>
+
     <section class="page-intro">
-      <p class="meta"><a href="../index.html">← Blog</a></p>
-      <h1>Arabic grammar and language</h1>
-      <p>Core concepts of the language, explained with examples from the Quran.</p>
+      <h1>Personal reflections</h1>
+      <p>Thoughts on faith, growth, and everyday life. Not limited to Arabic or the Quran.</p>
     </section>
 
     <nav class="filters" aria-label="Categories">
-      <a href="../index.html">All categories</a>
-      <a href="../reflections/index.html">Reflections</a>
-      <a href="index.html" class="active" aria-current="page">Arabic grammar</a>
+      <a href="index.html" class="active" aria-current="page">Reflections</a>
+      <a href="../arabic-grammar/index.html">Arabic grammar</a>
       <a href="../quran-review/index.html">Quran Review</a>
       <a href="../quran-in-prayer/index.html">Quran in prayer</a>
     </nav>
 
     <!--
       To add a post to this category:
-      1. Copy templates/post-template.html to blog/arabic-grammar/your-post-slug.html
+      1. Copy post-template.html to reflections/posts/your-post-slug.html
          and fix its ../ paths (see the comment at the top of the template)
       2. Add a <li> at the TOP of the list below (newest first)
-      3. Also replace the post shown for this category on blog/index.html
+      3. If it is the newest post overall, also add it to the "Latest posts" list on the home page
     -->
     <ul class="post-list">
       <li>
-        <span class="tag grammar">Arabic</span>
-        <h2><a href="../../templates/post-template.html">The three types of words in Arabic</a></h2>
-        <p>The three kinds of words in Arabic, and how its rules can bend to deepen meaning: a first look at balagha.</p>
-        <p class="meta"><span>Nov 2026</span><span>6 min read</span></p>
+        <span class="tag reflection">Reflections</span>
+        <h2><a href="../post-template.html">The LQ pathway: learn it, love it, live it</a></h2>
+        <p>The idea behind this site: a pathway to the Quran that starts with learning, leads to love, and ends in living it.</p>
+        <p class="meta"><span>Nov 2026</span><span>4 min read</span></p>
       </li>
     </ul>
 
