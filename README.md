@@ -17,8 +17,13 @@ reflections/
       index.html                Series home: lists that surah's reflections
       ayah-8-9.html             A reflection on an ayah (or range), in the surah's folder
 arabic-grammar/
-  index.html
+  index.html                    Category home: lists the sections of the Bayyinah Dream textbook
+  section-4-advanced-structures/
+    index.html                  Section home: lists that section's posts in chapter order
+    passive-with-a-preposition.html   A post (Chapter 1), in its section's folder
+    types-of-ma.html                  A post (Chapter 2)
   posts/
+    passive-with-a-preposition.html   Redirect to the new location (old URL was already published)
 quran-in-prayer/
   index.html                    Category home: companion pages for the study circle
   posts/
@@ -35,7 +40,19 @@ There is no separate blog page. Each category folder is its own home, and the ho
 
 ## Adding things
 
-**A post (Reflections, Arabic grammar, Quran in prayer)**
+**A post in Arabic grammar**
+Arabic grammar notes are grouped by the sections of the Bayyinah Dream textbook (Section 4 is "Advanced structures").
+1. Copy `post-template.html` to `arabic-grammar/section-N-<name>/your-post-slug.html` (2 levels deep, so the `../../` paths).
+2. Set the breadcrumb: Home › Arabic grammar › Section N: name › short post title.
+3. Add it to that section's `index.html` in chapter order, and to the section card on `arabic-grammar/index.html`.
+4. If it is the newest post overall, add it to the "Latest posts" list on `index.html`.
+
+**A new section (Arabic grammar)**
+1. Copy `arabic-grammar/section-4-advanced-structures/` to `arabic-grammar/section-N-<name>/`.
+2. Edit its `index.html` (title, description, breadcrumb, post list) and delete the copied posts.
+3. Add a card for it at the top of `arabic-grammar/index.html`.
+
+**A post (Reflections, Quran in prayer)**
 1. Copy `post-template.html` to `<category>/posts/your-post-slug.html`.
 2. Fix the `../` paths (cheat sheet below) and the breadcrumb at the top (Home › category › short post title).
 3. Add it at the top of `<category>/index.html`.
@@ -65,6 +82,7 @@ Count how many folders deep the file is. Each level adds one `../`.
 |---|---|---|---|---|
 | `index.html`, `about.html`, `post-template.html` | 0 | `css/` | `index.html` | `about.html` |
 | `<category>/index.html` | 1 | `../css/` | `../index.html` | `../about.html` |
+| `arabic-grammar/section-N-<name>/*.html` (section home and its posts) | 2 | `../../css/` | `../../index.html` | `../../about.html` |
 | `<category>/posts/*.html` | 2 | `../../css/` | `../../index.html` | `../../about.html` |
 | `<category>/posts/<post>/index.html` (post with its own folder) | 3 | `../../../css/` | `../../../index.html` | `../../../about.html` |
 | `reflections/surahs/index.html` | 2 | `../../css/` | `../../index.html` | `../../about.html` |
