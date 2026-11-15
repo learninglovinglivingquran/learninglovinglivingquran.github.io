@@ -11,6 +11,11 @@ reflections/
     islam-in-the-parts-that-suit-me/
       index.html                A post that has its own folder (3 levels deep)
       references/               Source files for the post (git-ignored, not published)
+  surahs/
+    index.html                  Lists the surah series of reflections
+    at-takwir/
+      index.html                Series home: lists that surah's reflections
+      ayah-8-9.html             A reflection on an ayah (or range), in the surah's folder
 arabic-grammar/
   index.html
   posts/
@@ -41,6 +46,12 @@ There is no separate blog page. Each category folder is its own home, and the ho
 2. Edit its `index.html` (name, Arabic name, surah number, ayat count, intro).
 3. Add it at the top of `quran-review/index.html`, and update "Latest posts" on `index.html` if it is the newest.
 
+**A surah series of reflections (Reflections)**
+1. Copy `reflections/surahs/at-takwir/` to `reflections/surahs/<surah>/`, edit its `index.html`, and delete the ayah posts.
+2. Add it at the top of `reflections/surahs/index.html`.
+3. Each reflection goes in that folder as `ayah-N.html` (or `ayah-N-M.html`). Fix the `../../../` paths and the breadcrumb (Home › Reflections › Surahs › Surah › Ayah).
+4. List it on the surah's `index.html`, on `reflections/index.html`, and on the home page if it is the newest post.
+
 **An ayah review**
 1. Copy `post-template.html` to `quran-review/posts/<surah>/ayah-N.html`.
 2. Fix the `../` paths (3 levels deep) and the breadcrumb (Home › Quran Review › Surah › Ayah N).
@@ -56,6 +67,8 @@ Count how many folders deep the file is. Each level adds one `../`.
 | `<category>/index.html` | 1 | `../css/` | `../index.html` | `../about.html` |
 | `<category>/posts/*.html` | 2 | `../../css/` | `../../index.html` | `../../about.html` |
 | `<category>/posts/<post>/index.html` (post with its own folder) | 3 | `../../../css/` | `../../../index.html` | `../../../about.html` |
+| `reflections/surahs/index.html` | 2 | `../../css/` | `../../index.html` | `../../about.html` |
+| `reflections/surahs/<surah>/*.html` | 3 | `../../../css/` | `../../../index.html` | `../../../about.html` |
 | `quran-review/posts/<surah>/*.html` | 3 | `../../../css/` | `../../../index.html` | `../../../about.html` |
 
 ## Notes
